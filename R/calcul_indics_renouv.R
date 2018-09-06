@@ -35,7 +35,6 @@
 #' @export
 #'
 #' @details
-#'
 #' Les indicateurs générés dans le champ 'type_indice' de la table de sortie sont les suivants (cf. vignette pour les définitions exactes et les formules de calcul) :
 #' \itemize{
 #' \item{Indice de catégorisation par l'immigration ('ICI')}
@@ -53,11 +52,11 @@
 
 calcul_indics_renouv <- function(TABLE, NIVGEO, NB_ENTR, NB_SORT, NB_AUTO,NB_PRES, VAR_VENTIL) {
 
-  # A- indices de renouvellement global
+  # pré-traitements
   indics_mig_RENOUV <-
     TABLE %>%
     select(!!sym(NIVGEO),!!sym(VAR_VENTIL),  !!sym(NB_ENTR), !!sym(NB_SORT), !!sym(NB_AUTO), !!sym(NB_PRES)) %>%
-    # calcul part de chaque CS dans la pop présente, immigrante, etc...
+    # calcul part de chaque CS dans la pop entrante, sortante, autochtone
     group_by(!!sym(NIVGEO)) %>%
     mutate_at(.vars = vars( c(!!sym(NB_ENTR), !!sym(NB_SORT), !!sym(NB_AUTO)) ),
               .funs =  funs(pct = ./sum(.) ))  %>%
@@ -79,13 +78,14 @@ calcul_indics_renouv <- function(TABLE, NIVGEO, NB_ENTR, NB_SORT, NB_AUTO,NB_PRE
     gather(type_indice, valeur, - NIVGEO,-VAR_VENTIL)
 
 
+
   # indices de renouvellement par catégorie de ventilation
 
   # indices de modifications structure population
   indics_mig_RENOUV.CLASSE <-
     indics_mig_RENOUV %>%
     mutate(ICI = (!!sym(paste0(NB_ENTR, "_pct")) - !!sym(paste0(NB_AUTO, "_pct"))),
-           ICE = (!!sym(paste0(NB_SORT, "_pct")) - !!sym(paste0(NB_AUTO, "_pct")))) %>%
+           ICE = (!!sym(paste0(NB_AUTO, "_pct")) - !!sym(paste0(NB_SORT, "_pct")))) %>%
     # calcul des SM et nb_ind_PRES_pct sur tout sauf la modalité en question
     left_join(
       indics_mig_RENOUV %>% ungroup() %>%

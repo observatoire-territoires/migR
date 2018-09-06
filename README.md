@@ -1,38 +1,26 @@
----
-output: github_document
----
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+Analyse des migrations résidentielles
+=====================================
 
-```{r setup, echo = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
-# Analyse des migrations résidentielles
+L'objectif du package `migR` est de faciliter l'exploitation des fichiers du recensement de l'Insee décrivant les migrations résidentielles. Il propose également des indicateurs quantifiant les échanges entre territoires à plusieurs échelles géographiques, ainsi que des indicateurs caractérisant l'impact des migrations dans la composition socio-démographique des territoires. Le package `migR` a été réalisé dans le cadre de la rédaction du rapport de l'Observatoire des Territoires portant sur les migrations résidentielles.
 
-L'objectif du package `migR` est de faciliter l'exploitation des fichiers du recensement de l'Insee décrivant les migrations résidentielles. Il propose également des indicateurs quantifiant les échanges entre territoires à plusieurs échelles géographiques, ainsi que des indicateurs caractérisant l'impact des migrations dans la composition socio-démographique des territoires.
-Le package `migR` a été réalisé dans le cadre de la rédaction du rapport de l'Observatoire des Territoires portant sur les migrations résidentielles.
-
-## Installation
+Installation
+------------
 
 Le package `migR` peut être installée avec la commande suivante :
 
-```{r eval=FALSE}
+``` r
 # install.packages("devtools")
 devtools::install_github("observatoire-territoires/migR")
 ```
 
-
-## Documentation
+Documentation
+-------------
 
 Une [vignette](./inst/doc/methodo_migR.md) présente les différents concepts ainsi que les formules des indicateurs.
 
 Un tutorial pour utiliser les fonctions sera également publiée.
-
 
 ### Contact
 

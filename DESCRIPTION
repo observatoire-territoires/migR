@@ -1,23 +1,22 @@
 Package: migR
-Title: Analyse territoriale des migrations résidentielles internes
+Title: Analyse territoriale des migrations r?sidentielles internes
 Version: 0.0.0.9000
 Authors@R: c(
     person("Observatoire des Territoires", email = "observatoire@cget.gouv.fr", role = c("cre", "aut")),
     person("Joel", "Gombin", email = "joel.gombin@gmail.com", role = "aut"))
 Maintainer: Observatoire des Territoires <observatoire@cget.gouv.fr>
-Description: Traitements sur les fichiers décrivant les migrations résidentielles (RP Insee), calcul du volume de migrations inter-territoriales et d'indicateurs caractérisant l'ampleur quantitative des phénomènes migratoires internes ainsi que leur impact sur la composition socio-démographique de la population au sein des territoires.
-Depends: R (>= 3.4.2)
+Description: Traitements sur les fichiers d?crivant les migrations r?sidentielles (RP Insee), calcul du volume de migrations inter-territoriales et d'indicateurs caract?risant l'ampleur quantitative des ph?nom?nes migratoires internes ainsi que leur impact sur la composition socio-d?mographique de la population au sein des territoires.
 License: GPL-3
 Encoding: UTF-8
 URL: http://github.com/observatoire-territoires/migR
 BugReports: http://github.com/observatoire-territoires/migR/issues
 LazyData: true
-Suggests: 
+Suggests:
     knitr,
     rmarkdown,
     testthat
 VignetteBuilder: knitr
-Imports: 
+Imports:
     data.table,
     dplyr,
     magrittr,
@@ -25,5 +24,6 @@ Imports:
     COGugaison,
     utils,
     tidyr,
-    stringr
+    stringr,
+    rlang
 RoxygenNote: 6.1.0

@@ -13,6 +13,10 @@ library(stringr)
 
 memory.limit(size = 8000000)
 
+Sys.which("git")
+# pour afficher tab  Git ?
+
+
 ############
 # référentiels sources à ajouter
 
