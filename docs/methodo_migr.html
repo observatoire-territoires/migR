@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="JG / MG / Observatoire des Territoires" />
+
+<meta name="date" content="2018-09-07" />
+
+<title>Analyse des migrations résidentielles internes en France : méthodologie</title>
+
+
+
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Analyse des migrations résidentielles internes en France : méthodologie</h1>
+<h4 class="author"><em>JG / MG / Observatoire des Territoires</em></h4>
+<h4 class="date"><em>2018-09-07</em></h4>
+
+
+
+<p>Cette recherche part de l’idée que, dans les phénoménes migratoires (internes, mais aussi externes), l’accent est le plus souvent mis sur l’ampleur quantitatives de ces phénoménes (le solde migratoire, le taux de rotation de la population…), sans que soit prise en compte la question, sans doute au moins aussi pertinente sociologiquement et politiquement, de savoir qui sont ceux qui arrivent et ceux qui partent par rapport à ceux qui étaient initialement sur place. En d’autres termes, dans quelle mesure les mobilités transforment-elles la structure sociale locale - et, partant, dans quelle mesure ces mobilités sont-elles perçues comme remettant en cause cet ordre social local ?</p>
+<p>Aprés avoir quantifié les flux liés aux mobilités résidentielles en valeur absolue (partie 1) puis relative (partie 2), il est proposé de créer des indices de renouvellement de la population (partie 3) relatifs à des groupes de population puis à la composition de la population dans sa globalité, chacun de ces indices ventilés en trois composantes (l’immigration, l’émigration, l’ensemble des migrations).</p>
+<p>Sommaire :</p>
+<p>1 - Volumes des flux liés aux migrations résidentielles</p>
+<p>2 - Taux relatifs aux migrations</p>
+<p>3 - Indices de renouvellement de la population</p>
+<div id="volume-des-flux-lies-aux-migrations-residentielles" class="section level2">
+<h2>1 - Volume des flux liés aux migrations résidentielles</h2>
+<p>Pour conserver des flux symétriques, on exclue de l’analyse :</p>
+<ul>
+<li>les individus recensés pour l’année N et résidant à l’étranger ou dans les TOM/COM+Mayotte en N-1</li>
+<li>les individus âgés de moins d’un an lors du recensement</li>
+<li>les populations spécifiques (détenus, habitants des habitations mobiles, sans-abri, mariniers) rattachés à une même commune en N et en N-1.</li>
+</ul>
+<p>On ne considére donc que les <strong>migrations internes</strong> au sein du pays (France métropolitaine + DOM - Mayotte).</p>
+<p>Les concepts de population basées sur les données de détail fournies dans le fichier détail ‘Migrations Résidentielles’ du <a href="https://www.insee.fr/fr/statistiques/2866333?sommaire=2866354#dictionnaire">RP 2014 (Insee)</a> sont définies comme suit :</p>
+<ul>
+<li><p>Population entrante <span style="color:darkgreen;font-weight: bold;">(“ENTR”)</span> : population présente sur le territoire lors de l’année du recensement mais non présente en N-1.</p></li>
+<li><p>Population émigrante <span style="color:darkred;font-weight: bold;">(“SORT”)</span> : : population non présente sur le territoire lors de l’année du recensement mais présente en N-1.</p></li>
+<li><p>Population stable <span style="color:grey;font-weight: bold;">(“ISO”)</span> : : population présente sur le territoire lors de l’année du recensement et présente en N-1.</p></li>
+<li><p>Population autochtone <span style="color:purple;font-weight: bold;">(“AUTO”)</span> : : population présente sur le territoire en N-1 (population stable + population sortante), la population ayant émigré é l’étranger entre N-1 et N n’étant pas connue.</p></li>
+<li><p>Population présente <span style="color:darkblue;font-weight: bold;">(“PRES”)</span> : : population présente sur le territoire en N (population stable + population entrante)</p></li>
+<li><p>Solde migratoire (“SM”) : différence entre population entre la population immigrante et la population émigrante (population entrante - population sortante)</p></li>
+<li><p>Population mobile en infra (“MINF”) : population stable au sein du territoire mais ayant changé de commune.</p></li>
+</ul>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtAAAAGACAMAAACz76XEAAACQFBMVEUAAAAAADoAAGYAAIsAAJ8AALMAOpAAOscAZAAAZDoAZGYAZrMAZrYAZtoAgJAAm7YzMzMzM1ozM38zWqAzf8E6AIs6Oos6ZAA6ZDo6ZrM6Zto6kO06tdtaMzNaWlpaf39aoOFmAABmAItmAJ9mZABmZDpmZGZmZrNmZrZmgJBmtv9mz7Zmz/9/MzN/M1p/f1p/f39/oKB/wf+LAACLADqLAGaLOpCLZraQOouQgACQtbaQ2/+Q5/+ZmZmZmauZmbyZq86ZvLyZvN6fAACfADqfOgCfkNugIPCgIPKgIPWgTPegWjOgWlqgdPWgdPqgoH+gwaCg4cGg4eGg4f+rmZmrq5mrvLyrvN6rzu6xIPCxTPCxTPKxdPWxdPqxmfyzAACzADqzAGazOpCztraztv+2ZgC2Zou2mwC228e2//+8mZm8mau8vLy83v++vr6+vtTBIPDBIPLBdPXBfzPBvP/B4aDB/8HB///HOgDHkLbH2//Oq5nO7v/RTPDR3v/aZgDa///bkJ/btTrb28fb2//b5//b/7bb/9rb/9vb/+3b///evJne7s7e///hdPDhoFrh3vfh4aDh//zh///tkDrt2//t/7bt/9vt///uzqvu7s7u/97u/+7u///wmfLw3vfw//rw//zw///038n/tmb/trP/trb/vPX/wX//z2b/z7b/25D/28f/29v/3rz/3vf/4aD/55D/59v/6tT/7s7//7b//8H//9r//9v//97//+H//+3//+7///r///z///84ppQPAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAV9UlEQVR4nO2di5sUV1qHRyeECW7IEMB1F3ATxEtYcBUCJCaTYKKQi0ZX0A3qJutmZCWaMUrcjeQGaOI6McGVyUpWEzWCgEFglYFJskn9a55LVXV1ddX07ev6TlW/7/OE7qqurun+fS9nTp3+6ExEAA1iQvsFAEiC0NAoEBoaBUJDo0BoaBQIDY0CoaFRIDQ0CoSGRoHQ0CgQGhoFQkOjQGhoFAgNjUJS6I8fn/as+ep2f+f279h968xjR6en156+7nevPR35PdN3pM895e6bA+zN1U3+ifmTxc+3x1zf3tq099YciJ+XOSY+85oDmdMme69vX2d3tF5Aoxm+Mu6Oef6B9pN1xG7vtVKO8vGPPvEqhDYx+ZvkXdvcjrZpZx63O80BNo1uQpundRU6ObU1N3Pa5LUe9cVsy765DF+Z9BQ7+hM6H//IE5eecvi303pTHz++5ivm/vXtX9pkY/NvzMTgFDwVDwl23y/ZbGws61rm5U8We3tq2p+q4wGfbHqMe+iUKUHutL46VugL02MyREfDVsZobo4wubVXJhN7qxZZZ/PxjzzxCoT+LfOeLkz/chqbSWVHMrlIOGX+tq9zCX3FZNRF6CTA5YROTmF+/oH8ae0r+Gkn9NVNSd2az9CVsbFe/8UDbSfrJnRH/CNPfFRC+19A6+w7+ur2O6JTt/9V+zjgfrHtSJ718eNrTx91w4U5eu3pvNDJyTpG6NwDBSO0O0XutNHHv3HgghM6N99rNMNVJidigdCtWmQy7Yh/5IlXIPTvPL4uOrr2e5vaZ2puJrbG/303kawzQ8UOl5D5JVUu9HQykVtG6PQYf2bzw3KntXih3QCizsREFWtNw1XmwvRAQnfEP/LEK5hyHDh6+7e3r7vaim2df+jqpul4RuYuoBMxzZjwvdIpR5r6MlOO9BiLK0TmtBfixxKhW2ORHhMTVSg9XGW6j9CFU458/KNPvAqhL6z57U07rqa/2Fr4X3HpFXQ8X7gw/aXl5tCnpv3lYzbE+O+9/xnpMZY00fi0wQo9cqUFKpOfQ7fFvrzQSVUbIbS7UM7F1nqnUXJtdnR6h99xdHp6GaGNrfFcLPtT4gWnWGh/THrq3Gn9zw9qylGB0sNVpnCVoy32QqE74q/tlCOZyNo34NYhc7G1zQz82r1xzL918xuvaA6d+O5izM6h3RSvNblOj0lPkTttFCVCh3FROFGJ0cNVJn3ijszJ2mJvFcnfuSM9Lht/zS8KfWzuU4z8Lzb3y8ynFv+tNY9+O1miWE5oG80dOaHdtC+ei6THpOe+3n5ay4WAlu0mKjF6uMp8x69+JMNrcnwm9kKhO+Kv3bJdcJxabs4WxgcrE21ovxpZ8vHX7oOV4HBNG2UE8dH3RB7tFyRJPv7affQdHqfKr0KCaE7q8LlZRrfHX6/mJBiAAp+bZXTFkJ06GC0J0QUASstBcCGA0WKQWxAwk5aC1EIBpUUgs3DAaAGILCQwemhILCgwelgILCwwekjIKzCUjb6xeXJycuV84WOX1m9N7n0xsxEWCB0aukbf2LzBuLqh8LHU4U/uubXCl9QfCB0gikZboW9svjU6ZwbqrUbhn5+c3OBMPrziiLsx4/ff32P++BuzkRz0hfWTwRiO0CGiZ3Q8QttB+tzk1kvrb/U3idDnVs6fu+k+O0KbjcxBJ266r7rXuCwIHSRq0w43hzaCrjhi3bYmxzfxCH1pvRmUY6HTg4zXCA3LomW0HaENZUKbkfgcQsMA6AodS3ppvZli2EnFhk/ucUIbrU+kQqcHITR0R8foWOj2i0JzKXjTTzqhzYzjJ8wRh9svChEaekB1PdoT6mLzMiB0uOgbjdAgi7bR9YOQgkZ9jK4d4WT06fP79+9/7IPCx64ceiG59/XMxhiA0H0STkafPv+UcfWpwsdShz975YkKX1IIYHR/hBORFfrT55+IzpuB+gWj8F/u3/+UM/ntR0+7GzN+/8cr5o9/MxvJQX94aH/DDWfS0R/hJBSP0HaQPr//hSuHnvA3idDnH/vg/COv2hHabGQOev+RV7Vf+WhRNjqcFebeCEloM+oaQR89bd22Jsc38Qh95ZAZlGOh04OM100XuspJx4kVf5JfqDtcvnB36YvLPE+LkIR28+cyoc1IfH48ha7Q6L7EzHRFI3QBsdCxpFcOmSmGnVQ89dkrTmij9fup0OlBYyF0u9Kj/DnnVv7dz9wXf959Y/MX1q844j/djk74m2wD9Ce2K3re73HPG+UL653ghG6/KDSXgo/8vhPazDh+0xzxdvtF4RgKPfKKxU3QNzavnHcfFcb9R4dXzqdbrgE6blEKbJYdjtDtjNVic3eqNDruGbX/bsWNzK4BOh2nJyeTLjsrdLxnxK+oHxC6FhQIPTKxU6E3RK1/iXJj8+SKI/FWVuigRmdLqEJDOzmjRzlWx03QTmjr7gnbOJp2Pre2/JTD7RnJ6xgMhK4JE4WM4ielF4W2M9pc9NlB2E4tNiRbSQP0YX9RGNYgjdB1oUKhQ5oT9wtC14XKhmiEhiqobs5Ra0ikNkzCZPeUAhD6/Uf/Mb9Gd+Xrue24rTS/f5lTNA5hNWYc2fsJIe/rrnSQQnd0PcdCl3ZDj4HQI/E5NmamwKJA99VB6POP/ftfvOranT/wvUj/ZLueP/Cfbkfv2xa8K4f+wNx8ltmftEL7LX+KRiMutPAJK6EeQjt8u3PcXOdbkFzLs29BihufM/vjPfYJY9HN4YTuvCacGpSZGe03NAB1Etq3O2eEjjtE7U3agpfZH+8x47cfyBsPQtdLaN/u3L/QYzE6WxC6XkL7due4/TmdWjjLW/pm9mduvPNNp1DogX2uqdCTtVjlcKTtzrb92XY9Zy4K7cWib3x+O3NR6PeYrfEYpBG6XkJDFxAaoRtFXujPmX2LWzpNXf3de/2dL29J7yI0BEeH0It3Tmy9WC70bUW2Z5jTfkMDICb0ftg/fDmGo0DoH7vv5NS2KLo4ddvS69EPP28UXnXkW0bo1fPR4s/eHy3eZdzOPN4AoYVWObRdCgSBigyBFXpqKj/lcBKfvG3pXqNyKvTU1C332y1zN/s4QsdoixQKEiUZHC/0VNuUY2Jqo5l0bLtopxfbTqZC33J/FMVCp48jdAttkUJBoiSDEws9lRXazZTTEXj1G1tWz1uht500I7TdSkdohM6iX0x99DNIhE6U9kK35sgXzTwj+l8n9G3R0usnVx3JzKE7ha7nKgdCS6GfQUvo1rQjsbPbikYBCD3e6GeQEXoq5zNCZ0DontDPICu0c7pfhRE6Qb+Y+uhnkBN6WBB6vNHPAKERWhD9DBAaoQXRzwChEVoQ/QwyQm+7uO1kQSddaXPdl7ekT0PoKIRi6qOfQUbojSc3nizwtoxkUa/taQg93uhnkJty2D6NKFr6lWhxS3Lruzjch4WvL941b1uXbJfdT93veu9y3XYIPd7oZ1Ag9A8/v+3iqiPfSm5964Zt55i3H3PbjrukC2/jxaltJxsgtEw/tH4x9dHPoFho24aU3PrmOt+lNJV03Hmht0W2pQOhPfrF1Ec/g56EjkfoN2w3qe+J9n5v7PinLQg93uhn0JPQZlz+bz9Cu447L/SqI4s/dyRauhehY/SLqY9+Br2uQ3c0PpdQy35ohJZCP4OehF49n58rN0toVjmk0M9A+JNChB5v9DNAaIQWRD8DhEZoQfQzoDkJoQXRzwChEVoQ/QyWEbqtjW4q7a7r3JM5EKHHG/0MlhE6133X+U9mC/rtEHq80c+gTejOb9u4xfbTpd11d3Xtt0Po8UY/g6zQBd+H5Prp0u667v12CD3e6GeQFbrgG+tcP13aXde93w6hxxv9DDpHaP9ddhnHp9Luuu79dgg93uhn0DmH9v88Jd6zyvbTpd11d3Xtt0Po8UY/A9ahEVoQ/QwQGqEF0c8AoemHFkQ/A4RGaEH0M0BohBZEPwOERmhB9DOgHxqhBdHPAKFZ5RBEPwOERmhB9DNAaIQWRD8DhEZoQfQzYJUDoQXRzwChEVoQ/QwQGqEF0c8AoRFaEP0MEBqhBdHPAKERWhD9DCZNNQ2JjlkG26f7dgYCocXQz2Ay9nDO0i7qYPt0385AILQY+hn0Usymg9Bi6GeA0AgtiH4GCI3QguhngND0QwuinwFCI7Qg+hkgNEILop8BQiO0IPoZIDRCC6KfAUKzyiGIfga9jE5NB6HF0M8AoRFaEP0MEBqhBdHPAKERWhD9DBAaoQXRz4BVDoQWRD8DhEZoQfQzQGiEFkQ/A4RGaEH0M0BohBZEPwOERmhB9DNAaIQWRD8DhEZoQfQzQGiEFkQ/A4SmH1oQ/QwQGqEF0c8AoRFaEP0MEBqhBdHPAKERWhD9DBCaVQ5B9DOgHxqhBdHPAKERWhD9DBAaoQXRzwChEVoQ/QwQGqEF0c+AVQ6EFkQ/A4RGaEH0M0BohBZEPwOERmhB9DNAaIQWRD8DhEZoQfQzQGiEFkQ/A4RGaEH0M0BohBZEPwOEph9aEP0MEBqhBdHPAKERWhD9DBAaoQXRzwChEVoQ/QwQmlUOQfQzqKgf+qNnZ2Zm9r5X+Ni1g88l976W2agOhBZDP4PKhH7SuPpk4WOpwz966aEKXkonCC2GfgYVCv3Rsw9Fl81A/ZxR+M9mZp50Jr/54Fvuxozf//qS+eMHZiM56PcOzlRiOEKLoZ9BtSO0HaQvzzx37eBD/iYR+vLe9y4/8LIdoc1G5qB3H3i5gheH0GLoZ1DlHNoI+uBb1m1rcnwTj9DXDppBORY6Pch4jdD1Qj+DilY57AhtKBPajMSXEboB6GdQrdCxpNcOmimGnVQ8+aOXnNBG63dTodODELp26GdQrdDtF4XmUvCB33VCmxnHr5oj3my/KETo2qGfgcoHKxqLzcuA0GLoZ4DQCC2IfgZ89I3QguhngNAILYh+BgiN0ILoZ4DQCC2IfgYITT+0IPoZIDRCC6KfQbVCv/vgP7RW7K59Lbnj97UW89oOGz0ILYZ+BnpCt7qfEbox6GdQrdCX9/7Ln74cvTvjWuvsP2GxfdDvZdqj/afe/rDKQGgx9DNQmEPbJo03975nR2jfB91qj3ZOV9K/kYVVDjH0M1D4f6zYsfm5eMrh+qBb3aR27HYPVgpCi6Gfgcr/NOijZ2cefMsK7fugM0JXPjpbEFoM/QwUhI77Qq3Qvg86bY92rdC2v79aEFoM/Qw0Rmg7sXDd0Ht/4Pqg2y8Kqx+kEVoM/Qz4/xQitCD6GfBJIUILop8BQiO0IPoZIDRCC6KfAUIjtCD6GSA0QguinwFCI7Qg+hkgNEILop8BQiO0IPoZIDRCC6KfAULTDy2IfgYIjdCC6GeA0AgtiH4GCI3QguhngNAILYh+BgjNKocg+hnQD43QguhngNAILYh+BgiN0ILoZ4DQCC2IfgYIjdCC6GfAKgdCC6KfAUIjtCD6GSA0QguinwFCI7Qg+hkgNEILop8BQiO0IPoZIDRCC6KfAUIjtCD6GSA0QguinwFC0w8tiH4GCI3QguhngNAILYh+BgiN0ILoZ4DQCC2IfgYIzSqHIPoZ0A+N0ILoZ4DQCC2IfgYIjdCC6GeA0AgtiH4GCI3QguhnwCoHQguinwFCI7Qg+hkgNEILop8BQiO0IPoZIDRCC6KfAUIjtCD6GSA0QguinwFCI7Qg+hkgNEILop8BQtMPLYh+BgiN0ILoZ4DQCC2IfgYIjdCC6GeA0AgtiH4GCM0qhyD6GdAPjdCC6GeA0AgtiH4GCI3Qguhn0EyhZ9roYR9CFzHXN/oZNFLomQJ5l9+H0EXM7ewX/QxY5WDZrhSEricIXQJCB0AyPe4DhC4BoQMAoeVA6ABAaDkQOgAQWg6EDgCElgOhAwCh5ZjbY/5YfLrT293//KK/88zT6V2EHg0ILcfcHmPz7NlyoffkbdfPAKERuhQr9N3HFnbORtHZnXuW3ok+fNjs2XX8NSP07jPR4jeORYvfNG63HtfPAKERupR4yuEkXtiz9KJRORV65867j9ktczfzuH4GCI3Qpcz5KcU+M+mYPeumHwup0Hcfi6JY6PRxhB4BCC1HLHR2hN79/ad3n7FCzy6YEdpupSM0Qo8EhJYjFro1Rz5r5hnR/zih90RL7yzsOp6ZQyP0SEBoOdrWoTtWNAJdh25aPzRCy4HQAYDQctTyk8KmCT0ACF0CQtcThC4BoesJQpfghN7z4cO1ErppqxwDgNAl/N/sws6ds6+lurY3ImV4xl8vzp7VzwChEbqU/9y30NO4nCyA7FvQz6BxQrPKIcecbdiIPnx4XxQt/XXkPuZOPlh5Z/GbZ2ybh+1I+rVjrk/JTk30M0BohC5lzvVxzC7s+/Dh2bO+hcN2bxihz9h5iO1OSjqW3HEIPQIQWo4596l3dNYK7Vo3XCOS7+jYmXQneaHdcQg9AhBaDj9Cmz9aQscj9Pdt553vH/V+7zvLKsdoQGg5jNC7jkdLL2aENuPyf/kR2nUneaF3HV/8I3scQo8AhJaj+IMVYzDr0NWB0HIUCL37jJsrI3RlILQctfzoG6ERugyEDgCElgOhAwCh5UDoAEBoORA6ABBajqzQs2dnOzqVnnk6v6WfQeP6oRFajqzQ+xY6Wu/a/5Wh29LPAKERupz4ywmSD1J2Hbdf3ei+tODm7/7t0jtRR8udfgaNE3oAELqEP4+/Pua1dBD+xq/HXztz8/wfT3zOjsntLXf6GSA0QpcyF3/BV2aEjl7zX/x18xt3GqHvzLfc6WeA0Ahdihmh/Vd/Za4NF+IR2ght/tuaa7nTz6BxqxwDgNBlJF/91Rqhl/wXf1mZJ378yOIv5Fru9DNAaIQupXQdeqIN1qFHCasccpQJPZEHoUcHQstRInSHzy2j9TNAaIQupVjoAp9TpfUzQGhRoSEEoRvFgO+nW04I3TMSWg6OEaCdRIv67tMSGqM9AlYOQ6HQtd6H0LoISDkMA5W/eXSLqRehx46Ca0PtlwQ9QqWKwOjaQqEKwei6Qp1KwOh6QpnKwOhaQpXKQekaQo2WAaPrByVaFoyuG1RoeTC6ZlCgLmB0vaA+3cHoGkF5usMYXSOoTg9gdH2gOL2A0bWB2vQERtcFStMbGF0TqEyPIHQ9oDK9gtG1gML0DEbXAerSOwhdA6hLH2B0+FCWfsDo4KEq/YHQgUNV+oMhOnAoSn8w6QgcatIvCB001KRfOodozA4IStEv+UkHg3VQUIj+mShE+1WBgzr0D0IHDHXon2KhSTIIKMMgIHSwUIZBwOdgoQ6DgNDBQh0GgBlHuFCHQUDoYKEOg4DQwUIdBgKhQ4U6DARChwp1GAh8DhUKMQgM0MFCIQaAa8JwoRADgNDhQiEGAKHDhUIMBEKHCoUYDIQOFAoxKAgdJBRiYPA5RKjEECB0eFCJYUDo4KASw4HPgUEphgWdg4JiQKNAaGgUCA2NAqGhUSA0NAqEhkaB0NAoEBoaBUJDo0BoaBQIDY0CoaFRIDQ0CoSGRoHQ0CgQGhoFQkOjQGhoFP8PNwlECDzNU2oAAAAASUVORK5CYII=" /><!-- --></p>
+<p>Chacune de ces populations peut être ventilée selon :</p>
+<ul>
+<li>la catégorie socio-professionelle de l’individu (Agriculteurs exploitants / Artisans, commeréants et chefs d’entreprise / Cadres et professions intellectuelles supérieures, etc…)</li>
+<li>la tranche d’âge</li>
+<li>le type d’activité (actifs occupés, chômeurs, retraités, etc…) …</li>
+</ul>
+<p>Le territoire est défini selon le niveau géographique de l’analyse. Celle-ci peut se jouer sur l’ensemble des mailles supra-communales : commune, bassin de vie, zone d’emploi, type d’espace du Zonage en Aires Urbaines…</p>
+</div>
+<div id="taux-relatifs-aux-migrations" class="section level2">
+<h2>2 - Taux relatifs aux migrations</h2>
+<p>D’aprés l’<a href="http://www.insee.fr/fr/methodes/default.aspépage=definitions/taux-migration-interne.htm">Insee</a>, au sein du territoire national deux types de mouvements migratoires sont susceptibles d’affecter l’évolution de la population d’une zone géographique donnée :</p>
+<ul>
+<li>d’une part, des mouvements en provenance ou à destination de l’étranger, qui affectent à la fois le solde migratoire de la zone et le solde migratoire national ;</li>
+<li>d’autre part, des mouvements internes au territoire national, entre la zone considérée et les autres parties du territoire, qui affectent le solde migratoire de la zone sans affecter le solde migratoire national.</li>
+</ul>
+<p>Ce sont ces mouvements internes que nous étudions ici.</p>
+<div id="pe-part-dentrants" class="section level3">
+<h3>PE : part d’entrants</h3>
+<p>La part d’entrants dans un territoire correspond à la part de la population entrante (i.e. résidente en France en N-1 mais hors du territoire considéré) au sein de la population résidente. Elle est égale au ratio entre la population entrante et la population résidente et est exprimé en %.</p>
+<p>La part d’entrants est notée PE et se calcule comme suit pour chaque territoire :</p>
+<p><span class="math display">\[ PE = \frac{(ENTR)}{(PRES)} \]</span></p>
+</div>
+<div id="ps-part-de-sortants" class="section level3">
+<h3>PS : part de sortants</h3>
+<p>La part de sortants dans un territoire correspond à la part de la population sortante (i.e. résidente dans le territoire en N-1 mais hors du territoire considéré en N) au sein de la population autochtone (résidente sur le territoire considéré en N-1). Il est égal au ratio entre la population sortante et la population autochtone et est exprimé en %.</p>
+<p>La part de sortants est notée PS et se calcule comme suit pour chaque territoire :</p>
+<p><span class="math display">\[ PS = \frac{(SORT)}{(AUTO)} \]</span></p>
+</div>
+<div id="tr-taux-de-rotation" class="section level3">
+<h3>TR : taux de rotation</h3>
+<p>Le taux de rotation d’un territoire correspond à la part des flux migratoires (population entrante + population sortante) au sein de la population du territoire (moyenne de la population résidente et de la population autochtone). Il est égal au ratio entre le volume total de migrations et la population et est exprimé en ‰.</p>
+<p>Le taux de rotation est noté TR et se calcule comme suit pour chaque territoire :</p>
+<p><span class="math display">\[ TR = \frac{(ENTR + SORT)}{(AUTO + PRES)/2} \]</span></p>
+</div>
+<div id="tm-taux-de-migration-nette-interne" class="section level3">
+<h3>TM : taux de migration nette interne</h3>
+<p>Le taux de migration nette interne d’une zone géographique donnée correspond au taux d’évolution de la population imputable aux mouvements migratoires entre cette zone et les autres parties du territoire national. Il est égal à la différence entre les entrées et les sorties de la zone considérée liée à des mouvements internes (i.e. solde migratoire), rapportée à la population moyenne de la zone, et est exprimé en ‰.</p>
+<p>Le taux de migration interne nette est noté TM et se calcule comme suit pour chaque territoire :</p>
+<p><span class="math display">\[ TM = \frac{(IMMIG - EMIG)}{(AUTO + PRES)/2} \]</span></p>
+</div>
+<div id="tminf-taux-de-mobilite-infra" class="section level3">
+<h3>TMINF : taux de mobilité infra</h3>
+<p>Le taux de mobilité infra d’une zone géographique donnée correspond à la part des individus ayant changé de commune au sein de la population stable de cette zone (i.e. présente dans la zone en N-1 et en N), et est exprimé en %.</p>
+<p>Le taux de mobilité infra est noté TMINF et se calcule comme suit pour chaque territoire :</p>
+<p><span class="math display">\[ TMINF = \frac{(MINF)}{(ISO)/2} \]</span></p>
+</div>
+</div>
+<div id="indices-de-renouvellement-socio-professionnel-de-la-population-par-les-migrations-residentielles" class="section level2">
+<h2>3 - Indices de renouvellement socio-professionnel de la population par les migrations résidentielles</h2>
+<div id="ici-indice-de-categorisation-par-limmigration" class="section level3">
+<h3>ICI : indice de catégorisation par l’immigration</h3>
+<p><span class="math display">\[ ICI = p_{ec} - p_{ac} \]</span></p>
+<p>avec <span class="math inline">\(p_{ec}\)</span> la part d’une catégorie spécifique dans la population “entrante”, et <span class="math inline">\(p_{ac}\)</span> la part de cette même catégorie dans la population “autochtone”.</p>
+<p>Plus cet indice est proche de <span class="math inline">\(-1\)</span>, plus l’immigration diminue la part de cette catégorie dans la population. Plus il est proche de <span class="math inline">\(1\)</span>, plus elle accroît la part de cette catégorie dans la population du territoire considéré. Plus il est proche de <span class="math inline">\(0\)</span>, et plus l’immigration est neutre dans la composition du territoire dans la population de cette catégorie.</p>
+</div>
+<div id="ice-indice-de-categorisation-par-lemigration" class="section level3">
+<h3>ICE : indice de catégorisation par l’émigration</h3>
+<p><span class="math display">\[ ICE = p_{ac} - p_{sc} \]</span></p>
+<p>avec <span class="math inline">\(p_{ac}\)</span> la part d’une catégorie spécifique dans la population “autochtone”, et <span class="math inline">\(p_{sc}\)</span> la part de cette même catégorie dans la population “sortante”.</p>
+<p>Plus cet indice est proche de <span class="math inline">\(-1\)</span>, plus l’émigration diminue la part de cette catégorie dans la population. Plus il est proche de <span class="math inline">\(1\)</span>, plus elle accroît la part de cette catégorie dans la population du territoire considéré. Plus il est proche de <span class="math inline">\(0\)</span>, et plus l’émigration est neutre dans la composition du territoire dans la population de cette catégorie.</p>
+</div>
+<div id="icm-indice-de-categorisation-par-les-migrations" class="section level3">
+<h3>ICM : indice de catégorisation par les migrations</h3>
+<p><span class="math display">\[ ICM = \frac{sm_c}{n_c} - \frac{sm_nc}{n_nc} \]</span></p>
+<p>avec <span class="math inline">\(sm_{c }\)</span> le solde migratoire des individus de la catégorie considérée, <span class="math inline">\(sm_{nc}\)</span> le solde migratoire des individus des autres catégories, <span class="math inline">\(n_c\)</span> le nombre des individus de cette catégorie dans la population présente et <span class="math inline">\(n_nc\)</span> le nombre des individus des autres catégories dans la population présente.</p>
+<p>Plus cet indice est proche de <span class="math inline">\(-1\)</span>, plus les migrations diminuent la part de cette catégorie dans la population. Plus il est proche de <span class="math inline">\(1\)</span>, plus elles accroissent la part de cette catégorie dans la population du territoire considéré. Plus il est proche de <span class="math inline">\(0\)</span>, et plus les migrations sont neutres dans la composition du territoire dans la population de cette catégorie.</p>
+</div>
+<div id="iri-indice-de-renouvellement-global-par-limmigration" class="section level3">
+<h3>IRI : indice de renouvellement global par l’immigration</h3>
+<p><span class="math display">\[ IRI = \sqrt{\sum_i(p_{ai} - p_{mi})^2} \]</span></p>
+<p>avec <span class="math inline">\(p_{ai}\)</span> la part de la catégorie <span class="math inline">\(i\)</span> dans la population “autochtone” et <span class="math inline">\(p_{mi}\)</span> la part de la catégorie <span class="math inline">\(i\)</span> dans la population “entrante”.</p>
+<p>Plus cet indice est proche de <span class="math inline">\(0\)</span>, et plus la structure de la population entrante est comparable à celle des autochtones. Plus cet indice est proche de <span class="math inline">\(1\)</span>, et plus la structure de la population est modifiée par les migrations entrantes.</p>
+</div>
+<div id="ire-indice-de-renouvellement-global-par-lemigration" class="section level3">
+<h3>IRE : indice de renouvellement global par l’émigration</h3>
+<p><span class="math display">\[ IRE = \sqrt{\sum_i(p_{ai} - p_{ei})^2} \]</span></p>
+<p>avec <span class="math inline">\(p_{ai}\)</span> la part de la catégorie <span class="math inline">\(i\)</span> dans la population “autochtone” et <span class="math inline">\(p_{ei}\)</span> la part de la catégorie <span class="math inline">\(i\)</span>) dans la population “sortante”.</p>
+<p>Plus cet indice est proche de <span class="math inline">\(0\)</span>, et plus la structure de la population sortante est comparable à celle des autochtones. Plus cet indice est proche de <span class="math inline">\(1\)</span>, et plus la structure de la population est modifiée par les migrations sortantes.</p>
+</div>
+<div id="irm-indice-de-renouvellement-global-par-les-migrations" class="section level3">
+<h3>IRM : indice de renouvellement global par les migrations</h3>
+<p><span class="math display">\[ IRM = \sqrt{\sum_i(\frac{s_i}{n_i})^2} \]</span></p>
+<p>avec <span class="math inline">\(s_{i}\)</span> le solde migratoire (en valeur absolue) dans la catégorie <span class="math inline">\(i\)</span> et <span class="math inline">\(n_i\)</span> le nombre d’individus appartenant à la catégorie <span class="math inline">\(i\)</span> dans la population présente.</p>
+<p>Plus cet indice est proche de <span class="math inline">\(0\)</span>, et plus les migrations sont neutres, i.e. ne modifient pas la structure de la population du territoire considéré. Plus cet indice est proche de <span class="math inline">\(1\)</span>, et plus la structure de la population est modifiée par les migrations, entrantes comme sortantes.</p>
+<p><br> <br></p>
+<p><em>Données et précautions</em> :</p>
+<p><em>Ces indices sont calculés à partir des fichiers détail du recensement, c’est-à-dire à partir de données individuelles. Compte tenu des modalités du nouveau recensement, on ne peut estimer la valeur d’un indice que sur des territoires comprenant un nombre relativement important d’individus (l’INSEE suggére 2000 individus), faute de quoi les marges d’erreur sont trop élevées, et le risque que certains indices ne puissent pas étre calculés à cause de dénominateurs nuls élevé. On ne saurait donc calculer ces indices pour l’ensemble des communes, mais plutôt pour des regroupements (aires urbaines, cantons par exemple) ou des communes de taille relativement importantes.</em></p>
+</div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
