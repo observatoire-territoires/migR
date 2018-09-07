@@ -4,11 +4,13 @@
 \alias{chargement_fd_migcom}
 \title{Charger un fichier détail MIGCOM de l'Insee}
 \usage{
-chargement_fd_migcom(telechargement = FALSE, anneeRP, dossier_dest_TL,
-  chemin_FD)
+chargement_fd_migcom(telechargement = FALSE, monet = TRUE, anneeRP,
+  dossier_dest_TL, chemin_FD)
 }
 \arguments{
 \item{telechargement}{Vaut TRUE si le fichier doit être téléchargé depuis le site internet de l'Insee, FALSE si le fichier txt est disponible en local.}
+
+\item{monet}{Vaut TRUE si le fichier détail doit être importé dans une base de données `MonetDBLite`, FALSE s'il doit être importé en mémoire vive.}
 
 \item{anneeRP}{Millésime du recensement de la population (RP) de l'Insee. Peut prendre les valeurs "2008", "2013" ou "2014". Non renseigné si telechargement vaut TRUE.}
 

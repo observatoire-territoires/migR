@@ -24,13 +24,13 @@ Renvoie une table avec un champ supplémentaire contenant le libellé de l'unit�
 Ajouter le libellé d'une unité géographique à partir du champ contenant le code en format court.
 }
 \examples{
-# Ajout du champ 'LIB_DEP' contentant le libellÃ© en clair du code DEP
+# Ajout du champ 'LIB_DEP' contentant le libellé en clair du code DEP
 indics_migres_DEP <-
 ajout_libelles_nivgeo(TABLE = indics_migres_DEP,
                       NIVGEO_IN ="DEP",
                       COG_NIVGEO = 2018)
 
-# Ajout du champ 'LIB_REG_ANTE' contentant le libellÃ© en clair des codes EPCI
+# Ajout du champ 'LIB_REG_ANTE' contentant le libellé en clair des codes EPCI
 flux_migres_EPCI <-
  ajout_libelles_nivgeo(TABLE = flux_migres_EPCI,
                        NIVGEO_IN ="EPCI_ANTE",
