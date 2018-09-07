@@ -15,7 +15,7 @@
 #'
 #' @importFrom dplyr distinct pull mutate select left_join case_when
 #' @importFrom rlang sym
-#' @importFrom COGugaison enlever_PLM changement_COG_typo
+#' @import COGugaison
 #' @importFrom magrittr set_colnames
 #'
 #' @examples
@@ -40,7 +40,7 @@
 #'                        NIVGEO= c("DEP",'EPCI','TYPEDENS'),
 #'                        COG_IN = 2016, COG_NIVGEO = 2018)
 #'
-#' @export
+#'
 #'
 #' @details
 #' Les millésimes du COG disponibles sont les suivants : 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018. \cr
@@ -71,6 +71,7 @@
 #' \item{\href{https://www.insee.fr/fr/information/2666684#titre-bloc-11}{Historique des géographies communales (Insee)}}
 #' \item{\href{https://www.insee.fr/fr/information/2028028}{Tables d'appartenance des communes aux différents niveaux géographiques (Insee)}}}
 #'
+#' @export
 #'
 
 

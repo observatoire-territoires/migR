@@ -20,7 +20,7 @@
 #'                                VAR ="CS1",
 #'                                MILLESIME_RP = 2014)
 #'
-#' @export
+#'
 #'
 #' @details
 #' Les millésimes du RP disponibles sont les suivants : 2008, 2013, 2014. \cr
@@ -56,6 +56,9 @@
 #' \item{Type de construction ('TYPC')}
 #' \item{Type de logement ('TYPL')}
 #' \item{Type de ménage regroupé (en 9 postes) ('TYPMR')}
+#'
+#' @export
+#'
 
 
 ajout_libelles_varventil_insee <- function(TABLE, VAR, MILLESIME_RP) {

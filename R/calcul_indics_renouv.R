@@ -32,7 +32,7 @@
 #'                       VAR_VENTIL ="CS1")
 #'
 #'
-#' @export
+#'
 #'
 #' @details
 #' Les indicateurs générés dans le champ 'type_indice' de la table de sortie sont les suivants (cf. vignette pour les définitions exactes et les formules de calcul) :
@@ -47,6 +47,8 @@
 #' Chacun des 3 indices de catégorisation (ICI, ICE, ICM) est calculé pour chacune des modalités de la variable de ventilation indiquées dans le champ qui porte son nom.
 #' Les 3 indices de renouvellement (IRI, IRE, IRM) ne sont au contraire indiqués qu'une seule fois.
 #' La valeur de l'indice correspondant est indiquée dans le champ 'valeur'.
+#'
+#' @export
 #'
 
 

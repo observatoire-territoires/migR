@@ -35,7 +35,7 @@
 #'                         LIBGEO = "LIB_EPCI_ACTU",
 #'                         COG_NIVGEO = 2018)
 #'
-#' @export
+#'
 #'
 #' @details
 #' Les millésimes du COG disponibles sont les suivants : 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018. \cr
@@ -53,6 +53,8 @@
 #' \item{Zonage en Aires Urbaines ('CATAEU2010')}
 #' \item{Bassin de vie ('BV2012')}
 #' \item{Type de densité selon la grille de densité communale ('TYPEDENS')}
+#'
+#' @export
 
 ajout_libelles_nivgeo <- function(TABLE, NIVGEO_IN, NIVGEO_OUT , LIBGEO_OUT, COG_NIVGEO) {
 

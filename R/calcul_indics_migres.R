@@ -34,7 +34,6 @@
 #'                       NIVGEO ="DEP",
 #'                       VAR_NB = "nb_ind")
 #'
-#' @export
 #'
 #' @details
 #'
@@ -50,6 +49,8 @@
 #' \item{Taux de rotation nette interne ('TR')}
 #' \item{Part d'entrants ('PE')}
 #' \item{Part de sortants('PS')}
+#'
+#' @export
 #'
 calcul_indics_migres <- function(TABLE, NIVGEO_ACTU, NIVGEO_ANTE,NIVGEO, VAR_NB,VAR_VENTIL=NULL) {
 
