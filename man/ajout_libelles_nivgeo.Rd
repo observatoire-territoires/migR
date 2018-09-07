@@ -44,5 +44,4 @@ flux_migres_EPCI <-
                         COG_NIVGEO = 2018)
 
 
-
 }
