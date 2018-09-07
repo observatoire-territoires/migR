@@ -26,4 +26,6 @@ ajout_libelles_varventil_insee(TABLE = indics_mig_DEP_CS1,
                                VAR ="CS1",
                                MILLESIME_RP = 2014)
 
+
+
 }

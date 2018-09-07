@@ -52,18 +52,18 @@ chargement_fd_migcom <- function(telechargement = FALSE, monet = TRUE, anneeRP, 
           exdir=paste0(dossier_dest_TL, "/", parametres_DL$nom_txt) )
 
     if (monet) {
-      output <- Insee2MonetDB::Insee2MonetDB(csvfile = paste0(dossier_dest_TL, "/", parametres_DL$nom_txt))
+      output <- Insee2MonetDB::Insee2MonetDB(csvfile = paste0(dossier_dest_TL, "/",parametres_DL$nom_txt,"/FD_MIGCOM_",anneeRP,".txt"))
       return(output)
     }
 
 
     # lecture et import du fichier FD zippé
     df <- data.table::fread(paste0(dossier_dest_TL, "/",parametres_DL$nom_txt,"/FD_MIGCOM_",anneeRP,".txt"),
-                sep = ";",
-                dec = ".",
-                stringsAsFactors = FALSE,
-                header = TRUE,
-                colClasses = "character") %>%
+                            sep = ";",
+                            dec = ".",
+                            stringsAsFactors = FALSE,
+                            header = TRUE,
+                            colClasses = "character") %>%
       dplyr::mutate(IPONDI = stringr::str_replace(IPONDI, ",",'.')) %>%
       dplyr::mutate(AGEREVQ = as.numeric(AGEREVQ),
                     IPONDI = as.numeric(IPONDI)) %>%
@@ -78,11 +78,11 @@ chargement_fd_migcom <- function(telechargement = FALSE, monet = TRUE, anneeRP, 
 
     # lecture et import du fichier FD zippé
     df <- data.table::fread(chemin_FD,
-                sep = ";",
-                dec = ".",
-                stringsAsFactors = FALSE,
-                header= TRUE,
-                colClasses = "character") %>%
+                            sep = ";",
+                            dec = ".",
+                            stringsAsFactors = FALSE,
+                            header= TRUE,
+                            colClasses = "character") %>%
       dplyr::mutate(IPONDI = stringr::str_replace(IPONDI, ",",'.')) %>%
       dplyr::mutate(AGEREVQ = as.numeric(AGEREVQ),
                     IPONDI = as.numeric(IPONDI)) %>%

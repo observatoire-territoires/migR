@@ -27,7 +27,7 @@ Renvoie une table avec un champ supplémentaire contenant le niveau géographiqu
 Dans une table contenant un code commune Insee (avec ou sans arrondissements pour Paris, Lyon et Marseille), accoler à cette table un nouveau champ contenant le niveau supra-communal correspondant à cette commune.
 }
 \examples{
-# Ajout du champ 'DEP' indiquant le niveau géographique "département" à une table ayant une information communale
+# Ajout du champ 'DEP' indiquant le niveau gÃ©ographique "dÃ©partement" Ã  une table ayant une information communale
 COM_2012 <-
 ajout_nivgeo_supracomm(TABLE = COM_2012 ,
 CODE_COMMUNE = "CODGEO",
@@ -35,7 +35,7 @@ NIVGEO = "DEP",
 COG_IN = 2010,
 COG_NIVGEO = 2018)
 
-# Ajout des niveaux géographiques "département", "région" et "type de densité" depuis les champs "commune de résidence actuelle" et "commune de résidence antérieure"
+# Ajout des niveaux gÃ©ographiques "dÃ©partement", "rÃ©gion" et "type de densitÃ©" depuis les champs "commune de rÃ©sidence actuelle" et "commune de rÃ©sidence antÃ©rieure"
 FD_MIGCOM_2014  <-
 ajout_nivgeo_supracomm(TABLE = FD_MIGCOM_2014 ,
                        CODE_COMMUNE = "DCRAN",
@@ -47,6 +47,8 @@ ajout_nivgeo_supracomm(TABLE = . ,
                        SUFFIXE = "ACTU",
                        NIVGEO= c("DEP",'EPCI','TYPEDENS'),
                        COG_IN = 2016, COG_NIVGEO = 2018)
+
+
 
 }
 \references{

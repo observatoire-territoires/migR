@@ -43,4 +43,5 @@ indics_migres_REG_CS1 <-
                       NIVGEO ="DEP",
                       VAR_NB = "nb_ind")
 
+
 }
