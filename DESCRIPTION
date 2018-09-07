@@ -19,11 +19,14 @@ VignetteBuilder: knitr
 Imports:
     data.table,
     dplyr,
+    tibble,
     magrittr,
     janitor,
     COGugaison,
     utils,
     tidyr,
     stringr,
-    rlang
+    rlang,
+    Insee2MonetDB
+Remotes: joelgombin/Insee2MonetDB
 RoxygenNote: 6.1.0
