@@ -48,8 +48,6 @@ ajout_nivgeo_supracomm(TABLE = . ,
                        NIVGEO= c("DEP",'EPCI','TYPEDENS'),
                        COG_IN = 2016, COG_NIVGEO = 2018)
 
-
-
 }
 \references{
 \itemize{

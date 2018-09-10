@@ -12,8 +12,12 @@
 #'
 #' @return Retourne une table de détail des migrations résidentielles avec pour chaque individu sa commune de résidence actuelle et commune de résidence antérieure.
 #'
-#' @importFrom dplyr %>%
+#' @importFrom dplyr %>% filter mutate
 #' @importFrom utils download.file unzip
+#' @importFrom readr read_csv
+#' @importFrom tibble tribble as_tibble
+#' @importFrom Insee2MonetDB Insee2MonetDB
+#' @importFrom stringr str_replace
 #'
 #' @examples
 #' # Téléchargement du fichier MIGCOM du dernier RP en date depuis le site internet de l'Insee dans le dossier "./data"
@@ -58,7 +62,7 @@ chargement_fd_migcom <- function(telechargement = FALSE, monet = TRUE, anneeRP, 
 
 
     # lecture et import du fichier FD zippé
-    df <- data.table::fread(paste0(dossier_dest_TL, "/",parametres_DL$nom_txt,"/FD_MIGCOM_",anneeRP,".txt"),
+    output <- readr::read_csv(paste0(dossier_dest_TL, "/",parametres_DL$nom_txt,"/FD_MIGCOM_",anneeRP,".txt"),
                             sep = ";",
                             dec = ".",
                             stringsAsFactors = FALSE,
@@ -77,7 +81,7 @@ chargement_fd_migcom <- function(telechargement = FALSE, monet = TRUE, anneeRP, 
     }
 
     # lecture et import du fichier FD zippé
-    df <- data.table::fread(chemin_FD,
+    output <- data.table::fread(chemin_FD,
                             sep = ";",
                             dec = ".",
                             stringsAsFactors = FALSE,
@@ -89,5 +93,6 @@ chargement_fd_migcom <- function(telechargement = FALSE, monet = TRUE, anneeRP, 
       tibble::as_tibble()
 
   }
+  output <- output %>% as.data.frame()
 
 }

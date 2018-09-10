@@ -29,9 +29,7 @@ devtools::install_github("observatoire-territoires/migR")
 
 ## Documentation
 
-Une [vignette](./inst/doc/methodo_migR.md) présente les différents concepts ainsi que les formules des indicateurs.
-
-Un tutorial pour utiliser les fonctions sera également publiée.
+Les articles présentant la méthodologie et l'utilisation de fonctions pas à pas sont en [ligne ici](https://observatoire-territoires.github.io/migR/index.html). Ils sont également disponible sous forme de [vignettes](./inst/doc/)
 
 
 ### Contact
