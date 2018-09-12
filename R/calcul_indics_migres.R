@@ -11,7 +11,6 @@
 #' @param VAR_NB Nom du champ de la table en entrée contenant le nombre d'individus correspondant à la migration résidence antérieure / résidence actuelle.
 #' @param VAR_VENTIL Nom du champ de la variable de ventilation de la population, de type tranche d'âge, groupe socio-professionnel, etc... (facultatif).
 #'
-#'
 #' @return Renvoie une table contenant un champ contenant l'identifiant des territoires ainsi que les indicateurs relatifs aux migrations résidentielles.
 #'
 #' @importFrom dplyr distinct pull mutate select left_join case_when group_by summarise ungroup rename mutate_if vars funs
@@ -36,8 +35,7 @@
 #'
 #'
 #' @details
-#'
-#' Les indicateurs générés dans la table de sortie sont les suivants (cf. vignette pour les définitions exactes et les formules de calcul) :
+#' Les indicateurs générés dans la table de sortie sont les suivants (cf. vignette pour les définitions exactes et les formules de calcul) : \cr
 #' \itemize{
 #' \item{Population présente ('nb_ind_PRES')}
 #' \item{Population autochtone ('nb_ind_AUTO')}
@@ -48,7 +46,7 @@
 #' \item{Taux de migration nette interne ('TM')}
 #' \item{Taux de rotation nette interne ('TR')}
 #' \item{Part d'entrants ('PE')}
-#' \item{Part de sortants('PS')}
+#' \item{Part de sortants ('PS')}}
 #'
 #' @export
 #'

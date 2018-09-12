@@ -23,6 +23,23 @@ Renvoie une table avec un champ supplémentaire contenant le libellé de l'unit�
 \description{
 Ajouter le libellé d'une unité géographique à partir du champ contenant le code en format court.
 }
+\details{
+Les millésimes du COG disponibles sont les suivants : 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018. \cr
+
+Les niveaux supra-communaux disponibles sont les suivants :
+\itemize{
+\item{Département ('DEP')}
+\item{Région administrative ('REG')}
+\item{Établissement public de coopération intercommunale ('EPCI')}
+\item{Arrondissement ('ARR')}
+\item{Canton-ou-ville ('CV')}
+\item{Zone d'emploi ('ZE2010')}
+\item{Unité Urbaine ('UU2010')}
+\item{Aire Urbaine ('AU2010')}
+\item{Zonage en Aires Urbaines ('CATAEU2010')}
+\item{Bassin de vie ('BV2012')}
+\item{Type de densité selon la grille de densité communale ('TYPEDENS')}}
+}
 \examples{
 # Ajout du champ 'LIB_DEP' contentant le libellÃ© en clair du code DEP
 indics_migres_DEP <-

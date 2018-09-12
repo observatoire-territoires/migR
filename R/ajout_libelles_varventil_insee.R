@@ -55,7 +55,7 @@
 #' \item{Mode de transport principal le plus souvent utilisé pour aller travailler ('TRANS')}
 #' \item{Type de construction ('TYPC')}
 #' \item{Type de logement ('TYPL')}
-#' \item{Type de ménage regroupé (en 9 postes) ('TYPMR')}
+#' \item{Type de ménage regroupé (en 9 postes) ('TYPMR')}}
 #'
 #' @export
 #'

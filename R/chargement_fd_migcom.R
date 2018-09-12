@@ -26,7 +26,7 @@
 #' # Chargement du fichier txt MIGCOM disponible en local
 #' FD_MIGCOM_2014 <- chargement_fd_migcom(chemin_FD = "./data/rp2014_migcom_txt/FD_MIGCOM_2014.txt")
 #' @export
-#' @details
+
 
 chargement_fd_migcom <- function(telechargement = FALSE, monet = TRUE, anneeRP, dossier_dest_TL, chemin_FD){
 
@@ -57,7 +57,7 @@ chargement_fd_migcom <- function(telechargement = FALSE, monet = TRUE, anneeRP, 
 
     if (monet) {
       output <- Insee2MonetDB::Insee2MonetDB(csvfile = paste0(dossier_dest_TL, "/",parametres_DL$nom_txt,"/FD_MIGCOM_",anneeRP,".txt"))
-      return(output)
+      return(output %>% as.data.frame())
     }
 
 
@@ -77,11 +77,11 @@ chargement_fd_migcom <- function(telechargement = FALSE, monet = TRUE, anneeRP, 
 
     if (monet) {
       output <- Insee2MonetDB::Insee2MonetDB(csvfile = chemin_FD)
-      return(output)
+      return(output %>% as.data.frame())
     }
 
     # lecture et import du fichier FD zippé
-    output <- data.table::fread(chemin_FD,
+    output <- readr::read_csv(chemin_FD,
                             sep = ";",
                             dec = ".",
                             stringsAsFactors = FALSE,
@@ -93,6 +93,6 @@ chargement_fd_migcom <- function(telechargement = FALSE, monet = TRUE, anneeRP, 
       tibble::as_tibble()
 
   }
-  output <- output %>% as.data.frame()
+
 
 }

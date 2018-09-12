@@ -26,6 +26,20 @@ Renvoie une table contenant un champ contenant l'identifiant des territoires ain
 \description{
 A partir d'une table en entrée contenant un champ de résidence actuelle et un champ de résidence antérieure sur le même niveau géographique, une table en sortie est créée contenant les indicateurs relatifs aux migrations résidentielles (liste des indicateurs : cf. details ci-dessous).
 }
+\details{
+Les indicateurs générés dans la table de sortie sont les suivants (cf. vignette pour les définitions exactes et les formules de calcul) : \cr
+\itemize{
+\item{Population présente ('nb_ind_PRES')}
+\item{Population autochtone ('nb_ind_AUTO')}
+\item{Population stable ('nb_ind_ISO')}
+\item{Population entrante ('nb_ind_ENTR')}
+\item{Population sortante ('nb_ind_SORT')}
+\item{Solde migratoire ('SM')}
+\item{Taux de migration nette interne ('TM')}
+\item{Taux de rotation nette interne ('TR')}
+\item{Part d'entrants ('PE')}
+\item{Part de sortants ('PS')}}
+}
 \examples{
 # Calcul du nombre de migrations entre résidence actuelle et résidence antérieure au niveau départemental
 indics_migres_REG <-

@@ -26,6 +26,29 @@ Renvoie une table avec un champ supplémentaire contenant le niveau géographiqu
 \description{
 Dans une table contenant un code commune Insee (avec ou sans arrondissements pour Paris, Lyon et Marseille), accoler à cette table un nouveau champ contenant le niveau supra-communal correspondant à cette commune.
 }
+\details{
+Les millésimes du COG disponibles sont les suivants : 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018. \cr
+
+Pour convertir un code commune d'un COG plus ancien, il est conseillé d'effectuer l'opération grâce au package 'COGugaison'. \cr
+
+Les niveaux supra-communaux disponibles sont les suivants :
+\itemize{
+\item{Département ('DEP')}
+\item{Région administrative ('REG')}
+\item{Établissement public de coopération intercommunale ('EPCI')}
+\item{Nature d'Établissement public de coopération intercommunale ('NATURE_EPCI')}
+\item{Arrondissement ('ARR')}
+\item{Canton-ou-ville ('CV')}
+\item{Zone d'emploi ('ZE2010')}
+\item{Unité Urbaine ('UU2010')}
+\item{Tranche d'Unité Urbaine ('TUU2015')}
+\item{Tranche détaillée d'Unité Urbaine ('TDUU2015')}
+\item{Aire Urbaine ('AU2010')}
+\item{Tranche d'aire urbaine ('TAU2015')}
+\item{Zonage en Aires Urbaines ('CATAEU2010')}
+\item{Bassin de vie ('BV2012')}
+\item{Type de densité selon la grille de densité communale ('TYPEDENS')}}
+}
 \examples{
 # Ajout du champ 'DEP' indiquant le niveau gÃ©ographique "dÃ©partement" Ã  une table ayant une information communale
 COM_2012 <-

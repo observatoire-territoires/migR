@@ -28,6 +28,20 @@ Renvoie une table contenant l'identifiant des territoires ainsi que les indicate
 \description{
 A partir d'une table en entrée contenant les indicateurs relatifs aux migrations résidentielles par territoire (population entrante, sortante, autochtone et présente).
 }
+\details{
+Les indicateurs générés dans le champ 'type_indice' de la table de sortie sont les suivants (cf. vignette pour les définitions exactes et les formules de calcul) :
+\itemize{
+\item{Indice de catégorisation par l'immigration ('ICI')}
+\item{Indice de catégorisation par l'émigration ('ICE')}
+\item{Indice de catégorisation par les migrations ('ICM')}
+\item{Indice de renouvellement par l'immigration ('IRI')}
+\item{Indice de renouvellement par l'émigration ('IRE')}
+\item{Indice de renouvellement par les migrations ('IRE')}}
+
+Chacun des 3 indices de catégorisation (ICI, ICE, ICM) est calculé pour chacune des modalités de la variable de ventilation indiquées dans le champ qui porte son nom.
+Les 3 indices de renouvellement (IRI, IRE, IRM) ne sont au contraire indiqués qu'une seule fois.
+La valeur de l'indice correspondant est indiquée dans le champ 'valeur'.
+}
 \examples{
 
 # Calcul les indicateurs de catégorisation et de renouvellement de la population par les migrations selon le groupe socio-professionnel au niveau régional

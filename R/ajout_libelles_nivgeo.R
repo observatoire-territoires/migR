@@ -51,7 +51,7 @@
 #' \item{Aire Urbaine ('AU2010')}
 #' \item{Zonage en Aires Urbaines ('CATAEU2010')}
 #' \item{Bassin de vie ('BV2012')}
-#' \item{Type de densité selon la grille de densité communale ('TYPEDENS')}
+#' \item{Type de densité selon la grille de densité communale ('TYPEDENS')}}
 #'
 #' @export
 
