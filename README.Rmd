@@ -30,7 +30,7 @@ devtools::install_github("observatoire-territoires/migR")
 
 ## Documentation
 
-Les articles présentant la méthodologie et l'utilisation de fonctions pas à pas sont en [ligne ici](https://observatoire-territoires.github.io/migR/index.html). Ils sont également disponible sous forme de [vignettes](./inst/doc/)
+Les articles présentant la méthodologie et l'utilisation de fonctions pas à pas sont en [ligne ici](https://observatoire-territoires.github.io/migR/index.html).
 
 
 ### Contact

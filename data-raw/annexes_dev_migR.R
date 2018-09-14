@@ -28,8 +28,13 @@ COMM_GRIDENS <- read_excel("N:/Transverse/Donnees_Obs/Donnees_Statistiques/Insee
   mutate(CODGEO = str_sub(paste0("00",depcom),-5,-1)) %>%
   dplyr::select(CODGEO, TYPEDENS = typo_degre_de_densite)
 
+library(readxl)
 REF_VARS_INSEE_FD_MIGCOM <- read_excel("N:/Transverse/Donnees_Obs/Donnees_Statistiques/Insee/RP/RP2008/Fichiers détails/RP2008_migcom_txt/REF_VARS_MIGCOM_RP2008.xlsx", sheet = "data") %>%
-  rbind(read_excel("N:/Transverse/Donnees_Obs/Donnees_Statistiques/Insee/RP/RP2014/Fichiers détails/rp2014_MIGCOM_txt/REF_VARS_MIGCOM_RP2014.xlsx", sheet = "data"))
+  rbind(read_excel("N:/Transverse/Donnees_Obs/Donnees_Statistiques/Insee/RP/RP2013/Fichiers détails/rp2013_MIGCOM_txt/REF_VARS_MIGCOM_RP2013.xlsx", sheet = "data")) %>%
+  rbind(read_excel("N:/Transverse/Donnees_Obs/Donnees_Statistiques/Insee/RP/RP2014/Fichiers détails/rp2014_MIGCOM_txt/REF_VARS_MIGCOM_RP2014.xlsx", sheet = "data")) %>%
+  rbind(read_excel("N:/Transverse/Donnees_Obs/Donnees_Statistiques/Insee/RP/RP2015/Fichiers détails/rp2015_MIGCOM_txt/REF_VARS_MIGCOM_RP2015.xlsx", sheet = "data"))
+
+
 
 # modification de la modalité CS1 artisans
 

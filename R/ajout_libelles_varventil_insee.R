@@ -18,12 +18,12 @@
 #' indics_mig_DEP_CS1 <-
 #' ajout_libelles_varventil_insee(TABLE = indics_mig_DEP_CS1,
 #'                                VAR ="CS1",
-#'                                MILLESIME_RP = 2014)
+#'                                MILLESIME_RP = 2015)
 #'
 #'
 #'
 #' @details
-#' Les millésimes du RP disponibles sont les suivants : 2008, 2013, 2014. \cr
+#' Les millésimes du RP disponibles sont les suivants : 2008, 2013, 2014, 2015. \cr
 #'
 #' Les variables de ventilation disponbibles sont issues de la documentation des fichiers détail 'Migrations Résidentielles' et sont les suivants :
 #' \itemize{
