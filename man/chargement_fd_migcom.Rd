@@ -12,7 +12,7 @@ chargement_fd_migcom(telechargement = FALSE, monet = TRUE, anneeRP,
 
 \item{monet}{Vaut TRUE si le fichier détail doit être importé dans une base de données `MonetDBLite`, FALSE s'il doit être importé en mémoire vive.}
 
-\item{anneeRP}{Millésime du recensement de la population (RP) de l'Insee. Peut prendre les valeurs "2008", "2013" ou "2014". Non renseigné si telechargement vaut TRUE.}
+\item{anneeRP}{Millésime du recensement de la population (RP) de l'Insee. Peut prendre les valeurs "2008", "2013", "2014" ou "2015". Non renseigné si telechargement vaut TRUE.}
 
 \item{dossier_dest_TL}{Dossier de destination où va être stockée l'archive zip et les fichiers txt dézippés. S'il n'existe pas, il sera créé. Non renseigné si telechargement vaut FALSE.}
 
@@ -26,8 +26,8 @@ Télécharger un fichier détail MIGCOM (Migrations résidentielles entre commun
 }
 \examples{
 # Téléchargement du fichier MIGCOM du dernier RP en date depuis le site internet de l'Insee dans le dossier "./data"
-FD_MIGCOM_2014 <- chargement_fd_migcom(anneeRP = "2014",  telechargement = TRUE, dossier_dest_TL = "./data")
+FD_MIGCOM_2015 <- chargement_fd_migcom(anneeRP = "2015",  telechargement = TRUE, dossier_dest_TL = "./data")
 
 # Chargement du fichier txt MIGCOM disponible en local
-FD_MIGCOM_2014 <- chargement_fd_migcom(chemin_FD = "./data/rp2014_migcom_txt/FD_MIGCOM_2014.txt")
+FD_MIGCOM_2015 <- chargement_fd_migcom(chemin_FD = "./data/rp2015_migcom_txt/FD_MIGCOM_2015.txt")
 }

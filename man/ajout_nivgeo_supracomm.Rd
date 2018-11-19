@@ -59,17 +59,17 @@ COG_IN = 2010,
 COG_NIVGEO = 2018)
 
 # Ajout des niveaux gÃ©ographiques "dÃ©partement", "rÃ©gion" et "type de densitÃ©" depuis les champs "commune de rÃ©sidence actuelle" et "commune de rÃ©sidence antÃ©rieure"
-FD_MIGCOM_2014  <-
-ajout_nivgeo_supracomm(TABLE = FD_MIGCOM_2014 ,
+FD_MIGCOM_2015  <- FD_MIGCOM_2015
+ajout_nivgeo_supracomm(TABLE = . ,
                        CODE_COMMUNE = "DCRAN",
                        SUFFIXE = "ANTE",
                        NIVGEO= c("DEP",'EPCI','TYPEDENS'),
-                       COG_IN = 2016, COG_NIVGEO = 2018) \%>\%
+                       COG_IN = 2017, COG_NIVGEO = 2018) \%>\%
 ajout_nivgeo_supracomm(TABLE = . ,
                        CODE_COMMUNE = "COMMUNE",
                        SUFFIXE = "ACTU",
                        NIVGEO= c("DEP",'EPCI','TYPEDENS'),
-                       COG_IN = 2016, COG_NIVGEO = 2018)
+                       COG_IN = 2017, COG_NIVGEO = 2018)
 
 }
 \references{

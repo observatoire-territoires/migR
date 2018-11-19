@@ -29,14 +29,14 @@ A partir d'une table en entrée contenant un champ de résidence actuelle et un 
 \examples{
 # Calcul de la table de nombre de migrations entre résidence actuelle et résidence antérieure au niveau départemental
 flux_migres_DEP <-
-calcul_flux_migres(TABLE =FD_MIGCOM_2014 ,
+calcul_flux_migres(TABLE =FD_MIGCOM_2015 ,
                  VAR_NB = "IPONDI",
                  MIG_NET_INTERNE=TRUE,
                  NIVGEO_ANTE ="DEP_ANTE",
                  NIVGEO_ACTU ="DEP_ACTU")
 # Calcul de la table de nombre de migrations entre résidence actuelle et résidence antérieure au niveau régional, et ventilés par groupe socio-professione
 flux_migres_REG_CS1 <-
-calcul_flux_migres(TABLE =FD_MIGCOM_2014 ,
+calcul_flux_migres(TABLE =FD_MIGCOM_2015 ,
                  VAR_NB = "IPONDI",
                  VAR_VENTIL = "CS1",
                  MIG_NET_INTERNE=TRUE,

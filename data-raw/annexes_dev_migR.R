@@ -10,6 +10,8 @@ library(COGugaison)
 library(janitor)
 library(magrittr)
 library(stringr)
+library(usethis)
+library(roxygen2)
 
 memory.limit(size = 8000000)
 
@@ -114,3 +116,11 @@ indics_migres_EPCI_CS1_RENOUV <-
                        NB_PRES = "nb_ind_PRES",
                        VAR_VENTIL ="CS1")
 
+
+###################
+## tests
+
+library(testthat)
+
+
+usethis::use_test("ajout_libelles_nivgeo")

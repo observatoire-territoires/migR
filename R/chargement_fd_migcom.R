@@ -6,7 +6,7 @@
 #'
 #' @param telechargement Vaut TRUE si le fichier doit être téléchargé depuis le site internet de l'Insee, FALSE si le fichier txt est disponible en local.
 #' @param monet Vaut TRUE si le fichier détail doit être importé dans une base de données `MonetDBLite`, FALSE s'il doit être importé en mémoire vive.
-#' @param anneeRP Millésime du recensement de la population (RP) de l'Insee. Peut prendre les valeurs "2008", "2013", "2014" ou "2015. Non renseigné si telechargement vaut TRUE.
+#' @param anneeRP Millésime du recensement de la population (RP) de l'Insee. Peut prendre les valeurs "2008", "2013", "2014" ou "2015". Non renseigné si telechargement vaut TRUE.
 #' @param dossier_dest_TL Dossier de destination où va être stockée l'archive zip et les fichiers txt dézippés. S'il n'existe pas, il sera créé. Non renseigné si telechargement vaut FALSE.
 #' @param chemin_FD Lien vers le fichier txt (FD_MIGCOM) en local. Non renseigné si telechargement vaut TRUE.
 #'

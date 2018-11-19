@@ -152,7 +152,7 @@ Ce sont ces mouvements internes que nous étudions ici.
 
 ### PE : part d'entrants
 
-La part d'entrants dans un territoire correspond à la part de la population entrante (i.e. résidente en France en N-1 mais hors du territoire considéré) au sein de la population résidente. Elle est égale au ratio entre la population entrante et la population résidente et est exprimé en %.
+La part d'entrants dans un territoire correspond à la part de la population entrante (i.e. résidente en France en N-1 mais hors du territoire considéré) au sein de la population présente. Elle est égale au ratio entre la population entrante et la population résidente et est exprimé en %.
 
 La part d'entrants est notée PE et se calcule comme suit pour chaque territoire :
 
