@@ -52,6 +52,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/tutorial_fonctions_migr.html">Tutorial des fonctions du package migR</a>
+    </li>
+    <li>
       <a href="../articles/methodo_migr.html">Analyse des migrations rÃ©sidentielles internes en France : mÃ©thodologie</a>
     </li>
   </ul>
@@ -77,9 +80,9 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Analyse des migrations résidentielles internes en France : méthodologie</h1>
-                        <h4 class="author">JG / MG / Observatoire des Territoires</h4>
+                        <h4 class="author">Joel Gombin / Observatoire des Territoires</h4>
             
-            <h4 class="date">2018-09-10</h4>
+            <h4 class="date">2018-11-21</h4>
       
       <small class="dont-index">Source: <a href="http://github.com/observatoire-territoires/migR/blob/master/vignettes/methodo_migr.Rmd"><code>vignettes/methodo_migr.Rmd</code></a></small>
       <div class="hidden name"><code>methodo_migr.Rmd</code></div>
@@ -104,7 +107,7 @@
 <li>les populations spécifiques (détenus, habitants des habitations mobiles, sans-abri, mariniers) rattachés à une même commune en N et en N-1.</li>
 </ul>
 <p>On ne considére donc que les <strong>migrations internes</strong> au sein du pays (France métropolitaine + DOM - Mayotte).</p>
-<p>Les concepts de population basées sur les données de détail fournies dans le fichier détail ‘Migrations Résidentielles’ du <a href="https://www.insee.fr/fr/statistiques/2866333?sommaire=2866354#dictionnaire">RP 2014 (Insee)</a> sont définies comme suit :</p>
+<p>Les concepts de population basées sur les données de détail fournies dans le fichier détail ‘Migrations Résidentielles’ du <a href="https://insee.fr/fr/statistiques/3566042?sommaire=3558417#dictionnaire">RP 2015 (Insee)</a> sont définies comme suit :</p>
 <ul>
 <li><p>Population entrante <span style="color:darkgreen;font-weight: bold;">(“ENTR”)</span> : population présente sur le territoire lors de l’année du recensement mais non présente en N-1.</p></li>
 <li><p>Population émigrante <span style="color:darkred;font-weight: bold;">(“SORT”)</span> : : population non présente sur le territoire lors de l’année du recensement mais présente en N-1.</p></li>
@@ -135,7 +138,7 @@
 <div id="pe-part-dentrants" class="section level3">
 <h3 class="hasAnchor">
 <a href="#pe-part-dentrants" class="anchor"></a>PE : part d’entrants</h3>
-<p>La part d’entrants dans un territoire correspond à la part de la population entrante (i.e. résidente en France en N-1 mais hors du territoire considéré) au sein de la population résidente. Elle est égale au ratio entre la population entrante et la population résidente et est exprimé en %.</p>
+<p>La part d’entrants dans un territoire correspond à la part de la population entrante (i.e. résidente en France en N-1 mais hors du territoire considéré) au sein de la population présente. Elle est égale au ratio entre la population entrante et la population résidente et est exprimé en %.</p>
 <p>La part d’entrants est notée PE et se calcule comme suit pour chaque territoire :</p>
 <p><span class="math display">\[ PE = \frac{(ENTR)}{(PRES)} \]</span></p>
 </div>

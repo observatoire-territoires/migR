@@ -12,12 +12,14 @@ library(magrittr)
 library(stringr)
 library(usethis)
 library(roxygen2)
+library(migR)
 
 memory.limit(size = 8000000)
 
-Sys.which("git")
+#Sys.which("git")
 # pour afficher tab  Git ?
 
+FD_MIGCOM_2015 <- chargement_fd_migcom(chemin_FD = "C:/Users/mgarnier/Desktop/sauvegarde_temporaire/RP/rp2015_migcom_txt/FD_MIGCOM_2015.txt", monet = TRUE)
 
 ############
 # référentiels sources à ajouter
@@ -121,6 +123,26 @@ indics_migres_EPCI_CS1_RENOUV <-
 ## tests
 
 library(testthat)
-
-
 usethis::use_test("ajout_libelles_nivgeo")
+
+# rappels
+
+#générer doc .Rd
+roxygen2::roxygenise()
+
+
+#vignettes :
+  Use devtools::build_vignettes() to render the vignette (in /inst/doc).
+
+# pour générer les articles issues des vignettes
+pkgdown::build_articles(pkg = ".")
+
+build_home(pkg = ".", override = list(), preview = NA,quiet = TRUE)
+
+
+# vérification des erreurs
+devtools::check()
+
+
+# pour écrire rmd
+library(remedy)

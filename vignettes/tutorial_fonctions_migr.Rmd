@@ -17,5 +17,246 @@ knitr::opts_chunk$set(
 ```
 
 
+Le package `migR` facilite l'exploitation du fichier des migrations résidentielles de l'Insee et le calcul de matrices de flux et d'indicateurs territoriaux liés à ces mobilités. Voici ces principales fonctionnalités (l'installation et le chargement sont bien évidemment un pré-requis, cf. ci-dessous).
 
-tuto
+
+```{r chargement_migR, message=F, warning=F, eval=FALSE}
+library(devtools)
+devtools::install_github("observatoire-territoires/migR")
+library(migR)
+```
+  
+  
+## Télécharger le fichier détail des migrations résidentielles du recensement de l'Insee
+
+Le fichier détail "MIGCOM" indique pour l'ensemble des résidents en France (une ligne par individu, chacun ayant un poids de pondération) sa commune de résidence actuelle, sa commune de résidence antérieure, ainsi qu'une vingtaine de variables précisant les caractéristiques socio-démographiques des individus (sexe, age, groupe socioprofessionnel, etc...).
+
+Il est disponible pour le RP 2008 où la commune de résidence antérieure est renseignée 5 ans auparavant, et pour les RP 2013, 2014 et 2015 où la commune de résidence antérieure est connue au 1er janvier de l'année précédente. On peut télécharger directement depuis le site de l'Insee grâce à la fonction __``chargement_fd_migcom``__.
+
+* Première possibilité : télécharger le fichier détail directement depuis le site de l'Insee (l'argument __``telechargement``__ vaudra alors TRUE). Il suffit d'indiquer le millésime du fichier souhaité (argument __``anneeRP``__ ) : il est alors téléchargé dans le dossier précisé dans l'argument __``dossier_dest_TL``__ (ici en l'occurence un sous-dossier intitulé 'data' qui sera créé s'il ne l'est pas déjà), puis dézippé, puis chargé dans votre session.
+
+```{r chargement_insee, message=F, warning=F, eval=FALSE}
+FD_MIGCOM_2015 <- chargement_fd_migcom(telechargement = TRUE,
+                                       anneeRP = "2015",
+                                       monet = TRUE,
+                                       dossier_dest_TL = "./data")
+```
+  
+
+POur éviter de charger la table de détail en mémoire, l'option __``monet``__ créé une base de données dans le sous-dossier 'MonetDB'.
+
+
+* Seconde possibilité : si le fichier détail "MIGCOM" en format txt a déjà été téléchargé en local, il suffit alors d'indiquer son chemin pour qu'il soit chargé en session (ou la base monetDb si l'option ``monet`` vaut TRUE).
+
+
+```{r chargement_local, message=F, warning=F, eval=FALSE}
+FD_MIGCOM_2015 <- chargement_fd_migcom(chemin = "./data-raw/rp2015_migcom_txt/FD_MIGCOM_2015.txt")
+```
+
+
+
+## Ajouter des maillages supracommunaux à la table de détail
+
+
+Pour jouer nos analyses à différentes échelles géographiques et optimiser nos temps de traitements par la suite, on ajoute dans la table de détail "MIGCOM" les mailles supra-communales souhaitées :
+
+* pour l'espace de résidence antérieur :
+à partir de la variable 'DCRAN' renseignant la commune de résidence antérieure (qu'on indique dans l'argument ``CODE_COMMUNE``), on liste les maillages supra-communaux à ajouter (argument ``NIVGEO``) qui seront ici le département (code court 'DEP'), l'intercommunalité ('EPCI') et le type de densité d'après la grille communale de densité de l'Insee (TYPEDENS). On suffixera ces nouveaux champs par le terme 'ANTE' (argument ``SUFFIXE``) puisqu'ils correspondent aux territoires de résidence antérieure. Par ailleurs, le millésime du Code Officiel Géographique du code commune en entrée (``COG_IN``) est 2017 puisque le fichier est issu du RP 2015 (N+2), alors que le COG des maillages supra-communaux en sortie (``COG_NIVGEO``) sera 2018.
+
+
+```{r ajout_libgeo_ANTE, message=F, warning=F, eval=FALSE}
+FD_MIGCOM_2015  <-  
+  ajout_nivgeo_supracomm(TABLE = FD_MIGCOM_2015 ,
+                         CODE_COMMUNE = "DCRAN",
+                         SUFFIXE = "ANTE",
+                         NIVGEO= c("DEP","REG",'EPCI','TYPEDENS'),
+                         COG_IN = 2017,
+                         COG_NIVGEO = 2018) 
+```
+
+* pour l'espace de résidence actuel :
+On réitère l'opération mais à partir de la variable 'COMMUNE' renseignant la commune de résidence actuelle. On suffixera ces nouveaux champs par le terme 'ACTU' (argument ``SUFFIXE``) puisqu'ils correspondent aux territoires de résidence actuelle.
+
+```{r ajout_libgeo_ACTU, message=F, warning=F, eval=FALSE}
+FD_MIGCOM_2015  <- FD_MIGCOM_2015 %>%
+  ajout_nivgeo_supracomm(TABLE = . ,
+                         CODE_COMMUNE = "COMMUNE",
+                         SUFFIXE = "ACTU",
+                         NIVGEO= c("DEP","REG", 'EPCI','TYPEDENS'),
+                         COG_IN = 2017, 
+                         COG_NIVGEO = 2018)
+```
+
+
+## Calculer des flux de mobilités résidentielles entre territoires
+
+
+On souhaite connaitre le nombre d'individus ayant migré d'un territoire (résidence antérieure) à un autre territoire (résidence actuelle). La fonction `calcul_flux_migres` va génèrer une table contenant le niveau géographique antérieur, le niveau géographique actuel ainsi que le nombre d'individus ayant migré de l'un à l'autre. On précise la table de détail en entrée (__``TABLE``__), sa variable contenant le nombre d'invidus (ici il s'agit de l'indice de pondération "IPONDI") dans l'argument __``VAR_NB``__.
+Avec  __``MIG_NET_INTERNE``__ valant TRUE, on précise que l'on souhaite ne conserver que les migrations internes au territoire ; les arrivées depuis un pays étranger ne seront donc pas comptabilisées.
+Enfin on indique le champ contenant l'espace de résidence antérieur via l'argument __``NIVGEO_ANTE``__ (ici en l'occurence  "DEP_ANTE") et celui de résidence actuel via l'argument __``NIVGEO_ACTU``__ ("DEP_ACTU").
+
+
+```{r calcul_flux, message=F, warning=F, eval=FALSE}
+flux_migres_DEP <-
+calcul_flux_migres(TABLE =FD_MIGCOM_2015 ,
+                 VAR_NB = "IPONDI",
+                 MIG_NET_INTERNE=TRUE,
+                 NIVGEO_ANTE ="DEP_ANTE",
+                 NIVGEO_ACTU ="DEP_ACTU")
+```
+
+
+Les indicateurs de la table en sortie :
+
++ territoire de résidence antérieur
++ territoire de résidence actuel
++ nombre d'individus ayant effectué la mobilité ("nb_ind")
+
+
+Si une variable de ventilation de la population est précisée dans l'argument __``VAR_VENTIL``__ (sexe, tranche d'âge, groupe socio-professionnel, etc...), un nouveau champ précisant cette information sera ajoutée à la table en sortie.
+
+
+```{r calcul_flux_varventil, message=F, warning=F, eval=FALSE}
+flux_migres_DEP_CS1 <-
+calcul_flux_migres(TABLE =FD_MIGCOM_2015 ,
+                 VAR_NB = "IPONDI",
+                 MIG_NET_INTERNE=TRUE,
+                 VAR_VENTIL = "CS1",
+                 NIVGEO_ANTE ="DEP_ANTE",
+                 NIVGEO_ACTU ="DEP_ACTU")
+```
+
+
+
+## Calculer des indicateurs synthétiques liés aux mobilités résidentielles
+
+
+A partir d'une table de comptage de flux résidentiels entre territoires (qu'on aura par exemple généré via la fonction `calcul_flux_migres` vue précédemment), la fonction `calcul_indics_migres` génère une table contenant les indicateurs synthétiques sur chaque territoire : 
+
++ population entrante ("nb_ind_ENTR")
++ population sortante ("nb_ind_SORT")
++ population présente ("nb_ind_PRES")
++ population autochtone ("nb_ind_AUTO")
++ population stable ("nb_ind_ISO")
++ solde migratoire ("SM")
+
++ population mobile infra ("MINF")
++ part d'entrants ("PE")
++ part de sortants ("PS")
++ taux de mobilité nette interne ("TM")
++ taux de rotation nette interne ("TR")
++ taux de mobilité infra ("TMINF")
+
+La définition de ces indicateurs est à retrouver dans l'[article méthodologique.](https://observatoire-territoires.github.io/migR/articles/methodo_migr.html)
+
+Par exemple, on souhaite ici calculer les indicateurs synthétiques par département :  la table de flux résidentiels inter-départementaux en entrée est "flux_migres_DEP" précisée dans l'argument __``TABLE``__ , son champ renseignant le territoire de résidence antérieur est "DEP_ANTE" (argument __``NIVGEO_ANTE``__), son champ renseignant le territoire de résidence actuel est "DEP_ACTU" (argument __``NIVGEO_ACTU``__), sa variable indiquant le nombre d'individus concernés par le flux est "nb_ind" (argument __``VAR_NB``__) et le nom du champ créé pour stocker les identifiants de territoires sera "DEP" (__``NIVGEO``__)
+
+```{r calcul_indics_migres_1, message=F, warning=F, eval=FALSE}
+indics_migres_DEP <-
+  calcul_indics_migres(TABLE =flux_migres_DEP,
+                       NIVGEO_ANTE ="DEP_ANTE",
+                       NIVGEO_ACTU ="DEP_ACTU",
+                       VAR_NB = "nb_ind",
+                       NIVGEO ="DEP")
+```
+
+
+Si une variable de ventilation de la population est précisée dans l'argument __``VAR_VENTIL``__ (sexe, tranche d'âge, groupe socio-professionnel, etc...), un nouveau champ précisant cette information sera ajoutée à la table en sortie.
+
+Exemple ci-dessous : à partir de la table de flux résidentiels inter-régionaux ventilés par groupe socioprofessionnel ("flux_migres_REG_CS1"), on calcule les indicateurs synthétiques par région et par groupe socio-professionnel. On aura donc accès pour chaque région aux informations de solde migratoire des cadres, des ouvriers, etc...
+
+```{r calcul_indics_migres_2, message=F, warning=F, eval=FALSE}
+indics_migres_REG_CS1 <-
+  calcul_indics_migres(TABLE =flux_migres_REG_CS1,
+                       VAR_NB = "nb_ind",
+                       VAR_VENTIL = "CS1",
+                       NIVGEO ="REG",
+                       NIVGEO_ACTU ="REG_ACTU",
+                       NIVGEO_ANTE ="REG_ANTE")
+
+```
+
+
+
+
+## Calculer les indicateurs de renouvellement socio-démographique de la population
+
+
+A partir d'une table contenant les indicateurs synthétiques sur les migrations résidentiels calculés précédemment via la fonction `calcul_indics_migres` (population entrante, sortante, autochtone et présente), la fonction `calcul_indics_renouv` génère une table contenant les indicateurs de renouvellement socio-démographique sur chaque territoire : 
+
++ indice de catégorisation par l’immigration ("ICI")
++ indice de catégorisation par l’émigration ("ICE")
++ indice de catégorisation par les migrations ("ICM")
+
++ indice de renouvellement global par l’immigration ("IRI")
++ indice de renouvellement global par l’émigration ("IRE")
++ indice de renouvellement global par les migrations ("IRM")
+
+La définition de ces indicateurs est à retrouver dans l'[article méthodologique.](https://observatoire-territoires.github.io/migR/articles/methodo_migr.html#indices-de-renouvellement-socio-professionnel-de-la-population-par-les-migrations-residentielles)
+
+Par exemple, on souhaite ici calculer les indicateurs de renouvellement socio-démographique par intercommunalité avec une ventilation par groupe socioprofessionnel :  la table d'indicateurs en entrée est "indics_migres_EPCI_CS1" précisée dans l'argument __``TABLE``__ , son champ renseignant le territoire est "EPCI" (argument __``NIVGEO``__), les champs contenant la population entrante (argument __``NB_ENTR``__), sortante (argument __``NB_SORT``__), autochtone (argument __``NB_AUTO``__) et présente (argument __``NB_PRES``__) sont renseignés et sa variable de ventilation est bien le groupe socioprofessionnel ("CS1" dans l'argument __``VAR_VENTIL``__) :
+
+```{r calcul_indics_renouv, message=F, warning=F, eval=FALSE}
+indics_mig_EPCI_CS1_RENOUV <-
+ calcul_indics_renouv(TABLE = indics_migres_EPCI_CS1,
+                      NIVGEO = "EPCI",
+                      NB_ENTR = "nb_ind_ENTR",
+                      NB_SORT = "nb_ind_SORT",
+                      NB_AUTO = "nb_ind_AUTO",
+                      NB_PRES = "nb_ind_PRES",
+                      VAR_VENTIL ="CS1")
+```
+
+
+
+## Faciliter la lecture des tableaux de flux et d'indicateurs
+
+
+Outre la fonction `ajout_nivgeo_supracomm` vue précédemment qui permet d'ajouter des mailles supracommunales dans une table contenant un champ communal, deux autres fonctions permettent de faciliter la lecture des tables générées :
+
+
+* la fonction `ajout_libelles_NIVGEO` ajoute un champ contenant le libellé d'un territoire à partir de son code court.
+
+On peut par exemple rapidement ajouter le libellé des départements dans la table d'indicateurs départementaux générée précédemment en indiquant le nom du champ contenant le code ("DEP") dont l'intitulé est identique à la maille supracommunale. Le millésime du COG est également à préciser :
+
+```{r ajout_libelles_nivgeo_1, message=F, warning=F, eval=FALSE}
+indics_migres_DEP <-
+ajout_libelles_nivgeo(TABLE = indics_migres_DEP,
+                      NIVGEO_IN ="DEP",
+                      COG_NIVGEO = 2018)
+```
+
+
+On pourra également préciser les noms de champs en entrée et en sortie s'ils diffèrent du code court, par exemple pour une table de flux où l'on souhaite ajouter à la fois les libellées des territoires de résidence antérieur et de résidence actuel (plus d'infos dans l'aide de la fonction `ajout_libelles_nivgeo` )
+
+```{r ajout_libelles_nivgeo_2, message=F, warning=F, eval=FALSE}
+flux_migres_EPCI <-
+ ajout_libelles_nivgeo(TABLE = flux_migres_EPCI,
+                       NIVGEO_IN ="EPCI_ANTE",
+                       NIVGEO_OUT ="EPCI",
+                       LIBGEO_OUT = "LIB_EPCI_ANTE",
+                       COG_NIVGEO = 2018) %>%
+  ajout_libelles_nivgeo(TABLE = .,
+                        NIVGEO_IN ="EPCI_ACTU",
+                        NIVGEO_OUT ="EPCI",
+                        LIBGEO = "LIB_EPCI_ACTU",
+                        COG_NIVGEO = 2018)
+```
+
+
+
+
+* la fonction `ajout_libelles_varventil_insee` ajoute un champ contenant le libellé d'une variable de ventilation (sexe, groupe socioprofessionnel, secteur d'activité...) à partir de son code court.
+
+
+Exemple : la table des indicateurs synthétiques par département ventilée par groupe socioprofessionnel créée précédemment peut être enrichie d'un champ contenant les modalités de ces groupes socioprofessionnels ("Employés", "Ouvriers", "Retraités"...) à partir du champ contenant contenant le code court ("5","6","7"...). Le millésime du fichier du recensement utilisé est également à préciser :
+
+
+```{r ajout_libelles_varventil, message=F, warning=F, eval=FALSE}
+indics_migres_DEP_CS1 <-
+ajout_libelles_varventil_insee(TABLE = indics_migres_DEP_CS1,
+                               VAR ="CS1",
+                               MILLESIME_RP = 2015)
+```
+
+Les variables de ventilation sont listées dans l'aide de la fonction `ajout_libelles_varventil_insee`.

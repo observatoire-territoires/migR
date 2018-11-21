@@ -42,7 +42,7 @@
 #' \item{Indice de catégorisation par les migrations ('ICM')}
 #' \item{Indice de renouvellement par l'immigration ('IRI')}
 #' \item{Indice de renouvellement par l'émigration ('IRE')}
-#' \item{Indice de renouvellement par les migrations ('IRE')}}
+#' \item{Indice de renouvellement par les migrations ('IRM')}}
 #'
 #' Chacun des 3 indices de catégorisation (ICI, ICE, ICM) est calculé pour chacune des modalités de la variable de ventilation indiquées dans le champ qui porte son nom.
 #' Les 3 indices de renouvellement (IRI, IRE, IRM) ne sont au contraire indiqués qu'une seule fois.

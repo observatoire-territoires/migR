@@ -1,6 +1,6 @@
 ---
 title: "Analyse des migrations résidentielles internes en France : méthodologie"
-author: "JG / MG / Observatoire des Territoires"
+author: "Joel Gombin / Observatoire des Territoires"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
