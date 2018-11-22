@@ -22,9 +22,9 @@ Le package `migR` a été réalisé dans le cadre de la rédaction du rapport de
 Le package `migR` peut être installé avec la commande suivante :
 
 ```{r eval=FALSE}
-# install.packages("devtools")
 library(devtools)
 devtools::install_github("observatoire-territoires/migR")
+library(migR)
 ```
 
 

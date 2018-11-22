@@ -11,9 +11,9 @@ Installation
 Le package `migR` peut être installé avec la commande suivante :
 
 ``` r
-# install.packages("devtools")
 library(devtools)
 devtools::install_github("observatoire-territoires/migR")
+library(migR)
 ```
 
 Documentation

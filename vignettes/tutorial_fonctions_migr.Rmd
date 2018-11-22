@@ -1,5 +1,5 @@
 ---
-title: "Tutorial des fonctions du package migR"
+title: "Tutoriel des fonctions du package migR"
 author: "Observatoire des territoires"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -29,7 +29,7 @@ library(migR)
   
 ## Télécharger le fichier détail des migrations résidentielles du recensement de l'Insee
 
-Le fichier détail "MIGCOM" indique pour l'ensemble des résidents en France (une ligne par individu, chacun ayant un poids de pondération) sa commune de résidence actuelle, sa commune de résidence antérieure, ainsi qu'une vingtaine de variables précisant les caractéristiques socio-démographiques des individus (sexe, age, groupe socioprofessionnel, etc...).
+Le [fichier détail "MIGCOM"](https://www.insee.fr/fr/statistiques/3566042?sommaire=3558417) indique pour l'ensemble des résidents en France (une ligne par individu, chacun ayant un poids de pondération) sa commune de résidence actuelle, sa commune de résidence antérieure, ainsi qu'une vingtaine de variables précisant les caractéristiques socio-démographiques des individus (sexe, age, groupe socioprofessionnel, etc...).
 
 Il est disponible pour le RP 2008 où la commune de résidence antérieure est renseignée 5 ans auparavant, et pour les RP 2013, 2014 et 2015 où la commune de résidence antérieure est connue au 1er janvier de l'année précédente. On peut télécharger directement depuis le site de l'Insee grâce à la fonction __``chargement_fd_migcom``__.
 
