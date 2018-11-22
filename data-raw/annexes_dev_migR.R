@@ -139,7 +139,9 @@ pkgdown::build_articles(pkg = ".")
 
 build_home(pkg = ".", override = list(), preview = NA,quiet = TRUE)
 
-
+# page reference
+template_reference()
+build_reference()
 # vérification des erreurs
 devtools::check()
 
