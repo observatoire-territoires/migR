@@ -1,14 +1,11 @@
 #' @name creation_carto_supracomm
 #'
-<<<<<<< HEAD
 #' @title Générer la cartographie d'un maillage supracommunal
 #'
-#' @description A partir d'un fichier cartographie des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides.
-=======
+#' @description A partir d'un fichier cartographiquee des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides.
 #' @title Ajouter le libellé d'une modalité de variable de ventilation
 #'
 #' @description A partir d'une cartographie des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides.
->>>>>>> da306ed49a1343e56faff7b77242f29d66c46428
 #'
 #' @param CARTO_COMM Cartographie en entrée des communes françaises, format sf dataframe.
 #' @param CODE_COMMUNE Nom du champ contenant l'identifiant communal (de type caractère) de la table en entrée.
@@ -18,10 +15,7 @@
 #' @param FORMAT Format de la cartographie générée : polygones ("poly") ou centroides ("ctr").
 #' @param SG Niveau de généralisation de la géometrie générée : pourcentage des sommets de la géométrie initiale conservés, 1 par défaut.
 #'
-<<<<<<< HEAD
-=======
 #'
->>>>>>> da306ed49a1343e56faff7b77242f29d66c46428
 #' @return Renvoie la cartographie du maillage supracommunal sous forme d'objet sf dataframe.
 #'
 #' @importFrom dplyr tribble distinct pull mutate select left_join case_when group_by summarise ungroup rename mutate_all bind_rows everything

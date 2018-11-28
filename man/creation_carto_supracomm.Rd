@@ -2,11 +2,7 @@
 % Please edit documentation in R/creation_carto_supracomm.R
 \name{creation_carto_supracomm}
 \alias{creation_carto_supracomm}
-<<<<<<< HEAD
 \title{Générer la cartographie d'un maillage supracommunal}
-=======
-\title{Ajouter le libellé d'une modalité de variable de ventilation}
->>>>>>> da306ed49a1343e56faff7b77242f29d66c46428
 \usage{
 creation_carto_supracomm(CARTO_COMM, CODE_COMMUNE, COG_IN, COG_NIVGEO,
   NIVGEO, FORMAT = "poly", SG = 1)
@@ -30,11 +26,9 @@ creation_carto_supracomm(CARTO_COMM, CODE_COMMUNE, COG_IN, COG_NIVGEO,
 Renvoie la cartographie du maillage supracommunal sous forme d'objet sf dataframe.
 }
 \description{
-<<<<<<< HEAD
-A partir d'un fichier cartographie des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides.
-=======
+A partir d'un fichier cartographiquee des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides.
+
 A partir d'une cartographie des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides.
->>>>>>> da306ed49a1343e56faff7b77242f29d66c46428
 }
 \details{
 La conversion entre les différents millésimes du COG est gérée grâce à la fonction 'changement_COG_typo' du package 'COGugaison' ; la méthode de fusion par défaut est 'methode_max_pop' (cf. aide "COGugaison").
