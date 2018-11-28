@@ -25,7 +25,7 @@ library(devtools)
 devtools::install_github("observatoire-territoires/migR")
 library(migR)
 ```
-  
+
   
 ## Télécharger le fichier détail des migrations résidentielles du recensement de l'Insee
 

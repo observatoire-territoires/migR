@@ -14,13 +14,14 @@
 #' @importFrom rlang sym
 #'
 #' @examples
-#' # Ajout du champ 'LIB_CS1' contentant le libellé en clair du code CS1 (aka "groupe socioprofessionnel")
+#' \dontrun{
+#' # Ajout du champ 'LIB_CS1' contenant le libellé en clair du code CS1 (aka "groupe socioprofessionnel")
 #' indics_mig_DEP_CS1 <-
 #' ajout_libelles_varventil_insee(TABLE = indics_mig_DEP_CS1,
 #'                                VAR ="CS1",
 #'                                MILLESIME_RP = 2015)
 #'
-#'
+#'}
 #'
 #' @details
 #' Les millésimes du RP disponibles sont les suivants : 2008, 2013, 2014, 2015. \cr

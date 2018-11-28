@@ -27,6 +27,9 @@ Imports:
     tidyr,
     stringr,
     rlang,
+    rmapshaper,
+    magrittr,
+    sf,
     Insee2MonetDB
 Remotes: joelgombin/Insee2MonetDB
 RoxygenNote: 6.1.0

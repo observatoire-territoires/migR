@@ -43,8 +43,8 @@ Les 3 indices de renouvellement (IRI, IRE, IRM) ne sont au contraire indiqués q
 La valeur de l'indice correspondant est indiquée dans le champ 'valeur'.
 }
 \examples{
-
-# Calcul les indicateurs de catégorisation et de renouvellement de la population par les migrations selon le groupe socio-professionnel au niveau régional
+\dontrun{
+# Calcul les indicateurs de catÃ©gorisation et de renouvellement de la population par les migrations selon le groupe socio-professionnel au niveau rÃ©gional
 indics_mig_EPCI_CS1_RENOUV <-
  calcul_indics_renouv(TABLE = indics_mig_EPCI_CS1,
                       NIVGEO = "EPCI",
@@ -54,7 +54,7 @@ indics_mig_EPCI_CS1_RENOUV <-
                       NB_PRES = "nb_ind_PRES",
                       VAR_VENTIL ="CS1")
 
-
+}
 
 
 }

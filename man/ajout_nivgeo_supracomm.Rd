@@ -50,6 +50,7 @@ Les niveaux supra-communaux disponibles sont les suivants :
 \item{Type de densité selon la grille de densité communale ('TYPEDENS')}}
 }
 \examples{
+\dontrun{
 # Ajout du champ 'DEP' indiquant le niveau gÃ©ographique "dÃ©partement" Ã  une table ayant une information communale
 COM_2012 <-
 ajout_nivgeo_supracomm(TABLE = COM_2012 ,
@@ -70,6 +71,7 @@ ajout_nivgeo_supracomm(TABLE = . ,
                        SUFFIXE = "ACTU",
                        NIVGEO= c("DEP",'EPCI','TYPEDENS'),
                        COG_IN = 2017, COG_NIVGEO = 2018)
+}
 
 }
 \references{

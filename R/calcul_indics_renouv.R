@@ -20,7 +20,7 @@
 #' @importFrom tidyr gather
 #'
 #' @examples
-#'
+#'\dontrun{
 #' # Calcul les indicateurs de catégorisation et de renouvellement de la population par les migrations selon le groupe socio-professionnel au niveau régional
 #'indics_mig_EPCI_CS1_RENOUV <-
 #'  calcul_indics_renouv(TABLE = indics_mig_EPCI_CS1,
@@ -31,7 +31,7 @@
 #'                       NB_PRES = "nb_ind_PRES",
 #'                       VAR_VENTIL ="CS1")
 #'
-#'
+#'}
 #'
 #'
 #' @details

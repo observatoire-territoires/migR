@@ -17,6 +17,7 @@
 #' @importFrom rlang sym
 #'
 #' @examples
+#' \dontrun{
 #' # Calcul de la table de nombre de migrations entre résidence actuelle et résidence antérieure au niveau départemental
 #' flux_migres_DEP <-
 #' calcul_flux_migres(TABLE =FD_MIGCOM_2015 ,
@@ -32,7 +33,7 @@
 #'                  MIG_NET_INTERNE=TRUE,
 #'                  NIVGEO_ANTE ="REG_ANTE",
 #'                  NIVGEO_ACTU ="REG_ACTU")
-#'
+#'}
 #' @export
 #'
 

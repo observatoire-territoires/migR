@@ -16,13 +16,14 @@
 #' @importFrom rlang sym
 #'
 #' @examples
-#' # Ajout du champ 'LIB_DEP' contentant le libellé en clair du code DEP
+#' \dontrun{
+#' # Ajout du champ 'LIB_DEP' contenant le libellé en clair du code DEP
 #' indics_migres_DEP <-
 #' ajout_libelles_nivgeo(TABLE = indics_migres_DEP,
 #'                       NIVGEO_IN ="DEP",
 #'                       COG_NIVGEO = 2018)
 #'
-#'# Ajout du champ 'LIB_REG_ANTE' contentant le libellé en clair des codes EPCI
+#'# Ajout du champ 'LIB_REG_ANTE' contenant le libellé en clair des codes EPCI
 #' flux_migres_EPCI <-
 #'  ajout_libelles_nivgeo(TABLE = flux_migres_EPCI,
 #'                        NIVGEO_IN ="EPCI_ANTE",
@@ -34,7 +35,7 @@
 #'                         NIVGEO_OUT ="EPCI",
 #'                         LIBGEO = "LIB_EPCI_ACTU",
 #'                         COG_NIVGEO = 2018)
-#'
+#'}
 #'
 #' @details
 #' Les millésimes du COG disponibles sont les suivants : 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018. \cr
