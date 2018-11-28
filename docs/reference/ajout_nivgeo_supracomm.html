@@ -84,7 +84,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/tutorial_fonctions_migr.html">Tutorial des fonctions du package migR</a>
+      <a href="../articles/tutorial_fonctions_migr.html">Tutoriel des fonctions du package migR</a>
     </li>
     <li>
       <a href="../articles/methodo_migr.html">Analyse des migrations rÃ©sidentielles internes en France : mÃ©thodologie</a>
@@ -191,15 +191,18 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Ajout du champ 'DEP' indiquant le niveau gÃ©ographique "dÃ©partement" Ã  une table ayant une information communale</span>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='co'># Ajout du champ 'DEP' indiquant le niveau gÃ©ographique "dÃ©partement" Ã  une table ayant une information communale</span>
 <span class='no'>COM_2012</span> <span class='kw'>&lt;-</span>
 <span class='fu'>ajout_nivgeo_supracomm</span>(<span class='kw'>TABLE</span> <span class='kw'>=</span> <span class='no'>COM_2012</span> ,
 <span class='kw'>CODE_COMMUNE</span> <span class='kw'>=</span> <span class='st'>"CODGEO"</span>,
 <span class='kw'>NIVGEO</span> <span class='kw'>=</span> <span class='st'>"DEP"</span>,
 <span class='kw'>COG_IN</span> <span class='kw'>=</span> <span class='fl'>2010</span>,
-<span class='kw'>COG_NIVGEO</span> <span class='kw'>=</span> <span class='fl'>2018</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(lhs, parent, parent): object 'COM_2012' not found</span></div><div class='input'>
+<span class='kw'>COG_NIVGEO</span> <span class='kw'>=</span> <span class='fl'>2018</span>)
+
 <span class='co'># Ajout des niveaux gÃ©ographiques "dÃ©partement", "rÃ©gion" et "type de densitÃ©" depuis les champs "commune de rÃ©sidence actuelle" et "commune de rÃ©sidence antÃ©rieure"</span>
-<span class='no'>FD_MIGCOM_2015</span>  <span class='kw'>&lt;-</span> <span class='no'>FD_MIGCOM_2015</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'FD_MIGCOM_2015' not found</span></div><div class='input'><span class='fu'>ajout_nivgeo_supracomm</span>(<span class='kw'>TABLE</span> <span class='kw'>=</span> <span class='no'>.</span> ,
+<span class='no'>FD_MIGCOM_2015</span>  <span class='kw'>&lt;-</span> <span class='no'>FD_MIGCOM_2015</span>
+<span class='fu'>ajout_nivgeo_supracomm</span>(<span class='kw'>TABLE</span> <span class='kw'>=</span> <span class='no'>.</span> ,
                        <span class='kw'>CODE_COMMUNE</span> <span class='kw'>=</span> <span class='st'>"DCRAN"</span>,
                        <span class='kw'>SUFFIXE</span> <span class='kw'>=</span> <span class='st'>"ANTE"</span>,
                        <span class='kw'>NIVGEO</span><span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"DEP"</span>,<span class='st'>'EPCI'</span>,<span class='st'>'TYPEDENS'</span>),
@@ -208,7 +211,8 @@
                        <span class='kw'>CODE_COMMUNE</span> <span class='kw'>=</span> <span class='st'>"COMMUNE"</span>,
                        <span class='kw'>SUFFIXE</span> <span class='kw'>=</span> <span class='st'>"ACTU"</span>,
                        <span class='kw'>NIVGEO</span><span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"DEP"</span>,<span class='st'>'EPCI'</span>,<span class='st'>'TYPEDENS'</span>),
-                       <span class='kw'>COG_IN</span> <span class='kw'>=</span> <span class='fl'>2017</span>, <span class='kw'>COG_NIVGEO</span> <span class='kw'>=</span> <span class='fl'>2018</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(lhs, parent, parent): object '.' not found</span></div><div class='input'>
+                       <span class='kw'>COG_IN</span> <span class='kw'>=</span> <span class='fl'>2017</span>, <span class='kw'>COG_NIVGEO</span> <span class='kw'>=</span> <span class='fl'>2018</span>)
+<span class='co'># }</span><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

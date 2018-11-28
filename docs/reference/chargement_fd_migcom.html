@@ -84,7 +84,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/tutorial_fonctions_migr.html">Tutorial des fonctions du package migR</a>
+      <a href="../articles/tutorial_fonctions_migr.html">Tutoriel des fonctions du package migR</a>
     </li>
     <li>
       <a href="../articles/methodo_migr.html">Analyse des migrations rÃ©sidentielles internes en France : mÃ©thodologie</a>
@@ -157,46 +157,14 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Téléchargement du fichier MIGCOM du dernier RP en date depuis le site internet de l'Insee dans le dossier "./data"</span>
-<span class='no'>FD_MIGCOM_2015</span> <span class='kw'>&lt;-</span> <span class='fu'>chargement_fd_migcom</span>(<span class='kw'>anneeRP</span> <span class='kw'>=</span> <span class='st'>"2015"</span>,  <span class='kw'>telechargement</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>dossier_dest_TL</span> <span class='kw'>=</span> <span class='st'>"./data"</span>)</div><div class='output co'>#&gt; # Source:   table&lt;migcom_2015&gt; [?? x 33]
-#&gt; # Database: MonetDBEmbeddedConnection
-#&gt;    COMMUNE ARM   DCRAN ACHLR AGEMEN8 AGEREVQ ANEMC CATPC CS1   CSM   DIPL_15
-#&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  
-#&gt;  1 01001   ZZZZZ 01001 5     40      045     2     0     6     6     B      
-#&gt;  2 01001   ZZZZZ 01001 1     55      015     3     0     8     3     C      
-#&gt;  3 01001   ZZZZZ 01001 1     55      010     3     0     8     3     Z      
-#&gt;  4 01001   ZZZZZ 01001 1     40      055     3     0     4     6     A      
-#&gt;  5 01001   ZZZZZ 01001 1     55      045     3     0     5     3     C      
-#&gt;  6 01001   ZZZZZ 01001 1     40      040     3     0     6     6     C      
-#&gt;  7 01001   ZZZZZ 01001 1     55      055     3     0     3     3     B      
-#&gt;  8 01001   ZZZZZ 01001 4     65      060     5     0     7     7     B      
-#&gt;  9 01001   ZZZZZ 01001 4     65      070     5     0     7     7     A      
-#&gt; 10 01001   ZZZZZ 01001 5     40      045     3     0     3     3     B      
-#&gt; # ... with more rows, and 22 more variables: DNAI &lt;chr&gt;, EMPL &lt;chr&gt;,
-#&gt; #   INAI &lt;chr&gt;, INATC &lt;chr&gt;, IPONDI &lt;dbl&gt;, IRAN &lt;chr&gt;, IRANUU &lt;chr&gt;,
-#&gt; #   LPRM &lt;chr&gt;, METRODOM &lt;chr&gt;, MOCO &lt;chr&gt;, NA17 &lt;chr&gt;, NA5 &lt;chr&gt;, NPERR &lt;chr&gt;,
-#&gt; #   RECH &lt;chr&gt;, SEXE &lt;chr&gt;, STOCD &lt;chr&gt;, TACT &lt;chr&gt;, TACTM &lt;chr&gt;, TRANS &lt;chr&gt;,
-#&gt; #   TYPC &lt;chr&gt;, TYPL &lt;chr&gt;, TYPMR &lt;chr&gt;</div><div class='input'>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='co'># TÃ©lÃ©chargement du fichier MIGCOM du dernier RP en date depuis le site internet de l'Insee dans le dossier "./data"</span>
+<span class='no'>FD_MIGCOM_2015</span> <span class='kw'>&lt;-</span> <span class='fu'>chargement_fd_migcom</span>(<span class='kw'>anneeRP</span> <span class='kw'>=</span> <span class='st'>"2015"</span>,  <span class='kw'>telechargement</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>dossier_dest_TL</span> <span class='kw'>=</span> <span class='st'>"./data"</span>)
+
 <span class='co'># Chargement du fichier txt MIGCOM disponible en local</span>
-<span class='no'>FD_MIGCOM_2015</span> <span class='kw'>&lt;-</span> <span class='fu'>chargement_fd_migcom</span>(<span class='kw'>chemin_FD</span> <span class='kw'>=</span> <span class='st'>"./data/rp2015_migcom_txt/FD_MIGCOM_2015.txt"</span>)</div><div class='output co'>#&gt; # Source:   table&lt;migcom_2015&gt; [?? x 33]
-#&gt; # Database: MonetDBEmbeddedConnection
-#&gt;    COMMUNE ARM   DCRAN ACHLR AGEMEN8 AGEREVQ ANEMC CATPC CS1   CSM   DIPL_15
-#&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  
-#&gt;  1 01001   ZZZZZ 01001 5     40      045     2     0     6     6     B      
-#&gt;  2 01001   ZZZZZ 01001 1     55      015     3     0     8     3     C      
-#&gt;  3 01001   ZZZZZ 01001 1     55      010     3     0     8     3     Z      
-#&gt;  4 01001   ZZZZZ 01001 1     40      055     3     0     4     6     A      
-#&gt;  5 01001   ZZZZZ 01001 1     55      045     3     0     5     3     C      
-#&gt;  6 01001   ZZZZZ 01001 1     40      040     3     0     6     6     C      
-#&gt;  7 01001   ZZZZZ 01001 1     55      055     3     0     3     3     B      
-#&gt;  8 01001   ZZZZZ 01001 4     65      060     5     0     7     7     B      
-#&gt;  9 01001   ZZZZZ 01001 4     65      070     5     0     7     7     A      
-#&gt; 10 01001   ZZZZZ 01001 5     40      045     3     0     3     3     B      
-#&gt; # ... with more rows, and 22 more variables: DNAI &lt;chr&gt;, EMPL &lt;chr&gt;,
-#&gt; #   INAI &lt;chr&gt;, INATC &lt;chr&gt;, IPONDI &lt;dbl&gt;, IRAN &lt;chr&gt;, IRANUU &lt;chr&gt;,
-#&gt; #   LPRM &lt;chr&gt;, METRODOM &lt;chr&gt;, MOCO &lt;chr&gt;, NA17 &lt;chr&gt;, NA5 &lt;chr&gt;, NPERR &lt;chr&gt;,
-#&gt; #   RECH &lt;chr&gt;, SEXE &lt;chr&gt;, STOCD &lt;chr&gt;, TACT &lt;chr&gt;, TACTM &lt;chr&gt;, TRANS &lt;chr&gt;,
-#&gt; #   TYPC &lt;chr&gt;, TYPL &lt;chr&gt;, TYPMR &lt;chr&gt;</div></pre>
+<span class='no'>FD_MIGCOM_2015</span> <span class='kw'>&lt;-</span> <span class='fu'>chargement_fd_migcom</span>(<span class='kw'>chemin_FD</span> <span class='kw'>=</span> <span class='st'>"./data/rp2015_migcom_txt/FD_MIGCOM_2015.txt"</span>)
+<span class='co'># }</span><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

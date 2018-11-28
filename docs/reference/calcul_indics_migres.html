@@ -84,7 +84,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/tutorial_fonctions_migr.html">Tutorial des fonctions du package migR</a>
+      <a href="../articles/tutorial_fonctions_migr.html">Tutoriel des fonctions du package migR</a>
     </li>
     <li>
       <a href="../articles/methodo_migr.html">Analyse des migrations rÃ©sidentielles internes en France : mÃ©thodologie</a>
@@ -176,21 +176,23 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Calcul du nombre de migrations entre résidence actuelle et résidence antérieure au niveau départemental</span>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='co'># Calcul du nombre de migrations entre rÃ©sidence actuelle et rÃ©sidence antÃ©rieure au niveau dÃ©partemental</span>
 <span class='no'>indics_migres_REG</span> <span class='kw'>&lt;-</span>
  <span class='fu'>calcul_indics_migres</span>(<span class='kw'>TABLE</span> <span class='kw'>=</span><span class='no'>flux_migres_DEP</span>,
                       <span class='kw'>NIVGEO_ANTE</span> <span class='kw'>=</span><span class='st'>"DEP_ANTE"</span>,
                       <span class='kw'>NIVGEO_ACTU</span> <span class='kw'>=</span><span class='st'>"DEP_ACTU"</span>,
                       <span class='kw'>NIVGEO</span> <span class='kw'>=</span><span class='st'>"DEP"</span>,
-                      <span class='kw'>VAR_NB</span> <span class='kw'>=</span> <span class='st'>"nb_ind"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(lhs, parent, parent): object 'flux_migres_DEP' not found</span></div><div class='input'>
-<span class='co'># Calcul du nombre de flux entre résidence actuelle et résidence antérieure au niveau régional, et ventilés par groupe socio-professionel</span>
+                      <span class='kw'>VAR_NB</span> <span class='kw'>=</span> <span class='st'>"nb_ind"</span>)
+
+<span class='co'># Calcul du nombre de flux entre rÃ©sidence actuelle et rÃ©sidence antÃ©rieure au niveau rÃ©gional, et ventilÃ©s par groupe socio-professionel</span>
 <span class='no'>indics_migres_REG_CS1</span> <span class='kw'>&lt;-</span>
  <span class='fu'>calcul_indics_migres</span>(<span class='kw'>TABLE</span> <span class='kw'>=</span><span class='no'>flux_migres_REG_CS1</span>,
                       <span class='kw'>NIVGEO_ANTE</span> <span class='kw'>=</span><span class='st'>"DEP_ANTE"</span>,
                       <span class='kw'>NIVGEO_ACTU</span> <span class='kw'>=</span><span class='st'>"DEP_ACTU"</span>,
                       <span class='kw'>NIVGEO</span> <span class='kw'>=</span><span class='st'>"DEP"</span>,
-                      <span class='kw'>VAR_NB</span> <span class='kw'>=</span> <span class='st'>"nb_ind"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(lhs, parent, parent): object 'flux_migres_REG_CS1' not found</span></div><div class='input'>
-
+                      <span class='kw'>VAR_NB</span> <span class='kw'>=</span> <span class='st'>"nb_ind"</span>)
+<span class='co'># }</span><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

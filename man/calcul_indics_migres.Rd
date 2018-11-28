@@ -41,7 +41,8 @@ Les indicateurs générés dans la table de sortie sont les suivants (cf. vignet
 \item{Part de sortants ('PS')}}
 }
 \examples{
-# Calcul du nombre de migrations entre résidence actuelle et résidence antérieure au niveau départemental
+\dontrun{
+# Calcul du nombre de migrations entre rÃ©sidence actuelle et rÃ©sidence antÃ©rieure au niveau dÃ©partemental
 indics_migres_REG <-
  calcul_indics_migres(TABLE =flux_migres_DEP,
                       NIVGEO_ANTE ="DEP_ANTE",
@@ -49,13 +50,13 @@ indics_migres_REG <-
                       NIVGEO ="DEP",
                       VAR_NB = "nb_ind")
 
-# Calcul du nombre de flux entre résidence actuelle et résidence antérieure au niveau régional, et ventilés par groupe socio-professionel
+# Calcul du nombre de flux entre rÃ©sidence actuelle et rÃ©sidence antÃ©rieure au niveau rÃ©gional, et ventilÃ©s par groupe socio-professionel
 indics_migres_REG_CS1 <-
  calcul_indics_migres(TABLE =flux_migres_REG_CS1,
                       NIVGEO_ANTE ="DEP_ANTE",
                       NIVGEO_ACTU ="DEP_ACTU",
                       NIVGEO ="DEP",
                       VAR_NB = "nb_ind")
-
+}
 
 }

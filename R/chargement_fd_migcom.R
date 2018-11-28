@@ -20,11 +20,14 @@
 #' @importFrom stringr str_replace
 #'
 #' @examples
+#' \dontrun{
 #' # Téléchargement du fichier MIGCOM du dernier RP en date depuis le site internet de l'Insee dans le dossier "./data"
 #' FD_MIGCOM_2015 <- chargement_fd_migcom(anneeRP = "2015",  telechargement = TRUE, dossier_dest_TL = "./data")
 #'
 #' # Chargement du fichier txt MIGCOM disponible en local
 #' FD_MIGCOM_2015 <- chargement_fd_migcom(chemin_FD = "./data/rp2015_migcom_txt/FD_MIGCOM_2015.txt")
+#' }
+#'
 #' @export
 
 

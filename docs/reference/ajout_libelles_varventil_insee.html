@@ -84,7 +84,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/tutorial_fonctions_migr.html">Tutorial des fonctions du package migR</a>
+      <a href="../articles/tutorial_fonctions_migr.html">Tutoriel des fonctions du package migR</a>
     </li>
     <li>
       <a href="../articles/methodo_migr.html">Analyse des migrations rÃ©sidentielles internes en France : mÃ©thodologie</a>
@@ -183,13 +183,14 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Ajout du champ 'LIB_CS1' contentant le libellé en clair du code CS1 (aka "groupe socioprofessionnel")</span>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='co'># Ajout du champ 'LIB_CS1' contenant le libellÃ© en clair du code CS1 (aka "groupe socioprofessionnel")</span>
 <span class='no'>indics_mig_DEP_CS1</span> <span class='kw'>&lt;-</span>
 <span class='fu'>ajout_libelles_varventil_insee</span>(<span class='kw'>TABLE</span> <span class='kw'>=</span> <span class='no'>indics_mig_DEP_CS1</span>,
                                <span class='kw'>VAR</span> <span class='kw'>=</span><span class='st'>"CS1"</span>,
-                               <span class='kw'>MILLESIME_RP</span> <span class='kw'>=</span> <span class='fl'>2015</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(lhs, parent, parent): object 'indics_mig_DEP_CS1' not found</span></div><div class='input'>
+                               <span class='kw'>MILLESIME_RP</span> <span class='kw'>=</span> <span class='fl'>2015</span>)
 
-
+<span class='co'># }</span><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

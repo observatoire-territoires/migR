@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ajouter le libellé d'une unité géographique — ajout_libelles_nivgeo • migR</title>
+<title>Générer la cartographie d'un maillage supracommunal — creation_carto_supracomm • migR</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Ajouter le libellé d'une unité géographique — ajout_libelles_nivgeo" />
+<meta property="og:title" content="Générer la cartographie d'un maillage supracommunal — creation_carto_supracomm" />
 
-<meta property="og:description" content="Ajouter le libellé d'une unité géographique à partir du champ contenant le code en format court." />
+<meta property="og:description" content="A partir d'un fichier cartographie des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,51 +112,61 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Ajouter le libellé d'une unité géographique</h1>
-    <small class="dont-index">Source: <a href='http://github.com/observatoire-territoires/migR/blob/master/R/ajout_libelles_nivgeo.R'><code>R/ajout_libelles_nivgeo.R</code></a></small>
-    <div class="hidden name"><code>ajout_libelles_nivgeo.Rd</code></div>
+    <h1>Générer la cartographie d'un maillage supracommunal</h1>
+    <small class="dont-index">Source: <a href='http://github.com/observatoire-territoires/migR/blob/master/R/creation_carto_supracomm.R'><code>R/creation_carto_supracomm.R</code></a></small>
+    <div class="hidden name"><code>creation_carto_supracomm.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Ajouter le libellé d'une unité géographique à partir du champ contenant le code en format court.</p>
+    <p>A partir d'un fichier cartographie des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>ajout_libelles_nivgeo</span>(<span class='no'>TABLE</span>, <span class='no'>NIVGEO_IN</span>, <span class='no'>NIVGEO_OUT</span>, <span class='no'>LIBGEO_OUT</span>, <span class='no'>COG_NIVGEO</span>)</pre>
+    <pre class="usage"><span class='fu'>creation_carto_supracomm</span>(<span class='no'>CARTO_COMM</span>, <span class='no'>CODE_COMMUNE</span>, <span class='no'>COG_IN</span>, <span class='no'>COG_NIVGEO</span>,
+  <span class='no'>NIVGEO</span>, <span class='kw'>FORMAT</span> <span class='kw'>=</span> <span class='st'>"poly"</span>, <span class='kw'>SG</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>TABLE</th>
-      <td><p>Table en entrée avec un champ contenant un code d'unité géographique.</p></td>
+      <th>CARTO_COMM</th>
+      <td><p>Cartographie en entrée des communes françaises, format sf dataframe.</p></td>
     </tr>
     <tr>
-      <th>NIVGEO_IN</th>
-      <td><p>Nom du champ de la table en entrée contenant le code d'unité géographique (en format court, liste : cf. details ci-dessous).</p></td>
+      <th>CODE_COMMUNE</th>
+      <td><p>Nom du champ contenant l'identifiant communal (de type caractère) de la table en entrée.</p></td>
     </tr>
     <tr>
-      <th>NIVGEO_OUT</th>
-      <td><p>Nom du code d'unité géographique (en format court, liste : cf. details ci-dessous).</p></td>
-    </tr>
-    <tr>
-      <th>LIBGEO_OUT</th>
-      <td><p>Nom du champ du libellé d'unité géographique à ajouter dans la table en sortie (par défaut : préfixe "LIB_").</p></td>
+      <th>COG_IN</th>
+      <td><p>Millésime du Code Officiel Géographique des communes en entrée.</p></td>
     </tr>
     <tr>
       <th>COG_NIVGEO</th>
-      <td><p>Millésime du Code Officiel Géographique du code d'unité géographique en entrée (liste : cf. details ci-dessous).</p></td>
+      <td><p>Millésime du Code Officiel Géographique du maillage supra-communal en sortie.</p></td>
+    </tr>
+    <tr>
+      <th>NIVGEO</th>
+      <td><p>Nom du code d'unité géographique à générer en sortie (en format court, liste : cf. details ci-dessous).</p></td>
+    </tr>
+    <tr>
+      <th>FORMAT</th>
+      <td><p>Format de la cartographie générée : polygones ("poly") ou centroides ("ctr").</p></td>
+    </tr>
+    <tr>
+      <th>SG</th>
+      <td><p>Niveau de généralisation de la géometrie générée : pourcentage des sommets de la géométrie initiale conservés, 1 par défaut.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Renvoie une table avec un champ supplémentaire contenant le libellé de l'unité géographique.</p>
+    <p>Renvoie la cartographie du maillage supracommunal sous forme d'objet sf dataframe.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Les millésimes du COG disponibles sont les suivants : 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018. <br /></p>
+    <p>La conversion entre les différents millésimes du COG est gérée grâce à la fonction 'changement_COG_typo' du package 'COGugaison' ; la méthode de fusion par défaut est 'methode_max_pop' (cf. aide "COGugaison").</p>
+<p>Les millésimes du COG disponibles sont les suivants : 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018. <br /></p>
 <p>Les niveaux supra-communaux disponibles sont les suivants :</p><ul>
 <li><p>Département ('DEP')</p></li>
 <li><p>Région administrative ('REG')</p></li>
@@ -174,24 +184,25 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='co'># Ajout du champ 'LIB_DEP' contenant le libellÃ© en clair du code DEP</span>
-<span class='no'>indics_migres_DEP</span> <span class='kw'>&lt;-</span>
-<span class='fu'>ajout_libelles_nivgeo</span>(<span class='kw'>TABLE</span> <span class='kw'>=</span> <span class='no'>indics_migres_DEP</span>,
-                      <span class='kw'>NIVGEO_IN</span> <span class='kw'>=</span><span class='st'>"DEP"</span>,
-                      <span class='kw'>COG_NIVGEO</span> <span class='kw'>=</span> <span class='fl'>2018</span>)
+<span class='co'># CrÃ©ation de la cartographie des anciennes rÃ©gions (millÃ©sime 2015) en format polygones avec gÃ©omÃ©trie gÃ©nÃ©ralisÃ©e</span>
+<span class='no'>geo_REG_poly</span> <span class='kw'>&lt;-</span>
+<span class='fu'>creation_carto_SUPRACOMM</span>(<span class='kw'>CARTO_COMM</span> <span class='kw'>=</span> <span class='no'>COMMG_COG2016_METDOM</span>,
+                         <span class='kw'>CODE_COMMUNE</span> <span class='kw'>=</span> <span class='st'>"DEPCOM"</span>,
+                         <span class='kw'>COG_IN</span> <span class='kw'>=</span> <span class='fl'>2016</span>,
+                         <span class='kw'>COG_NIVGEO</span> <span class='kw'>=</span> <span class='fl'>2015</span>,
+                         <span class='kw'>NIVGEO</span> <span class='kw'>=</span> <span class='st'>"REG"</span>,
+                         <span class='kw'>FORMAT</span> <span class='kw'>=</span> <span class='st'>"poly"</span>,
+                         <span class='kw'>SG</span> <span class='kw'>=</span> <span class='fl'>0.05</span>)
 
-<span class='co'># Ajout du champ 'LIB_REG_ANTE' contenant le libellÃ© en clair des codes EPCI</span>
-<span class='no'>flux_migres_EPCI</span> <span class='kw'>&lt;-</span>
- <span class='fu'>ajout_libelles_nivgeo</span>(<span class='kw'>TABLE</span> <span class='kw'>=</span> <span class='no'>flux_migres_EPCI</span>,
-                       <span class='kw'>NIVGEO_IN</span> <span class='kw'>=</span><span class='st'>"EPCI_ANTE"</span>,
-                       <span class='kw'>NIVGEO_OUT</span> <span class='kw'>=</span><span class='st'>"EPCI"</span>,
-                       <span class='kw'>LIBGEO_OUT</span> <span class='kw'>=</span> <span class='st'>"LIB_EPCI_ANTE"</span>,
-                       <span class='kw'>COG_NIVGEO</span> <span class='kw'>=</span> <span class='fl'>2018</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>ajout_libelles_nivgeo</span>(<span class='kw'>TABLE</span> <span class='kw'>=</span> <span class='no'>.</span>,
-                        <span class='kw'>NIVGEO_IN</span> <span class='kw'>=</span><span class='st'>"EPCI_ACTU"</span>,
-                        <span class='kw'>NIVGEO_OUT</span> <span class='kw'>=</span><span class='st'>"EPCI"</span>,
-                        <span class='kw'>LIBGEO</span> <span class='kw'>=</span> <span class='st'>"LIB_EPCI_ACTU"</span>,
-                        <span class='kw'>COG_NIVGEO</span> <span class='kw'>=</span> <span class='fl'>2018</span>)
+<span class='co'># CrÃ©ation de la cartographie des EPCI (millÃ©sime 2018) en format centroÃ¯des</span>
+<span class='no'>geo_EPCI_ctr</span> <span class='kw'>&lt;-</span>
+<span class='fu'>creation_carto_SUPRACOMM</span>(<span class='kw'>CARTO_COMM</span> <span class='kw'>=</span> <span class='no'>COMMG_COG2016_METDOM</span>,
+                         <span class='kw'>CODE_COMMUNE</span> <span class='kw'>=</span> <span class='st'>"DEPCOM"</span>,
+                         <span class='kw'>COG_IN</span> <span class='kw'>=</span> <span class='fl'>2016</span>,
+                         <span class='kw'>COG_NIVGEO</span> <span class='kw'>=</span> <span class='fl'>2018</span>,
+                         <span class='kw'>NIVGEO</span> <span class='kw'>=</span> <span class='st'>"EPCI"</span>,
+                         <span class='kw'>FORMAT</span> <span class='kw'>=</span><span class='st'>"ctr"</span>,
+                         <span class='kw'>SG</span> <span class='kw'>=</span> <span class='fl'>1</span>)
 <span class='co'># }</span><div class='input'>
 </div></pre>
   </div>

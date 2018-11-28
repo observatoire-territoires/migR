@@ -55,12 +55,13 @@ Les variables de ventilation disponbibles sont issues de la documentation des fi
 \item{Type de ménage regroupé (en 9 postes) ('TYPMR')}}
 }
 \examples{
-# Ajout du champ 'LIB_CS1' contentant le libellé en clair du code CS1 (aka "groupe socioprofessionnel")
+\dontrun{
+# Ajout du champ 'LIB_CS1' contenant le libellÃ© en clair du code CS1 (aka "groupe socioprofessionnel")
 indics_mig_DEP_CS1 <-
 ajout_libelles_varventil_insee(TABLE = indics_mig_DEP_CS1,
                                VAR ="CS1",
                                MILLESIME_RP = 2015)
 
-
+}
 
 }

@@ -27,14 +27,15 @@ Renvoie une table contenant un champ de résidence actuelle, un champ de réside
 A partir d'une table en entrée contenant un champ de résidence actuelle et un champ de résidence antérieure sur le même niveau géographique.
 }
 \examples{
-# Calcul de la table de nombre de migrations entre résidence actuelle et résidence antérieure au niveau départemental
+\dontrun{
+# Calcul de la table de nombre de migrations entre rÃ©sidence actuelle et rÃ©sidence antÃ©rieure au niveau dÃ©partemental
 flux_migres_DEP <-
 calcul_flux_migres(TABLE =FD_MIGCOM_2015 ,
                  VAR_NB = "IPONDI",
                  MIG_NET_INTERNE=TRUE,
                  NIVGEO_ANTE ="DEP_ANTE",
                  NIVGEO_ACTU ="DEP_ACTU")
-# Calcul de la table de nombre de migrations entre résidence actuelle et résidence antérieure au niveau régional, et ventilés par groupe socio-professione
+# Calcul de la table de nombre de migrations entre rÃ©sidence actuelle et rÃ©sidence antÃ©rieure au niveau rÃ©gional, et ventilÃ©s par groupe socio-professione
 flux_migres_REG_CS1 <-
 calcul_flux_migres(TABLE =FD_MIGCOM_2015 ,
                  VAR_NB = "IPONDI",
@@ -42,5 +43,5 @@ calcul_flux_migres(TABLE =FD_MIGCOM_2015 ,
                  MIG_NET_INTERNE=TRUE,
                  NIVGEO_ANTE ="REG_ANTE",
                  NIVGEO_ACTU ="REG_ACTU")
-
+}
 }

@@ -25,9 +25,12 @@ Retourne une table de détail des migrations résidentielles avec pour chaque in
 Télécharger un fichier détail MIGCOM (Migrations résidentielles entre commune de résidence et commune de résidence antérieure) depuis le site de l'Insee puis le monter en mémoire, ou uniquement le charger si le fichier txt est disponible en local.
 }
 \examples{
-# Téléchargement du fichier MIGCOM du dernier RP en date depuis le site internet de l'Insee dans le dossier "./data"
+\dontrun{
+# TÃ©lÃ©chargement du fichier MIGCOM du dernier RP en date depuis le site internet de l'Insee dans le dossier "./data"
 FD_MIGCOM_2015 <- chargement_fd_migcom(anneeRP = "2015",  telechargement = TRUE, dossier_dest_TL = "./data")
 
 # Chargement du fichier txt MIGCOM disponible en local
 FD_MIGCOM_2015 <- chargement_fd_migcom(chemin_FD = "./data/rp2015_migcom_txt/FD_MIGCOM_2015.txt")
+}
+
 }

@@ -17,6 +17,7 @@
 #' @importFrom rlang sym
 #'
 #' @examples
+#' \dontrun{
 #' # Calcul du nombre de migrations entre résidence actuelle et résidence antérieure au niveau départemental
 #'indics_migres_REG <-
 #'  calcul_indics_migres(TABLE =flux_migres_DEP,
@@ -32,7 +33,7 @@
 #'                       NIVGEO_ACTU ="DEP_ACTU",
 #'                       NIVGEO ="DEP",
 #'                       VAR_NB = "nb_ind")
-#'
+#'}
 #'
 #' @details
 #' Les indicateurs générés dans la table de sortie sont les suivants (cf. vignette pour les définitions exactes et les formules de calcul) : \cr

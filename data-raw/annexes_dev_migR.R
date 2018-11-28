@@ -148,3 +148,6 @@ devtools::check()
 
 # pour écrire rmd
 library(remedy)
+
+# alertes :
+# signe % ne passe pas dans .Rd
