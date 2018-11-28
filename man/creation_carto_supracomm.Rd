@@ -26,7 +26,7 @@ creation_carto_supracomm(CARTO_COMM, CODE_COMMUNE, COG_IN, COG_NIVGEO,
 Renvoie la cartographie du maillage supracommunal sous forme d'objet sf dataframe.
 }
 \description{
-A partir d'un fichier cartographiquee des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides.
+A partir d'un fichier cartographique des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides.
 
 A partir d'une cartographie des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides.
 }

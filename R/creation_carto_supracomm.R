@@ -2,7 +2,7 @@
 #'
 #' @title Générer la cartographie d'un maillage supracommunal
 #'
-#' @description A partir d'un fichier cartographiquee des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides.
+#' @description A partir d'un fichier cartographique des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides.
 #' @title Ajouter le libellé d'une modalité de variable de ventilation
 #'
 #' @description A partir d'une cartographie des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides.
