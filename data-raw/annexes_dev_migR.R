@@ -151,3 +151,4 @@ library(remedy)
 
 # alertes :
 # signe % ne passe pas dans .Rd
+# réinstaller package après pull
