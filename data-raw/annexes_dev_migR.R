@@ -146,7 +146,7 @@ build_reference()
 devtools::check()
 
 
-# pour écrire rmd
+# pour écrire rmd avec add-in
 library(remedy)
 
 # alertes :
