@@ -26,9 +26,7 @@ creation_carto_supracomm(CARTO_COMM, CODE_COMMUNE, COG_IN, COG_NIVGEO,
 Renvoie la cartographie du maillage supracommunal sous forme d'objet sf dataframe.
 }
 \description{
-A partir d'un fichier cartographique des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides.
-
-A partir d'une cartographie des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides.
+A partir d'un fichier cartographique des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (département, aire urbaine, etc...) sous forme de polygones ou de centroides.
 }
 \details{
 La conversion entre les différents millésimes du COG est gérée grâce à la fonction 'changement_COG_typo' du package 'COGugaison' ; la méthode de fusion par défaut est 'methode_max_pop' (cf. aide "COGugaison").
@@ -53,7 +51,7 @@ Les niveaux supra-communaux disponibles sont les suivants :
 \dontrun{
 # CrÃ©ation de la cartographie des anciennes rÃ©gions (millÃ©sime 2015) en format polygones avec gÃ©omÃ©trie gÃ©nÃ©ralisÃ©e
 geo_REG_poly <-
-creation_carto_SUPRACOMM(CARTO_COMM = COMMG_COG2016_METDOM,
+creation_carto_supracomm(CARTO_COMM = COMMG_COG2016_METDOM,
                          CODE_COMMUNE = "DEPCOM",
                          COG_IN = 2016,
                          COG_NIVGEO = 2015,
@@ -63,7 +61,7 @@ creation_carto_SUPRACOMM(CARTO_COMM = COMMG_COG2016_METDOM,
 
 # CrÃ©ation de la cartographie des EPCI (millÃ©sime 2018) en format centroÃ¯des
 geo_EPCI_ctr <-
-creation_carto_SUPRACOMM(CARTO_COMM = COMMG_COG2016_METDOM,
+creation_carto_supracomm(CARTO_COMM = COMMG_COG2016_METDOM,
                          CODE_COMMUNE = "DEPCOM",
                          COG_IN = 2016,
                          COG_NIVGEO = 2018,

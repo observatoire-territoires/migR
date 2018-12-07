@@ -2,10 +2,8 @@
 #'
 #' @title Générer la cartographie d'un maillage supracommunal
 #'
-#' @description A partir d'un fichier cartographique des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides.
+#' @description A partir d'un fichier cartographique des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (département, aire urbaine, etc...) sous forme de polygones ou de centroides.
 #' @title Ajouter le libellé d'une modalité de variable de ventilation
-#'
-#' @description A partir d'une cartographie des communes françaises (issu du produit AdminExpress (http://www.professionnels.ign.fr/adminexpress) de l'IGN par exemple), générer la cartographie correspondant à un maillage supracommunal (Département, aire urbaine, etc...) sous forme de polygones ou de centroides.
 #'
 #' @param CARTO_COMM Cartographie en entrée des communes françaises, format sf dataframe.
 #' @param CODE_COMMUNE Nom du champ contenant l'identifiant communal (de type caractère) de la table en entrée.
@@ -29,7 +27,7 @@
 #' \dontrun{
 #' # Création de la cartographie des anciennes régions (millésime 2015) en format polygones avec géométrie généralisée
 #' geo_REG_poly <-
-#' creation_carto_SUPRACOMM(CARTO_COMM = COMMG_COG2016_METDOM,
+#' creation_carto_supracomm(CARTO_COMM = COMMG_COG2016_METDOM,
 #'                          CODE_COMMUNE = "DEPCOM",
 #'                          COG_IN = 2016,
 #'                          COG_NIVGEO = 2015,
@@ -39,7 +37,7 @@
 #'
 #'# Création de la cartographie des EPCI (millésime 2018) en format centroïdes
 #' geo_EPCI_ctr <-
-#' creation_carto_SUPRACOMM(CARTO_COMM = COMMG_COG2016_METDOM,
+#' creation_carto_supracomm(CARTO_COMM = COMMG_COG2016_METDOM,
 #'                          CODE_COMMUNE = "DEPCOM",
 #'                          COG_IN = 2016,
 #'                          COG_NIVGEO = 2018,

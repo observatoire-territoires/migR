@@ -16,7 +16,7 @@ Suggests:
     rmarkdown,
     testthat
 VignetteBuilder: knitr
-Imports:
+Depends:
     readr,
     dplyr,
     tibble,

@@ -125,6 +125,7 @@ indics_migres_EPCI_CS1_RENOUV <-
 library(testthat)
 usethis::use_test("ajout_libelles_nivgeo")
 
+library(pkgdown)
 # rappels
 
 #générer doc .Rd
