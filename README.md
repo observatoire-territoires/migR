@@ -1,5 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+migR<img src="logo_migr.png" align="right"  width=200 />
+========================================================
+
 Analyse des migrations résidentielles
 =====================================
 
@@ -19,7 +22,12 @@ library(migR)
 Documentation
 -------------
 
-Les articles présentant la méthodologie et l'utilisation de fonctions pas à pas sont en [ligne ici](https://observatoire-territoires.github.io/migR/index.html).
+Deux articles sont en ligne :
+
+-   une [note méthodologique](https://observatoire-territoires.github.io/migR/articles/methodo_migr.html) présentant les concepts nécessaires à l'étude des migrations résidentielles.
+-   un [tutoriel](https://observatoire-territoires.github.io/migR/articles/tutorial_fonctions_migr.html) détaillant les fonctions du package.
+
+La principale source statistique utilisée est le [fichier détail de l'Insee](https://www.insee.fr/fr/statistiques/3566042?sommaire=3558417) décrivant les mobilités résidentielles. Les packages [COGugaison](https://github.com/antuki/COGugaison) pour la gestion des géographies et [Insee2MonetDB](https://github.com/joelgombin/Insee2MonetDB) pour le chargement des données ont particulièrement été mis à contribution.
 
 ### Contact
 

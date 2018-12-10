@@ -1,5 +1,9 @@
 pandoc: 1.19.2.1
 pkgdown: 1.1.0
 pkgdown_sha: ~
-articles: []
+articles:
+  tutorial_fonctions_migr: ../../../../../../../../../../../../N:/DST/SDOAS/BOT/RAPPORT/Rapport
+    2018/Travaux statistiques internes/orga_projet/package_R/migR/vignettes/tutorial_fonctions_migr.html
+  methodo_migr: ../../../../../../../../../../../../N:/DST/SDOAS/BOT/RAPPORT/Rapport
+    2018/Travaux statistiques internes/orga_projet/package_R/migR/vignettes/methodo_migr.html
 

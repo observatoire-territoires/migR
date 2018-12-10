@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>migR • Analyse territoriale des migrations résidentielles internes</title>
+<title>Analyse territoriale des migrations résidentielles internes • migR</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="migR • RAnalyse territoriale des migrations résidentielles internes">
+<script src="pkgdown.js"></script><meta property="og:title" content="Analyse territoriale des migrations résidentielles internes">
 <meta property="og:description" content="Traitements sur les fichiers décrivant les migrations résidentielles (RP Insee), calcul du volume de migrations inter-territoriales et d'indicateurs caractérisant l'ampleur quantitative des phénomènes migratoires internes ainsi que leur impact sur la composition socio-démographique de la population au sein des territoires.">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -38,7 +38,7 @@
 <li>
   <a href="index.html">
     <span class="fa fa-home fa-lg"></span>
-
+     
   </a>
 </li>
 <li>
@@ -47,7 +47,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
-
+     
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -55,7 +55,7 @@
       <a href="articles/tutorial_fonctions_migr.html">Tutoriel des fonctions du package migR</a>
     </li>
     <li>
-      <a href="articles/methodo_migr.html">Analyse des migrations résidentielles internes en France : méthodologie</a>
+      <a href="articles/methodo_migr.html">Analyse des migrations rÃ©sidentielles internes en France : mÃ©thodologie</a>
     </li>
   </ul>
 </li>
@@ -64,7 +64,7 @@
 <li>
   <a href="http://github.com/observatoire-territoires/migR">
     <span class="fa fa-github fa-lg"></span>
-
+     
   </a>
 </li>
       </ul>
@@ -75,25 +75,28 @@
 </div>
 <!--/.navbar -->
 
-
+      
       </header><div class="row">
   <div class="col-md-9 contents">
+    
 
-
-
-
+    
+    
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<div id="analyse-des-migrations-residentielles" class="section level1">
+<div id="migr" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#analyse-des-migrations-residentielles" class="anchor"></a>migR</h1></div>
-<p>L’objectif du package <code>migR</code> est de faciliter l’exploitation des fichiers du recensement de l’Insee décrivant les migrations résidentielles. Il propose également des indicateurs quantifiant les échanges entre territoires à plusieurs échelles géographiques, ainsi que des indicateurs caractérisant l’impact des migrations dans la composition socio-démographique des territoires.</p>
-<p>Le package <code>migR</code> a été réalisé dans le cadre de la rédaction du rapport de l’Observatoire des Territoires portant sur les migrations résidentielles.</p>
+<a href="#migr" class="anchor"></a>migR<img src="../../../../../Rapport%202018/Travaux%20statistiques%20internes/orga_projet/package_R/migR/logo_migr.png" align="right" width="200">
+</h1></div>
+</div>
+<div id="analyse-des-migrations-residentielles" class="section level1">
+<h1 class="hasAnchor">
+<a href="#analyse-des-migrations-residentielles" class="anchor"></a>Analyse des migrations résidentielles</h1>
+<p>L’objectif du package <code>migR</code> est de faciliter l’exploitation des fichiers du recensement de l’Insee décrivant les migrations résidentielles. Il propose également des indicateurs quantifiant les échanges entre territoires à plusieurs échelles géographiques, ainsi que des indicateurs caractérisant l’impact des migrations dans la composition socio-démographique des territoires. Le package <code>migR</code> a été réalisé dans le cadre de la rédaction du rapport de l’Observatoire des Territoires portant sur les migrations résidentielles.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Le package <code>migR</code> peut être installé avec la commande suivante :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
-<span class="kw">library</span>(devtools)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(devtools)
 devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"observatoire-territoires/migR"</span>)
 <span class="kw">library</span>(migR)</code></pre></div>
 </div>
@@ -101,9 +104,11 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <h2 class="hasAnchor">
 <a href="#documentation" class="anchor"></a>Documentation</h2>
 <p>Deux articles sont en ligne :</p>
-<p>- une <a href="https://observatoire-territoires.github.io/migR/articles/methodo_migr.html">note méthodologique </a> présentant les concepts nécessaires à l'étude des migrations résidentielles.</p>
-- un <a href="https://observatoire-territoires.github.io/migR/articles/tutorial_fonctions_migr.html">tutoriel</a> détaillant les fonctions du package.</p>
-<p>La principale source statistique utilisée est le <a href="https://www.insee.fr/fr/statistiques/3566042?sommaire=3558417">fichier détail de l'Insee décrivant les mobilités résidentielles</a>. Les packages <a href="https://github.com/antuki/COGugaison">COGugaison</a> pour la gestion des géographies et <a href="https://github.com/joelgombin/Insee2MonetDB">Insee2MonetDB</a> pour le chargement des données ont particulièrement été mis à contribution. </p>
+<ul>
+<li>une <a href="https://observatoire-territoires.github.io/migR/articles/methodo_migr.html">note méthodologique</a> présentant les concepts nécessaires à l’étude des migrations résidentielles.</li>
+<li>un <a href="https://observatoire-territoires.github.io/migR/articles/tutorial_fonctions_migr.html">tutoriel</a> détaillant les fonctions du package.</li>
+</ul>
+<p>La principale source statistique utilisée est le <a href="https://www.insee.fr/fr/statistiques/3566042?sommaire=3558417">fichier détail de l’Insee</a> décrivant les mobilités résidentielles. Les packages <a href="https://github.com/antuki/COGugaison">COGugaison</a> pour la gestion des géographies et <a href="https://github.com/joelgombin/Insee2MonetDB">Insee2MonetDB</a> pour le chargement des données ont particulièrement été mis à contribution.</p>
 <div id="contact" class="section level3">
 <h3 class="hasAnchor">
 <a href="#contact" class="anchor"></a>Contact</h3>
@@ -116,22 +121,22 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <div class="links">
-<h2>Liens</h2>
+<h2>Links</h2>
 <ul class="list-unstyled">
-<li>Accéder au code source : <br><a href="http://github.com/observatoire-territoires/migR">http://github.com/observatoire-territoires/migR</a>
+<li>Browse source code at <br><a href="http://github.com/observatoire-territoires/migR">http://​github.com/​observatoire-territoires/​migR</a>
 </li>
-<li>Signaler un problème : <br><a href="http://github.com/observatoire-territoires/migR/issues">http://github.com/observatoire-territoires/migR/issues</a>
+<li>Report a bug at <br><a href="http://github.com/observatoire-territoires/migR/issues">http://​github.com/​observatoire-territoires/​migR/​issues</a>
 </li>
 </ul>
 </div>
 <div class="license">
-<h2>Licence</h2>
+<h2>License</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
 </ul>
 </div>
 <div class="developers">
-<h2>Développeurs</h2>
+<h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Observatoire des Territoires <br><small class="roles"> Maintainer, author </small>  </li>
 <li>Joel Gombin <br><small class="roles"> Author </small>  </li>
@@ -144,17 +149,17 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 
 
       <footer><div class="copyright">
-  <p>Developpé par l'Observatoire des Territoires et Joel Gombin.</p>
+  <p>Developed by Observatoire des Territoires, Joel Gombin.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site réalisé avec <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
 </div>
 
-
+  
 
   </body>
 </html>
