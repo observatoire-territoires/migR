@@ -43,6 +43,7 @@
 #' \item{Indice de renouvellement par l'immigration ('IRI')}
 #' \item{Indice de renouvellement par l'émigration ('IRE')}
 #' \item{Indice de renouvellement par les migrations ('IRM')}
+#' \item{Part de la catégorie dans la population présente ('pct_ind_PRES')}
 #' \item{Evolution de la part de la catégorie au sein de la population par le jeu des migrations internes ('evol_pct_AUTO_PRES')}}
 #'
 #' Chacun des 3 indices de catégorisation (ICI, ICE, ICM) est calculé pour chacune des modalités de la variable de ventilation indiquées dans le champ qui porte son nom.
@@ -62,13 +63,15 @@ calcul_indics_renouv <- function(TABLE, NIVGEO, NB_ENTR, NB_SORT, NB_AUTO,NB_PRE
     select(!!sym(NIVGEO),!!sym(VAR_VENTIL),  !!sym(NB_ENTR), !!sym(NB_SORT), !!sym(NB_AUTO), !!sym(NB_PRES)) %>%
     # calcul part de chaque CS dans la pop entrante, sortante, autochtone
     group_by(!!sym(NIVGEO)) %>%
-    mutate_at(.vars = vars( c(!!sym(NB_ENTR), !!sym(NB_SORT), !!sym(NB_AUTO)) ),
+    mutate_at(.vars = vars( c(!!sym(NB_ENTR), !!sym(NB_SORT), !!sym(NB_AUTO), !!sym(NB_PRES)) ),
               .funs =  funs(pct = ./sum(.) ))  %>%
     # différences de taux
     mutate(diff_pct_AUTO_ENTR = (!!sym(paste0(NB_AUTO, "_pct")) - !!sym(paste0(NB_ENTR, "_pct"))) ^2 ,
            diff_pct_AUTO_SORT = (!!sym(paste0(NB_AUTO, "_pct")) - !!sym(paste0(NB_SORT, "_pct"))) ^2 ,
            SM = !!sym(NB_ENTR) - !!sym(NB_SORT),
            ratio_SM_ind_pres = (abs(SM) / !!sym(NB_PRES)) ^2,
+           # part de la catégorie dans la population présente
+           pct_ind_PRES = !!sym(paste0(NB_PRES, "_pct")),
            # évolution de la part de la CS par les migrations internes
            evol_pct_AUTO_PRES = !!sym(paste0(NB_PRES, "_pct")) - !!sym(paste0(NB_AUTO, "_pct")) )
 
@@ -105,7 +108,7 @@ calcul_indics_renouv <- function(TABLE, NIVGEO, NB_ENTR, NB_SORT, NB_AUTO,NB_PRE
       by = NIVGEO
     ) %>%
     mutate( ICM = ( SM / nb_ind_PRES ) - ( (SM_TOT - SM) / (nb_ind_PRES_TOT-!!sym(NB_PRES) ) ) ) %>%
-    select(NIVGEO,VAR_VENTIL,ICI,ICE,ICM, evol_pct_AUTO_PRES ) %>%
+    select(NIVGEO,VAR_VENTIL,ICI,ICE,ICM,pct_ind_PRES, evol_pct_AUTO_PRES ) %>%
     gather(type_indice, valeur, - NIVGEO, -VAR_VENTIL)
 
   indics_mig_RENOUV.OUT <- indics_mig_RENOUV.GLOBAL %>% bind_rows(indics_mig_RENOUV.CLASSE)

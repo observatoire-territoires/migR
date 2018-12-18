@@ -37,6 +37,7 @@ Les indicateurs générés dans le champ 'type_indice' de la table de sortie son
 \item{Indice de renouvellement par l'immigration ('IRI')}
 \item{Indice de renouvellement par l'émigration ('IRE')}
 \item{Indice de renouvellement par les migrations ('IRM')}
+\item{Part de la catégorie dans la population présente ('pct_ind_PRES')}
 \item{Evolution de la part de la catégorie au sein de la population par le jeu des migrations internes ('evol_pct_AUTO_PRES')}}
 
 Chacun des 3 indices de catégorisation (ICI, ICE, ICM) est calculé pour chacune des modalités de la variable de ventilation indiquées dans le champ qui porte son nom.
