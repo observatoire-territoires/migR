@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-migR<img src="logo_migr.png" align="right"  width=200 />
-========================================================
+migR<img src="man/figures/logo_migr.png" align="right"  width=200 />
+====================================================================
 
 Analyse des migrations résidentielles
 =====================================
