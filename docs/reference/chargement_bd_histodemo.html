@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • migR</title>
+<title>Charger une base de données de séries historiques de population de l'Insee — chargement_bd_histodemo • migR</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Charger une base de données de séries historiques de population de l'Insee — chargement_bd_histodemo" />
+
+<meta property="og:description" content="Télécharger la base de données &quot;séries historiques&quot; contenant les informations de démographique par période intercensitaire depuis 1968 depuis le site de l'Insee puis le monter en mémoire, ou uniquement la charger si le fichier xls est disponible en local." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -46,7 +49,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -107,90 +110,64 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Charger une base de données de séries historiques de population de l'Insee</h1>
+    <small class="dont-index">Source: <a href='http://github.com/observatoire-territoires/migR/blob/master/R/chargement_bd_histodemo.R'><code>R/chargement_bd_histodemo.R</code></a></small>
+    <div class="hidden name"><code>chargement_bd_histodemo.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Télécharger la base de données "séries historiques" contenant les informations de démographique par période intercensitaire depuis 1968 depuis le site de l'Insee puis le monter en mémoire, ou uniquement la charger si le fichier xls est disponible en local.</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="ajout_nivgeo_supracomm.html">ajout_nivgeo_supracomm()</a></code> </p>
-        </td>
-        <td><p>Ajouter un champ contenant un niveau géographique supra-communal</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="creation_carto_supracomm.html">creation_carto_supracomm()</a></code> </p>
-        </td>
-        <td><p>Générer la cartographie d'un maillage supracommunal</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="chargement_bd_histodemo.html">chargement_fd_migcom()</a></code> </p>
-        </td>
-        <td><p>Charger une base de données de séries historiques de population de l'Insee</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ajout_libelles_nivgeo.html">ajout_libelles_nivgeo()</a></code> </p>
-        </td>
-        <td><p>Ajouter le libellé d'une unité géographique</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calcul_indics_histodemo.html">calcul_indics_histodemo()</a></code> </p>
-        </td>
-        <td><p>Calculer les indicateurs d'évolution démographique depuis 1968</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calcul_flux_migres.html">calcul_flux_migres()</a></code> </p>
-        </td>
-        <td><p>Calculer le volume de migrations résidentielles entre zones</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ajout_libelles_varventil_insee.html">ajout_libelles_varventil_insee()</a></code> </p>
-        </td>
-        <td><p>Ajouter le libellé d'une modalité de variable de ventilation</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calcul_indics_migres.html">calcul_indics_migres()</a></code> </p>
-        </td>
-        <td><p>Calculer les indicateurs relatifs aux migrations résidentielles pour chaque zone.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calcul_indics_renouv.html">calcul_indics_renouv()</a></code> </p>
-        </td>
-        <td><p>Calculer les indicateurs de catégorisation et de renouvellement de la population par les migrations</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>chargement_fd_migcom</span>(<span class='kw'>telechargement</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>monet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>anneeRP</span>,
+  <span class='no'>dossier_dest_TL</span>, <span class='no'>chemin_FD</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>telechargement</th>
+      <td><p>Vaut TRUE si le fichier doit être téléchargé depuis le site internet de l'Insee, FALSE si le fichier xls est disponible en local.</p></td>
+    </tr>
+    <tr>
+      <th>dossier_dest_TL</th>
+      <td><p>Dossier de destination où va être stockée l'archive zip et le fichier xls dézippé. S'il n'existe pas, il sera créé. Non renseigné si telechargement vaut FALSE.</p></td>
+    </tr>
+    <tr>
+      <th>chemin_FD</th>
+      <td><p>Lien vers le fichier xls (base-cc-serie-historique-AAAA.xls) en local. Non renseigné si telechargement vaut TRUE.</p></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>Retourne une table communale contenant les informations de population/naissances/décès par période inter-censitaire depuis 1968.</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='co'># TÃ©lÃ©chargement du fichier "sÃ©ries historiques" du dernier RP en date depuis le site internet de l'Insee dans le dossier "./data"</span>
+<span class='no'>COMM_HISTODEMO_2015</span> <span class='kw'>&lt;-</span> <span class='fu'>chargement_bd_histodemo</span>(<span class='kw'>telechargement</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>dossier_dest_TL</span> <span class='kw'>=</span> <span class='st'>"./data"</span>)
+
+<span class='co'># Chargement du fichier xls "sÃ©ries historiques" disponible en local</span>
+<span class='no'>COMM_HISTODEMO_2015</span> <span class='kw'>&lt;-</span> <span class='fu'>chargement_bd_histodemo</span>(<span class='kw'>chemin_FD</span> <span class='kw'>=</span> <span class='st'>"./data/base-cc-serie-historique-2015/base-cc-serie-historique-2015.xls"</span>)
+<span class='co'># }</span><div class='input'>
+</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 

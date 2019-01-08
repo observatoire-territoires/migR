@@ -82,7 +82,7 @@
       <h1>Tutoriel des fonctions du package migR</h1>
                         <h4 class="author">Observatoire des territoires</h4>
             
-            <h4 class="date">2018-12-10</h4>
+            <h4 class="date">2019-01-08</h4>
       
       <small class="dont-index">Source: <a href="http://github.com/observatoire-territoires/migR/blob/master/vignettes/tutorial_fonctions_migr.Rmd"><code>vignettes/tutorial_fonctions_migr.Rmd</code></a></small>
       <div class="hidden name"><code>tutorial_fonctions_migr.Rmd</code></div>
@@ -93,7 +93,7 @@
     
 <p>Le package <code>migR</code> facilite l’exploitation du fichier des migrations résidentielles de l’Insee et le calcul de matrices de flux et d’indicateurs territoriaux liés à ces mobilités. Voici ces principales fonctionnalités (l’installation et le chargement sont bien évidemment un pré-requis, cf. ci-dessous).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(devtools)
-devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"observatoire-territoires/migR"</span>)
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"observatoire-territoires/migR"</span>)
 <span class="kw">library</span>(migR)</code></pre></div>
 <div id="telecharger-le-fichier-detail-des-migrations-residentielles-du-recensement-de-linsee" class="section level2">
 <h2 class="hasAnchor">
@@ -103,22 +103,22 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <ul>
 <li>Première possibilité : télécharger le fichier détail directement depuis le site de l’Insee (l’argument <strong><code>telechargement</code></strong> vaudra alors TRUE). Il suffit d’indiquer le millésime du fichier souhaité (argument <strong><code>anneeRP</code></strong> ) : il est alors téléchargé dans le dossier précisé dans l’argument <strong><code>dossier_dest_TL</code></strong> (ici en l’occurence un sous-dossier intitulé ‘data’ qui sera créé s’il ne l’est pas déjà), puis dézippé, puis chargé dans votre session.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">FD_MIGCOM_<span class="dv">2015</span> &lt;-<span class="st"> </span><span class="kw"><a href="../reference/chargement_fd_migcom.html">chargement_fd_migcom</a></span>(<span class="dt">telechargement =</span> <span class="ot">TRUE</span>,
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">FD_MIGCOM_<span class="dv">2015</span> &lt;-<span class="st"> </span><span class="kw">chargement_fd_migcom</span>(<span class="dt">telechargement =</span> <span class="ot">TRUE</span>,
                                        <span class="dt">anneeRP =</span> <span class="st">"2015"</span>,
                                        <span class="dt">monet =</span> <span class="ot">TRUE</span>,
                                        <span class="dt">dossier_dest_TL =</span> <span class="st">"./data"</span>)</code></pre></div>
-<p>POur éviter de charger la table de détail en mémoire, l’option <strong><code>monet</code></strong> créé une base de données dans le sous-dossier ‘MonetDB’.</p>
+<p>Pour éviter de charger la table de détail en mémoire, l’option <strong><code>monet</code></strong> créé une base de données dans le sous-dossier ‘MonetDB’.</p>
 <ul>
 <li>Seconde possibilité : si le fichier détail “MIGCOM” en format txt a déjà été téléchargé en local, il suffit alors d’indiquer son chemin pour qu’il soit chargé en session (ou la base monetDb si l’option <code>monet</code> vaut TRUE).</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">FD_MIGCOM_<span class="dv">2015</span> &lt;-<span class="st"> </span><span class="kw"><a href="../reference/chargement_fd_migcom.html">chargement_fd_migcom</a></span>(<span class="dt">chemin =</span> <span class="st">"./data-raw/rp2015_migcom_txt/FD_MIGCOM_2015.txt"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">FD_MIGCOM_<span class="dv">2015</span> &lt;-<span class="st"> </span><span class="kw">chargement_fd_migcom</span>(<span class="dt">chemin =</span> <span class="st">"./data-raw/rp2015_migcom_txt/FD_MIGCOM_2015.txt"</span>)</code></pre></div>
 </div>
 <div id="ajouter-des-maillages-supracommunaux-a-la-table-de-detail" class="section level2">
 <h2 class="hasAnchor">
 <a href="#ajouter-des-maillages-supracommunaux-a-la-table-de-detail" class="anchor"></a>Ajouter des maillages supracommunaux à la table de détail</h2>
 <p>Pour jouer nos analyses à différentes échelles géographiques et optimiser nos temps de traitements par la suite, on ajoute dans la table de détail “MIGCOM” les mailles supra-communales souhaitées :</p>
 <ul>
-<li>pour l’espace de résidence antérieur : à partir de la variable ‘DCRAN’ renseignant la commune de résidence antérieure (qu’on indique dans l’argument <code>CODE_COMMUNE</code>), on liste les maillages supra-communaux à ajouter (argument <code>NIVGEO</code>) qui seront ici le département (code court ‘DEP’), l’intercommunalité (‘EPCI’) et le type de densité d’après la grille communale de densité de l’Insee (TYPEDENS). On suffixera ces nouveaux champs par le terme ‘ANTE’ (argument <code>SUFFIXE</code>) puisqu’ils correspondent aux territoires de résidence antérieure. Par ailleurs, le millésime du Code Officiel Géographique du code commune en entrée (<code>COG_IN</code>) est 2017 puisque le fichier est issu du RP 2015 (N+2), alors que le COG des maillages supra-communaux en sortie (<code>COG_NIVGEO</code>) sera 2018.</li>
+<li>pour l’espace de résidence antérieur : à partir de la variable ‘DCRAN’ renseignant la commune de résidence antérieure (qu’on indique dans l’argument <strong><code>CODE_COMMUNE</code></strong>), on liste les maillages supra-communaux à ajouter (argument <strong><code>NIVGEO</code></strong>) qui seront ici le département (code court ‘DEP’), l’intercommunalité (‘EPCI’) et le type de densité d’après la grille communale de densité de l’Insee (TYPEDENS). On suffixera ces nouveaux champs par le terme ‘ANTE’ (argument <strong><code>SUFFIXE</code></strong>) puisqu’ils correspondent aux territoires de résidence antérieure. Par ailleurs, le millésime du Code Officiel Géographique du code commune en entrée (<strong><code>COG_IN</code></strong>) est 2017 puisque le fichier est issu du RP 2015 (N+2), alors que le COG des maillages supra-communaux en sortie (<strong><code>COG_NIVGEO</code></strong>) sera 2018.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">FD_MIGCOM_<span class="dv">2015</span>  &lt;-<span class="st">  </span>
 <span class="st">  </span><span class="kw"><a href="../reference/ajout_nivgeo_supracomm.html">ajout_nivgeo_supracomm</a></span>(<span class="dt">TABLE =</span> FD_MIGCOM_<span class="dv">2015</span> ,
@@ -128,7 +128,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
                          <span class="dt">COG_IN =</span> <span class="dv">2017</span>,
                          <span class="dt">COG_NIVGEO =</span> <span class="dv">2018</span>) </code></pre></div>
 <ul>
-<li>pour l’espace de résidence actuel : On réitère l’opération mais à partir de la variable ‘COMMUNE’ renseignant la commune de résidence actuelle. On suffixera ces nouveaux champs par le terme ‘ACTU’ (argument <code>SUFFIXE</code>) puisqu’ils correspondent aux territoires de résidence actuelle.</li>
+<li>pour l’espace de résidence actuel : On réitère l’opération mais à partir de la variable ‘COMMUNE’ renseignant la commune de résidence actuelle. On suffixera ces nouveaux champs par le terme ‘ACTU’ (argument <strong><code>SUFFIXE</code></strong>) puisqu’ils correspondent aux territoires de résidence actuelle.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">FD_MIGCOM_<span class="dv">2015</span>  &lt;-<span class="st"> </span>FD_MIGCOM_<span class="dv">2015</span> <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/ajout_nivgeo_supracomm.html">ajout_nivgeo_supracomm</a></span>(<span class="dt">TABLE =</span> . ,
@@ -141,7 +141,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <div id="calculer-des-flux-de-mobilites-residentielles-entre-territoires" class="section level2">
 <h2 class="hasAnchor">
 <a href="#calculer-des-flux-de-mobilites-residentielles-entre-territoires" class="anchor"></a>Calculer des flux de mobilités résidentielles entre territoires</h2>
-<p>On souhaite connaitre le nombre d’individus ayant migré d’un territoire (résidence antérieure) à un autre territoire (résidence actuelle). La fonction <code>calcul_flux_migres</code> va génèrer une table contenant le niveau géographique antérieur, le niveau géographique actuel ainsi que le nombre d’individus ayant migré de l’un à l’autre. On précise la table de détail en entrée (<strong><code>TABLE</code></strong>), sa variable contenant le nombre d’invidus (ici il s’agit de l’indice de pondération “IPONDI”) dans l’argument <strong><code>VAR_NB</code></strong>. Avec <strong><code>MIG_NET_INTERNE</code></strong> valant TRUE, on précise que l’on souhaite ne conserver que les migrations internes au territoire ; les arrivées depuis un pays étranger ne seront donc pas comptabilisées. Enfin on indique le champ contenant l’espace de résidence antérieur via l’argument <strong><code>NIVGEO_ANTE</code></strong> (ici en l’occurence “DEP_ANTE”) et celui de résidence actuel via l’argument <strong><code>NIVGEO_ACTU</code></strong> (“DEP_ACTU”).</p>
+<p>On souhaite connaitre le nombre d’individus ayant migré d’un territoire (résidence antérieure) à un autre territoire (résidence actuelle). La fonction <code>calcul_flux_migres</code> va génèrer une table contenant le niveau géographique antérieur, le niveau géographique actuel ainsi que le nombre d’individus ayant migré de l’un à l’autre. On précise la table de détail en entrée ( <strong><code>TABLE</code></strong>), sa variable contenant le nombre d’invidus (ici il s’agit de l’indice de pondération “IPONDI”) dans l’argument <strong><code>VAR_NB</code></strong>. Avec <strong><code>MIG_NET_INTERNE</code></strong> valant TRUE, on précise que l’on souhaite ne conserver que les migrations internes au territoire ; les arrivées depuis un pays étranger ne seront donc pas comptabilisées. Enfin on indique le champ contenant l’espace de résidence antérieur via l’argument <strong><code>NIVGEO_ANTE</code></strong> (ici en l’occurence “DEP_ANTE”) et celui de résidence actuel via l’argument <strong><code>NIVGEO_ACTU</code></strong> (“DEP_ACTU”).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flux_migres_DEP &lt;-
 <span class="kw"><a href="../reference/calcul_flux_migres.html">calcul_flux_migres</a></span>(<span class="dt">TABLE =</span>FD_MIGCOM_<span class="dv">2015</span> ,
                  <span class="dt">VAR_NB =</span> <span class="st">"IPONDI"</span>,
@@ -256,6 +256,32 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
                                <span class="dt">MILLESIME_RP =</span> <span class="dv">2015</span>)</code></pre></div>
 <p>Les variables de ventilation sont listées dans l’aide de la fonction <code>ajout_libelles_varventil_insee</code>.</p>
 </div>
+<div id="calculer-les-indicateurs-devolution-demographique-dont-solde-naturel-et-solde-migratoire-apparent-depuis-1968" class="section level2">
+<h2 class="hasAnchor">
+<a href="#calculer-les-indicateurs-devolution-demographique-dont-solde-naturel-et-solde-migratoire-apparent-depuis-1968" class="anchor"></a>Calculer les indicateurs d’évolution démographique (dont solde naturel et solde migratoire apparent) depuis 1968</h2>
+<p>Afin de remettre en persective l’évolution démographique des territoires sur le long terme, et non plus seulement sur une année (cf. fichier détail ‘MIGCOM’ exploité précédemment), il est utile d’exploiter les “séries historiques de population” diffusées par l’Insee : celles-ci présentent, par commune et par période intercensitaire depuis 1968, le nombre d’habitants, de naissances et de décès. Il est ainsi possible d’en déduire pour le territoire souhaité des indicateurs : - d’évolution démographique totale par période - d’évolution démographique due au solde naturel (résultant de la différence entre naissances et décès) - d’évolution démographique due au solde migratoire apparent (obtenue par différence entre évolution démographique totale et evolution due au solde naturel)</p>
+<p>Cette evolution de la population du territoire due au solde migratoire apparent prend également en compte les échanges avec les pays étrangers, et à ce titre ne doit pas être confondue avec le solde migratoire net interne vu précédemment.</p>
+<ul>
+<li>Première étape : charger les indicateurs bruts du <a href="https://www.insee.fr/fr/statistiques/3565661">fichier “séries historiques”</a> de l’Insee</li>
+</ul>
+<p>Grâce à la fonction <code>chargement_bd_histodemo</code>, il est possible de télécharger le fichier xls directement depuis le site de l’Insee (l’argument <strong><code>telechargement</code></strong> vaudra alors TRUE). Il est alors stocké dans le dossier précisé dans l’argument <strong><code>dossier_dest_TL</code></strong> (ici en l’occurence un sous-dossier intitulé ‘data’ qui sera créé s’il ne l’est pas déjà), puis dézippé, puis chargé dans votre session.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">COMM_HISTODEMO_<span class="dv">2015</span> &lt;-<span class="st"> </span><span class="kw"><a href="../reference/chargement_bd_histodemo.html">chargement_bd_histodemo</a></span>(<span class="dt">telechargement =</span> <span class="ot">TRUE</span>, <span class="dt">dossier_dest_TL =</span> <span class="st">"./data"</span>) </code></pre></div>
+<p>Si le fichier a déjà été téléchargé en local, il suffit alors d’indiquer son chemin pour qu’il soit chargé en session (l’argument <strong><code>telechargement</code></strong> vaudra alors FALSE).</p>
+<ul>
+<li>Seconde étape : calculer les indicateurs d’évolution démographique par période intercensitaire sur le territoire souhaité</li>
+</ul>
+<p>La fonction <code>calcul_indics_histodemo</code> permet de génère une table contenant les indicateurs d’évolution démographique (évolution de la population, solde naturel, solde migratoire apparent…) par période intercensitaire et à la maille communale ou supra-communale souhaitée.</p>
+<p>Ici on calculera les indicateurs à la maille départementale :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DEP_histodemo_<span class="dv">19682015</span> &lt;-<span class="st">  </span><span class="kw"><a href="../reference/calcul_indics_histodemo.html">calcul_indics_histodemo</a></span>(<span class="dt">TABLE =</span> COMM_HISTODEMO_<span class="dv">2015</span>, <span class="dt">anneeRP =</span> <span class="dv">2015</span>, <span class="dt">NIVGEO =</span> <span class="st">"DEP"</span>,<span class="dt">COG_NIVGEO =</span> <span class="dv">2018</span>)</code></pre></div>
+<p>Pour chaque territoire et chaque période, la table générée en sortie renseigne :</p>
+<ul>
+<li>la population en début et en fin de période</li>
+<li>le nombre de naissances et de décès au cours de la période</li>
+<li>l’évolution de la population totale en nombre d’habitants, celle due au solde naturel et celle due au solde migratoire apparent</li>
+<li>le taux d’évolution annuel de la population totale, celui du au solde naturel et celui due au solde migratoire apparent</li>
+</ul>
+<p>L’ensemble des mailles supra-communales disponibles et la définition exacte des indicateurs est bien sûr à retrouver dans l’aide de la fonction.</p>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -269,6 +295,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
       <li><a href="#calculer-des-indicateurs-synthetiques-lies-aux-mobilites-residentielles">Calculer des indicateurs synthétiques liés aux mobilités résidentielles</a></li>
       <li><a href="#calculer-les-indicateurs-de-renouvellement-socio-demographique-de-la-population">Calculer les indicateurs de renouvellement socio-démographique de la population</a></li>
       <li><a href="#faciliter-la-lecture-des-tableaux-de-flux-et-dindicateurs">Faciliter la lecture des tableaux de flux et d’indicateurs</a></li>
+      <li><a href="#calculer-les-indicateurs-devolution-demographique-dont-solde-naturel-et-solde-migratoire-apparent-depuis-1968">Calculer les indicateurs d’évolution démographique (dont solde naturel et solde migratoire apparent) depuis 1968</a></li>
       </ul>
 </div>
       </div>

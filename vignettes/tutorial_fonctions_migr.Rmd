@@ -43,7 +43,7 @@ FD_MIGCOM_2015 <- chargement_fd_migcom(telechargement = TRUE,
 ```
   
 
-POur éviter de charger la table de détail en mémoire, l'option __``monet``__ créé une base de données dans le sous-dossier 'MonetDB'.
+Pour éviter de charger la table de détail en mémoire, l'option __``monet``__ créé une base de données dans le sous-dossier 'MonetDB'.
 
 
 * Seconde possibilité : si le fichier détail "MIGCOM" en format txt a déjà été téléchargé en local, il suffit alors d'indiquer son chemin pour qu'il soit chargé en session (ou la base monetDb si l'option ``monet`` vaut TRUE).
@@ -61,7 +61,7 @@ FD_MIGCOM_2015 <- chargement_fd_migcom(chemin = "./data-raw/rp2015_migcom_txt/FD
 Pour jouer nos analyses à différentes échelles géographiques et optimiser nos temps de traitements par la suite, on ajoute dans la table de détail "MIGCOM" les mailles supra-communales souhaitées :
 
 * pour l'espace de résidence antérieur :
-à partir de la variable 'DCRAN' renseignant la commune de résidence antérieure (qu'on indique dans l'argument ``CODE_COMMUNE``), on liste les maillages supra-communaux à ajouter (argument ``NIVGEO``) qui seront ici le département (code court 'DEP'), l'intercommunalité ('EPCI') et le type de densité d'après la grille communale de densité de l'Insee (TYPEDENS). On suffixera ces nouveaux champs par le terme 'ANTE' (argument ``SUFFIXE``) puisqu'ils correspondent aux territoires de résidence antérieure. Par ailleurs, le millésime du Code Officiel Géographique du code commune en entrée (``COG_IN``) est 2017 puisque le fichier est issu du RP 2015 (N+2), alors que le COG des maillages supra-communaux en sortie (``COG_NIVGEO``) sera 2018.
+à partir de la variable 'DCRAN' renseignant la commune de résidence antérieure (qu'on indique dans l'argument __``CODE_COMMUNE``__), on liste les maillages supra-communaux à ajouter (argument __``NIVGEO``__) qui seront ici le département (code court 'DEP'), l'intercommunalité ('EPCI') et le type de densité d'après la grille communale de densité de l'Insee (TYPEDENS). On suffixera ces nouveaux champs par le terme 'ANTE' (argument __``SUFFIXE``__) puisqu'ils correspondent aux territoires de résidence antérieure. Par ailleurs, le millésime du Code Officiel Géographique du code commune en entrée (__``COG_IN``__) est 2017 puisque le fichier est issu du RP 2015 (N+2), alors que le COG des maillages supra-communaux en sortie (__``COG_NIVGEO``__) sera 2018.
 
 
 ```{r ajout_libgeo_ANTE, message=F, warning=F, eval=FALSE}
@@ -75,7 +75,7 @@ FD_MIGCOM_2015  <-
 ```
 
 * pour l'espace de résidence actuel :
-On réitère l'opération mais à partir de la variable 'COMMUNE' renseignant la commune de résidence actuelle. On suffixera ces nouveaux champs par le terme 'ACTU' (argument ``SUFFIXE``) puisqu'ils correspondent aux territoires de résidence actuelle.
+On réitère l'opération mais à partir de la variable 'COMMUNE' renseignant la commune de résidence actuelle. On suffixera ces nouveaux champs par le terme 'ACTU' (argument __``SUFFIXE``__) puisqu'ils correspondent aux territoires de résidence actuelle.
 
 ```{r ajout_libgeo_ACTU, message=F, warning=F, eval=FALSE}
 FD_MIGCOM_2015  <- FD_MIGCOM_2015 %>%
@@ -91,7 +91,7 @@ FD_MIGCOM_2015  <- FD_MIGCOM_2015 %>%
 ## Calculer des flux de mobilités résidentielles entre territoires
 
 
-On souhaite connaitre le nombre d'individus ayant migré d'un territoire (résidence antérieure) à un autre territoire (résidence actuelle). La fonction `calcul_flux_migres` va génèrer une table contenant le niveau géographique antérieur, le niveau géographique actuel ainsi que le nombre d'individus ayant migré de l'un à l'autre. On précise la table de détail en entrée (__``TABLE``__), sa variable contenant le nombre d'invidus (ici il s'agit de l'indice de pondération "IPONDI") dans l'argument __``VAR_NB``__.
+On souhaite connaitre le nombre d'individus ayant migré d'un territoire (résidence antérieure) à un autre territoire (résidence actuelle). La fonction `calcul_flux_migres` va génèrer une table contenant le niveau géographique antérieur, le niveau géographique actuel ainsi que le nombre d'individus ayant migré de l'un à l'autre. On précise la table de détail en entrée ( __``TABLE``__), sa variable contenant le nombre d'invidus (ici il s'agit de l'indice de pondération "IPONDI") dans l'argument __``VAR_NB``__.
 Avec  __``MIG_NET_INTERNE``__ valant TRUE, on précise que l'on souhaite ne conserver que les migrations internes au territoire ; les arrivées depuis un pays étranger ne seront donc pas comptabilisées.
 Enfin on indique le champ contenant l'espace de résidence antérieur via l'argument __``NIVGEO_ANTE``__ (ici en l'occurence  "DEP_ANTE") et celui de résidence actuel via l'argument __``NIVGEO_ACTU``__ ("DEP_ACTU").
 
@@ -260,3 +260,47 @@ ajout_libelles_varventil_insee(TABLE = indics_migres_DEP_CS1,
 ```
 
 Les variables de ventilation sont listées dans l'aide de la fonction `ajout_libelles_varventil_insee`.
+
+
+## Calculer les indicateurs d'évolution démographique (dont solde naturel et solde migratoire apparent) depuis 1968
+
+Afin de remettre en persective l'évolution démographique des territoires sur le long terme, et non plus seulement sur une année (cf. fichier détail 'MIGCOM' exploité précédemment), il est utile d'exploiter les "séries historiques de population" diffusées par l'Insee : celles-ci présentent, par commune et par période intercensitaire depuis 1968, le nombre d'habitants, de naissances et de décès. Il est ainsi possible d'en déduire pour le territoire souhaité des indicateurs :
+- d'évolution démographique totale par période
+- d'évolution démographique due au solde naturel (résultant de la différence entre naissances et décès)
+- d'évolution démographique due au solde migratoire apparent (obtenue par différence entre évolution démographique totale et evolution due au solde naturel)
+
+Cette evolution de la population du territoire due au solde migratoire apparent prend également en compte les échanges avec les pays étrangers, et à ce titre ne doit pas être confondue avec le solde migratoire net interne vu précédemment.
+
+
+* Première étape : charger les indicateurs bruts du [fichier "séries historiques"](https://www.insee.fr/fr/statistiques/3565661) de l'Insee
+
+Grâce à la fonction `chargement_bd_histodemo`, il est possible de télécharger le fichier xls directement depuis le site de l'Insee (l'argument __``telechargement``__ vaudra alors TRUE). Il est alors stocké dans le dossier précisé dans l'argument __``dossier_dest_TL``__ (ici en l'occurence un sous-dossier intitulé 'data' qui sera créé s'il ne l'est pas déjà), puis dézippé, puis chargé dans votre session.
+
+
+```{r chargement_bd_histodemo, message=F, warning=F, eval=FALSE}
+COMM_HISTODEMO_2015 <- chargement_bd_histodemo(telechargement = TRUE, dossier_dest_TL = "./data") 
+```
+
+Si le fichier a déjà été téléchargé en local, il suffit alors d'indiquer son chemin pour qu'il soit chargé en session (l'argument __``telechargement``__ vaudra alors FALSE).
+
+
+* Seconde étape : calculer les indicateurs d'évolution démographique par période intercensitaire sur le territoire souhaité
+
+
+La fonction `calcul_indics_histodemo` permet de génère une table contenant les indicateurs d'évolution démographique (évolution de la population, solde naturel, solde migratoire apparent...) par période intercensitaire et à la maille communale ou supra-communale souhaitée.
+
+Ici on calculera les indicateurs à la maille départementale :
+
+```{r calcul_histodemo, message=F, warning=F, eval=FALSE}
+DEP_histodemo_19682015 <-  calcul_indics_histodemo(TABLE = COMM_HISTODEMO_2015, anneeRP = 2015, NIVGEO = "DEP",COG_NIVGEO = 2018)
+```
+
+
+Pour chaque territoire et chaque période, la table générée en sortie renseigne :
+
++ la population en début et en fin de période
++ le nombre de naissances et de décès au cours de la période
++ l'évolution de la population totale en nombre d'habitants, celle due au solde naturel et celle due au solde migratoire apparent
++ le taux d'évolution annuel de la population totale, celui du au solde naturel et celui due au solde migratoire apparent
+
+L'ensemble des mailles supra-communales disponibles et la définition exacte des indicateurs est bien sûr à retrouver dans l'aide de la fonction.
