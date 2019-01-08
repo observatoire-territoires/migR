@@ -28,10 +28,11 @@
 #' }
 #'
 #' @export
+#'
 
+chargement_bd_histodemo <- function(telechargement = FALSE, dossier_dest_TL, chemin_FD){
 
-chargement_fd_migcom <- function(telechargement = FALSE, dossier_dest_TL, chemin_FD){
-
+  # pas d'historique en ligne sur le site de l'Insee
   # dernier millésime en date
   last_RP <- "2015"
   last_RP_ante <- "2010"

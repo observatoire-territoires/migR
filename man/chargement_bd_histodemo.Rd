@@ -2,11 +2,10 @@
 % Please edit documentation in R/chargement_bd_histodemo.R
 \name{chargement_bd_histodemo}
 \alias{chargement_bd_histodemo}
-\alias{chargement_fd_migcom}
 \title{Charger une base de données de séries historiques de population de l'Insee}
 \usage{
-chargement_fd_migcom(telechargement = FALSE, monet = TRUE, anneeRP,
-  dossier_dest_TL, chemin_FD)
+chargement_bd_histodemo(telechargement = FALSE, dossier_dest_TL,
+  chemin_FD)
 }
 \arguments{
 \item{telechargement}{Vaut TRUE si le fichier doit être téléchargé depuis le site internet de l'Insee, FALSE si le fichier xls est disponible en local.}
