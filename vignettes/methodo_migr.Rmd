@@ -38,7 +38,7 @@ Pour conserver des flux symétriques, on exclue de l'analyse :
 
 - les individus recensés pour l'année N et résidant à l'étranger ou dans les TOM/COM+Mayotte en N-1
 - les individus âgés de moins d'un an lors du recensement
-- les populations spécifiques (détenus, habitants des habitations mobiles, sans-abri, mariniers) rattachés à une même commune en N et en N-1.
+- les populations spécifiques (détenus, habitants des habitations mobiles, sans-abri, mariniers) rattachés à une même commune en N et en N-1. 
 
 
 On ne considére donc que les **migrations internes** au sein du pays (France métropolitaine + DOM - Mayotte).

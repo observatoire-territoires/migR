@@ -36,7 +36,7 @@ Il est disponible pour le RP 2008 où la commune de résidence antérieure est r
 * Première possibilité : télécharger le fichier détail directement depuis le site de l'Insee (l'argument __``telechargement``__ vaudra alors TRUE). Il suffit d'indiquer le millésime du fichier souhaité (argument __``anneeRP``__ ) : il est alors téléchargé dans le dossier précisé dans l'argument __``dossier_dest_TL``__ (ici en l'occurence un sous-dossier intitulé 'data' qui sera créé s'il ne l'est pas déjà), puis dézippé, puis chargé dans votre session.
 
 ```{r chargement_insee, message=F, warning=F, eval=FALSE}
-FD_MIGCOM_2015 <- chargement_fd_migcom(telechargement = TRUE,
+FD_MIGCOM_2016 <- chargement_fd_migcom(telechargement = TRUE,
                                        anneeRP = "2016",
                                        monet = TRUE,
                                        dossier_dest_TL = "./data")
