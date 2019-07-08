@@ -33,4 +33,4 @@ Depends:
     readxl,
     Insee2MonetDB
 Remotes: joelgombin/Insee2MonetDB
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1

@@ -24,7 +24,7 @@ Renvoie une table avec un champ supplémentaire contenant le libellé de l'unit�
 Ajouter le libellé d'une unité géographique à partir du champ contenant le code en format court.
 }
 \details{
-Les millésimes du COG disponibles sont les suivants : 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018. \cr
+Les millésimes du COG disponibles sont les suivants : 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019. \cr
 
 Les niveaux supra-communaux disponibles sont les suivants :
 \itemize{
@@ -46,7 +46,7 @@ Les niveaux supra-communaux disponibles sont les suivants :
 indics_migres_DEP <-
 ajout_libelles_nivgeo(TABLE = indics_migres_DEP,
                       NIVGEO_IN ="DEP",
-                      COG_NIVGEO = 2018)
+                      COG_NIVGEO = 2019)
 
 # Ajout du champ 'LIB_REG_ANTE' contenant le libellÃ© en clair des codes EPCI
 flux_migres_EPCI <-
@@ -54,12 +54,12 @@ flux_migres_EPCI <-
                        NIVGEO_IN ="EPCI_ANTE",
                        NIVGEO_OUT ="EPCI",
                        LIBGEO_OUT = "LIB_EPCI_ANTE",
-                       COG_NIVGEO = 2018) \%>\%
+                       COG_NIVGEO = 2019) \%>\%
   ajout_libelles_nivgeo(TABLE = .,
                         NIVGEO_IN ="EPCI_ACTU",
                         NIVGEO_OUT ="EPCI",
                         LIBGEO = "LIB_EPCI_ACTU",
-                        COG_NIVGEO = 2018)
+                        COG_NIVGEO = 2019)
 }
 
 }

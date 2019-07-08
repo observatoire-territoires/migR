@@ -26,24 +26,24 @@
 #' CODE_COMMUNE = "CODGEO",
 #' NIVGEO = "DEP",
 #' COG_IN = 2010,
-#' COG_NIVGEO = 2018)
+#' COG_NIVGEO = 2019)
 #'
 #' # Ajout des niveaux géographiques "département", "région" et "type de densité" depuis les champs "commune de résidence actuelle" et "commune de résidence antérieure"
-#' FD_MIGCOM_2015  <- FD_MIGCOM_2015
+#' FD_MIGCOM_2016  <- FD_MIGCOM_2016
 #' ajout_nivgeo_supracomm(TABLE = . ,
 #'                        CODE_COMMUNE = "DCRAN",
 #'                        SUFFIXE = "ANTE",
 #'                        NIVGEO= c("DEP",'EPCI','TYPEDENS'),
-#'                        COG_IN = 2017, COG_NIVGEO = 2018) %>%
+#'                        COG_IN = 2018, COG_NIVGEO = 2019) %>%
 #' ajout_nivgeo_supracomm(TABLE = . ,
 #'                        CODE_COMMUNE = "COMMUNE",
 #'                        SUFFIXE = "ACTU",
 #'                        NIVGEO= c("DEP",'EPCI','TYPEDENS'),
-#'                        COG_IN = 2017, COG_NIVGEO = 2018)
+#'                        COG_IN = 2018, COG_NIVGEO = 2019)
 #'}
 #'
 #' @details
-#' Les millésimes du COG disponibles sont les suivants : 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018. \cr
+#' Les millésimes du COG disponibles sont les suivants : 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019. \cr
 #'
 #' Pour convertir un code commune d'un COG plus ancien, il est conseillé d'effectuer l'opération grâce au package 'COGugaison'. \cr
 #'

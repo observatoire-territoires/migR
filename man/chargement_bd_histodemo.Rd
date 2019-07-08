@@ -23,10 +23,10 @@ Télécharger la base de données "séries historiques" contenant les informatio
 \examples{
 \dontrun{
 # TÃ©lÃ©chargement du fichier "sÃ©ries historiques" du dernier RP en date depuis le site internet de l'Insee dans le dossier "./data"
-COMM_HISTODEMO_2015 <- chargement_bd_histodemo(telechargement = TRUE, dossier_dest_TL = "./data")
+COMM_HISTODEMO_2016 <- chargement_bd_histodemo(telechargement = TRUE, dossier_dest_TL = "./data")
 
 # Chargement du fichier xls "sÃ©ries historiques" disponible en local
-COMM_HISTODEMO_2015 <- chargement_bd_histodemo(chemin_FD = "./data/base-cc-serie-historique-2015/base-cc-serie-historique-2015.xls")
+COMM_HISTODEMO_2016 <- chargement_bd_histodemo(chemin_FD = "./data/base-cc-serie-historique-2016/base-cc-serie-historique-2016.xls")
 }
 
 }

@@ -4,12 +4,12 @@
 \alias{calcul_indics_histodemo}
 \title{Calculer les indicateurs d'évolution démographique depuis 1968}
 \usage{
-calcul_indics_histodemo(TABLE, anneeRP = 2015, NIVGEO, COG_NIVGEO)
+calcul_indics_histodemo(TABLE, anneeRP = 2016, NIVGEO, COG_NIVGEO)
 }
 \arguments{
 \item{TABLE}{Table en entrée générée par la fonction 'chargement_bd_histodemo'.}
 
-\item{anneeRP}{Millésime du Recensement de la Population de l'Insee correspondant à la table (2015 par défaut).}
+\item{anneeRP}{Millésime du Recensement de la Population de l'Insee correspondant à la table (2016 par défaut).}
 
 \item{NIVGEO}{Nom du niveau géographique supra-communal à ajouter (en format court, liste : cf. details ci-dessous).}
 
@@ -39,7 +39,7 @@ Les champs de la table en sortie sont les suivants :
 \item{'TX_EVOL_DEMO_AN_SMA' : Taux annuel d'évolution démographique due au solde migratoire apparent au cours de la période}}
 
 
-Les millésimes du COG disponibles sont les suivants : 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018. \cr
+Les millésimes du COG disponibles sont les suivants : 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019. \cr
 
 Pour convertir un code commune d'un COG plus ancien, il est conseillé d'effectuer l'opération grâce au package 'COGugaison'. \cr
 
@@ -64,8 +64,8 @@ Les niveaux supra-communaux disponibles sont les suivants :
 }
 \examples{
 \dontrun{
-# Calculer les indicateurs d'Ã©volution dÃ©mographique par pÃ©riode entre 1968 et 2015, Ã  la maille dÃ©partement
-DEP_histodemo_19682015 <-  calcul_indics_histodemo(TABLE = COMM_HISTODEMO_2015, anneeRP = 2015, NIVGEO = "DEP",COG_NIVGEO = 2018)
+# Calculer les indicateurs d'Ã©volution dÃ©mographique par pÃ©riode entre 1968 et 2016, Ã  la maille dÃ©partement
+DEP_histodemo_19682016 <-  calcul_indics_histodemo(TABLE = COMM_HISTODEMO_2016, anneeRP = 2016, NIVGEO = "DEP",COG_NIVGEO = 2019)
 }
 
 }

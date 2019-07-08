@@ -5,7 +5,7 @@
 #' @description A partir de la base de données "séries historiques", calculer les indicateurs d'évolution démographique (évolution de la population, solde naturel, solde migratoire apparent...) par période intercensitaire et à la maille communale ou supra-communale souhaitée.
 #'
 #' @param TABLE Table en entrée générée par la fonction 'chargement_bd_histodemo'.
-#' @param anneeRP Millésime du Recensement de la Population de l'Insee correspondant à la table (2015 par défaut).
+#' @param anneeRP Millésime du Recensement de la Population de l'Insee correspondant à la table (2016 par défaut).
 #' @param NIVGEO Nom du niveau géographique supra-communal à ajouter (en format court, liste : cf. details ci-dessous).
 #' @param COG_NIVGEO Millésime du Code Officiel Géographique du code supra-communal en sortie (liste : cf. details ci-dessous).
 #'
@@ -19,8 +19,8 @@
 #'
 #' @examples
 #' \dontrun{
-#' # Calculer les indicateurs d'évolution démographique par période entre 1968 et 2015, à la maille département
-#' DEP_histodemo_19682015 <-  calcul_indics_histodemo(TABLE = COMM_HISTODEMO_2015, anneeRP = 2015, NIVGEO = "DEP",COG_NIVGEO = 2018)
+#' # Calculer les indicateurs d'évolution démographique par période entre 1968 et 2016, à la maille département
+#' DEP_histodemo_19682016 <-  calcul_indics_histodemo(TABLE = COMM_HISTODEMO_2016, anneeRP = 2016, NIVGEO = "DEP",COG_NIVGEO = 2019)
 #' }
 #'
 #' @details
@@ -42,7 +42,7 @@
 #' \item{'TX_EVOL_DEMO_AN_SMA' : Taux annuel d'évolution démographique due au solde migratoire apparent au cours de la période}}
 #'
 #'
-#' Les millésimes du COG disponibles sont les suivants : 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018. \cr
+#' Les millésimes du COG disponibles sont les suivants : 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019. \cr
 #'
 #' Pour convertir un code commune d'un COG plus ancien, il est conseillé d'effectuer l'opération grâce au package 'COGugaison'. \cr
 #'
@@ -75,10 +75,10 @@
 #'
 
 
-calcul_indics_histodemo <- function(TABLE, anneeRP =2015, NIVGEO, COG_NIVGEO) {
+calcul_indics_histodemo <- function(TABLE, anneeRP =2016, NIVGEO, COG_NIVGEO) {
 
   # définition du COG du fichier en entrée
-  COG_IN <- anneeRP + 2
+  COG_IN <- anneeRP + 3
 
 
   if(COG_IN == 2016) {
@@ -131,11 +131,14 @@ calcul_indics_histodemo <- function(TABLE, anneeRP =2015, NIVGEO, COG_NIVGEO) {
   # !!sym(paste0("POP_",last_RP))
   #anneeRP
   anneeRP_prec <- anneeRP - 5
+  anneeRP_precpe <- anneeRP - 10
 
   NIVGEO_indics_histodemo <-
     TABLE %>%
     left_join(table_supracom_OK, by = c("CODGEO" = "CODGEO")) %>%
     mutate(#POPDEB1015 = POP_2010, POPFIN1015 = POP_2015,
+      !!sym(paste0("POPDEB",substr(anneeRP_precpe,3,4),substr(anneeRP_prec,3,4))) := !!sym(paste0("POP_",anneeRP_precpe)),
+      !!sym(paste0("POPFIN",substr(anneeRP_precpe,3,4),substr(anneeRP_prec,3,4))) := !!sym(paste0("POP_",anneeRP_prec)),
       !!sym(paste0("POPDEB",substr(anneeRP_prec,3,4),substr(anneeRP,3,4))) := !!sym(paste0("POP_",anneeRP_prec)),
       !!sym(paste0("POPFIN",substr(anneeRP_prec,3,4),substr(anneeRP,3,4))) := !!sym(paste0("POP_",anneeRP)),
       #POPDEB9910 = POP_1999, POPFIN9910 = POP_2010,
@@ -148,6 +151,7 @@ calcul_indics_histodemo <- function(TABLE, anneeRP =2015, NIVGEO, COG_NIVGEO) {
     dplyr::select(NIVGEO,
                   #ends_with("1015"),
                   ends_with(paste0(substr(anneeRP_prec,3,4),substr(anneeRP,3,4))),
+                  ends_with(paste0(substr(anneeRP_precpe,3,4),substr(anneeRP_prec,3,4))),
                   #ends_with("9910"),
                   ends_with(paste0( "99",substr(anneeRP_prec,3,4))),
                   ends_with("9099"),ends_with("8290"),ends_with("7582"),ends_with("6875"))  %>%

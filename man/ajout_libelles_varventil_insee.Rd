@@ -20,7 +20,7 @@ Renvoie une table avec un champ supplémentaire contenant le libellé de la moda
 Ajouter le libellé d'une modalité de variable de ventilation (issue d'un fichier du RP Insee) à partir du champ contenant le code en format court.
 }
 \details{
-Les millésimes du RP disponibles sont les suivants : 2008, 2013, 2014, 2015. \cr
+Les millésimes du RP disponibles sont les suivants : 2008, 2013, 2014, 2015, 2016. \cr
 
 Les variables de ventilation disponbibles sont issues de la documentation des fichiers détail 'Migrations Résidentielles' et sont les suivants :
 \itemize{
@@ -60,7 +60,7 @@ Les variables de ventilation disponbibles sont issues de la documentation des fi
 indics_mig_DEP_CS1 <-
 ajout_libelles_varventil_insee(TABLE = indics_mig_DEP_CS1,
                                VAR ="CS1",
-                               MILLESIME_RP = 2015)
+                               MILLESIME_RP = 2016)
 
 }
 

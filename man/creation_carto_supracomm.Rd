@@ -31,7 +31,7 @@ A partir d'un fichier cartographique des communes françaises (issu du produit A
 \details{
 La conversion entre les différents millésimes du COG est gérée grâce à la fonction 'changement_COG_typo' du package 'COGugaison' ; la méthode de fusion par défaut est 'methode_max_pop' (cf. aide "COGugaison").
 
-Les millésimes du COG disponibles sont les suivants : 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018. \cr
+Les millésimes du COG disponibles sont les suivants : 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019. \cr
 
 Les niveaux supra-communaux disponibles sont les suivants :
 \itemize{
