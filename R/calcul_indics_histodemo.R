@@ -141,19 +141,16 @@ calcul_indics_histodemo <- function(TABLE, anneeRP =2016, NIVGEO, COG_NIVGEO) {
       !!sym(paste0("POPFIN",substr(anneeRP_precpe,3,4),substr(anneeRP_prec,3,4))) := !!sym(paste0("POP_",anneeRP_prec)),
       !!sym(paste0("POPDEB",substr(anneeRP_prec,3,4),substr(anneeRP,3,4))) := !!sym(paste0("POP_",anneeRP_prec)),
       !!sym(paste0("POPFIN",substr(anneeRP_prec,3,4),substr(anneeRP,3,4))) := !!sym(paste0("POP_",anneeRP)),
-      #POPDEB9910 = POP_1999, POPFIN9910 = POP_2010,
-      !!sym(paste0("POPDEB99",substr(anneeRP_prec,3,4))) := POP_1999,
-      !!sym(paste0("POPFIN99",substr(anneeRP_prec,3,4))) := !!sym(paste0("POP_",anneeRP_prec)),
+      !!sym(paste0("POPDEB99",substr(anneeRP_precpe,3,4))) := POP_1999,
+      !!sym(paste0("POPFIN99",substr(anneeRP_precpe,3,4))) := !!sym(paste0("POP_",anneeRP_prec)),
       POPDEB9099 = POP_1990, POPFIN9099 = POP_1999,
       POPDEB8290 = POP_1982, POPFIN8290 = POP_1990,
       POPDEB7582 = POP_1975, POPFIN7582 = POP_1982,
       POPDEB6875 = POP_1968, POPFIN6875 = POP_1975)  %>%
     dplyr::select(NIVGEO,
-                  #ends_with("1015"),
                   ends_with(paste0(substr(anneeRP_prec,3,4),substr(anneeRP,3,4))),
                   ends_with(paste0(substr(anneeRP_precpe,3,4),substr(anneeRP_prec,3,4))),
-                  #ends_with("9910"),
-                  ends_with(paste0( "99",substr(anneeRP_prec,3,4))),
+                  ends_with(paste0( "99",substr(anneeRP_precpe,3,4))),
                   ends_with("9099"),ends_with("8290"),ends_with("7582"),ends_with("6875"))  %>%
     group_by(!!rlang::sym(NIVGEO)) %>%
     summarise_if(is.numeric,funs(sum)) %>%
